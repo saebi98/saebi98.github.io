@@ -426,6 +426,93 @@
     .vocab-kr { font-size: 12px; font-weight: 700; color: #4c0519; }
 
     /* Subway Line Visual Cards */
+    .map-container {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      background: #ffffff;
+      padding: 16px;
+      margin: 10px 0 20px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+    .map-switch {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .map-btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .map-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    .map-svg-scroll {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #fcfdfd;
+      -webkit-overflow-scrolling: touch;
+    }
+    .map-svg {
+      display: block;
+      width: 100%;
+      min-width: 760px;
+      height: auto;
+      user-select: none;
+    }
+    .map-node {
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .map-node:hover circle {
+      stroke-width: 5px;
+    }
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: #f8fafc;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-line {
+      width: 22px;
+      height: 5px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .st-info-bar {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13.5px;
+    }
+
     .subway-list {
       display: flex;
       flex-direction: column;
@@ -909,7 +996,245 @@
         </div>
       </div>
 
-      <h3 class="sub-h3">3️⃣ 주요 관광지 연결 도쿄 지하철·전철 핵심 노선도 (공식 색상·기호)</h3>
+      <h3 class="sub-h3">3️⃣ 한눈에 보는 도쿄 핵심 노선도 맵 (우리 가족 여행 스팟 맞춤형)</h3>
+      <p style="margin:0 0 10px;font-size:13.5px;color:#475569;">
+        보내주신 노선표 구조를 바탕으로 <b>우리 가족 숙소 후보(오시아게·우에노)와 4박 5일 핵심 관광지·맛집</b>을 한 장의 지도에 시각화했습니다. <b>지도 위의 역(🔴)을 터치</b>하면 해당 역의 관광지·출구 정보가 아래에 표시됩니다!
+      </p>
+
+      <div class="map-container">
+        <div class="map-switch">
+          <button type="button" class="map-btn active" id="btn-map-custom">🗺️ 우리 가족 맞춤 인터랙티브 노선도</button>
+          <button type="button" class="map-btn" id="btn-map-orig">🖼️ 원본 주요노선표 이미지 보기</button>
+        </div>
+
+        <!-- Custom Interactive SVG Schematic Map -->
+        <div id="view-map-custom">
+          <div class="map-svg-scroll">
+            <svg class="map-svg" viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="도쿄 주요 지하철 및 관광 스팟 노선도">
+              <defs>
+                <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.12"/>
+                </filter>
+              </defs>
+
+              <!-- Background Grid Hint -->
+              <rect x="0" y="0" width="1000" height="650" fill="#fbfdfe"/>
+
+              <!-- Title inside Map -->
+              <text x="26" y="40" font-size="22" font-weight="900" fill="#0f172a">도쿄 여행 핵심 노선표 (나리타 · 숙소 · 주요 스팟)</text>
+              <text x="26" y="60" font-size="12.5" font-weight="700" fill="#64748b">※ 역 동그라미를 누르면 하단에 상세 출구 및 맛집·관광지 안내가 나타납니다</text>
+
+              <!-- ======================== LINES ======================== -->
+
+              <!-- 1. JR Yamanote Line (Loop - Double Track Style like reference image) -->
+              <rect x="160" y="135" width="310" height="430" rx="135" ry="135" fill="none" stroke="#64748b" stroke-width="10"/>
+              <rect x="160" y="135" width="310" height="430" rx="135" ry="135" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="10,7"/>
+              <rect x="153" y="128" width="324" height="444" rx="142" ry="142" fill="none" stroke="#84cc16" stroke-width="3.5" opacity="0.75"/>
+              <text x="275" y="168" font-size="13.5" font-weight="800" fill="#3f6212">JR 야마노테선 (순환)</text>
+
+              <!-- 2. JR Chuo-Sobu Line (Horizontal Dashed across center) -->
+              <line x1="110" y1="335" x2="900" y2="335" stroke="#64748b" stroke-width="7"/>
+              <line x1="110" y1="335" x2="900" y2="335" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="8,6"/>
+              <text x="225" y="322" font-size="12.5" font-weight="700" fill="#475569">JR 중앙·소부선</text>
+
+              <!-- 3. Seibu Ikebukuro Line (Top-Left to Harry Potter Studio Toshimaen) -->
+              <path d="M 200 175 L 115 95" fill="none" stroke="#0ea5e9" stroke-width="8" stroke-linecap="round"/>
+              <text x="65" y="142" font-size="12.5" font-weight="800" fill="#0284c7">세이부 이케부쿠로선 (17분)</text>
+
+              <!-- 4. Keisei Skyliner (Blue Express: Narita -> Nippori -> Ueno) -->
+              <path d="M 930 105 L 930 60 Q 930 40 910 40 L 460 40 Q 430 40 430 70 L 430 225" fill="none" stroke="#0284c7" stroke-width="6" stroke-dasharray="12,5"/>
+              <text x="610" y="30" font-size="13" font-weight="900" fill="#0284c7">🚅 게이세이 스카이라이너 (나리타 ↔ 우에노 41분 직통)</text>
+
+              <!-- 5. Keisei Sky Access & Toei Asakusa Line (Pink: Narita -> Oshiage -> Asakusa -> Nihombashi -> Higashi-Ginza -> Shimbashi -> Daimon) -->
+              <path d="M 930 115 L 930 215 Q 930 230 910 230 L 800 230 L 800 250 L 605 250 Q 550 250 535 305 L 520 435 Q 515 510 465 510 L 420 510 L 385 545" fill="none" stroke="#e85298" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="845" y="185" font-size="13.5" font-weight="900" fill="#db2777">게이세이선</text>
+              <text x="835" y="202" font-size="11.5" font-weight="800" fill="#db2777">(스카이액세스 50분)</text>
+              <text x="535" y="528" font-size="14" font-weight="900" fill="#db2777">도에이 아사쿠사선 (A)</text>
+
+              <!-- 6. Tokyo Metro Hanzomon Line (Purple: Oshiage -> Kinshicho -> Otemachi -> Omotesando -> Shibuya) -->
+              <path d="M 790 250 L 790 385 L 485 385 L 270 490 L 175 490" fill="none" stroke="#9b7ede" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="200" y="452" font-size="14" font-weight="900" fill="#7c3aed">도쿄메트로 한조몬선 (Z)</text>
+              <text x="580" y="375" font-size="12" font-weight="800" fill="#6d28d9">오시아게 ↔ 도쿄역(16분) ↔ 시부야(34분) 무환승!</text>
+
+              <!-- 7. Tokyo Metro Ginza Line (Orange: Asakusa -> Ueno -> Akihabara -> Nihombashi -> Ginza -> Shimbashi -> Omotesando -> Shibuya) -->
+              <path d="M 605 242 L 435 242 Q 418 242 418 260 L 418 320 L 500 375 L 500 495 L 175 495" fill="none" stroke="#f59e0b" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="215" y="522" font-size="14" font-weight="900" fill="#d97706">도쿄메트로 긴자선 (G)</text>
+
+              <!-- 8. Tokyo Metro Hibiya Line (Silver-Slate: Ueno -> Akihabara -> Ginza -> Kamiyacho -> Roppongi) -->
+              <path d="M 455 242 L 455 460 L 345 460 L 310 535" fill="none" stroke="#64748b" stroke-width="5.5" stroke-dasharray="6,4"/>
+              <text x="255" y="582" font-size="12.5" font-weight="800" fill="#334155">히비야선 (롯폰기·도쿄타워)</text>
+
+              <!-- 9. Yurikamome & Disney Shuttle (Blue Dashed to Toyosu/Odaiba & DisneySea) -->
+              <path d="M 445 500 L 660 595" fill="none" stroke="#0284c7" stroke-width="5" stroke-dasharray="8,5"/>
+              <text x="495" y="575" font-size="12.5" font-weight="800" fill="#0369a1">유리카모메 (신바시↔신토요스)</text>
+
+              <path d="M 790 340 L 885 455" fill="none" stroke="#0284c7" stroke-width="5" stroke-dasharray="8,5"/>
+              <text x="855" y="395" font-size="12" font-weight="800" fill="#0369a1">디즈니 셔틀/JR</text>
+
+              <!-- ======================== TOKYO SKYTREE LANDMARK BOX ======================== -->
+              <g transform="translate(650, 95)" filter="url(#shadow)">
+                <!-- Skytree Tower Silhouette -->
+                <polygon points="88,0 92,0 96,75 84,75" fill="#0284c7"/>
+                <rect x="81" y="35" width="18" height="5" rx="2" fill="#0369a1"/>
+                <rect x="84" y="20" width="12" height="4" rx="2" fill="#0369a1"/>
+                <line x1="90" y1="-18" x2="90" y2="0" stroke="#0284c7" stroke-width="2.5"/>
+                <rect x="20" y="72" width="145" height="54" rx="8" fill="#0369a1"/>
+                <text x="92" y="95" text-anchor="middle" font-size="14" font-weight="900" fill="#ffffff">도쿄 스카이트리 타운</text>
+                <text x="92" y="115" text-anchor="middle" font-size="11.5" font-weight="700" fill="#bae6fd">🏠 아스틸레 오시아게 숙소후보</text>
+              </g>
+
+              <!-- ======================== NARITA AIRPORT BOX ======================== -->
+              <g class="map-node" data-st="narita" transform="translate(865, 72)" filter="url(#shadow)">
+                <rect x="0" y="0" width="118" height="44" rx="8" fill="#ffffff" stroke="#e11d48" stroke-width="2.5"/>
+                <text x="59" y="20" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">✈️ 나리타공항</text>
+                <text x="59" y="36" text-anchor="middle" font-size="10.5" font-weight="700" fill="#be123c">T3(에어로케이) ↔ T2역</text>
+              </g>
+
+              <!-- ======================== STATION NODES ======================== -->
+
+              <!-- Oshiage -->
+              <g class="map-node" data-st="oshiage" transform="translate(795, 240)">
+                <circle cx="0" cy="0" r="13" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
+                <rect x="-48" y="-38" width="96" height="22" rx="6" fill="#0f172a"/>
+                <text x="0" y="-23" text-anchor="middle" font-size="12.5" font-weight="900" fill="#ffffff">오시아게 (A20/Z14)</text>
+                <text x="52" y="5" font-size="11.5" font-weight="800" fill="#be123c">🏠숙소후보 · 🛒라이프마트</text>
+              </g>
+
+              <!-- Asakusa -->
+              <g class="map-node" data-st="asakusa" transform="translate(605, 246)">
+                <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+                <text x="0" y="28" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">아사쿠사</text>
+                <text x="0" y="43" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">🏮센소지·나카미세</text>
+              </g>
+
+              <!-- Ueno / Okachimachi -->
+              <g class="map-node" data-st="ueno" transform="translate(450, 242)">
+                <circle cx="0" cy="0" r="13" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
+                <text x="-52" y="-6" text-anchor="end" font-size="14" font-weight="900" fill="#0f172a">우에노·오카치마치</text>
+                <text x="-52" y="10" text-anchor="end" font-size="11" font-weight="800" fill="#0f766e">🍣스시로·이타마에 / 🥩요시이케</text>
+              </g>
+
+              <!-- Otsuka / Nippori -->
+              <g class="map-node" data-st="otsuka" transform="translate(330, 135)">
+                <circle cx="0" cy="0" r="9" fill="#65a30d" stroke="#ffffff" stroke-width="2.5"/>
+                <text x="0" y="-15" text-anchor="middle" font-size="12.5" font-weight="800" fill="#1e293b">오츠카 · 닛포리</text>
+                <text x="0" y="-30" text-anchor="middle" font-size="11" font-weight="700" fill="#0f766e">🛒라이프마트 / 스카이라이너 환승</text>
+              </g>
+
+              <!-- Ikebukuro -->
+              <g class="map-node" data-st="ikebukuro" transform="translate(200, 175)">
+                <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+                <text x="18" y="6" font-size="13.5" font-weight="900" fill="#0f172a">이케부쿠로</text>
+                <text x="18" y="21" font-size="11" font-weight="800" fill="#0369a1">🎮선샤인시티 가챠샵</text>
+              </g>
+
+              <!-- Toshimaen (Harry Potter Studio) -->
+              <g class="map-node" data-st="toshimaen" transform="translate(115, 95)">
+                <circle cx="0" cy="0" r="12" fill="#0284c7" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+                <rect x="-95" y="-18" width="80" height="36" rx="6" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.5"/>
+                <text x="-55" y="-2" text-anchor="middle" font-size="12" font-weight="900" fill="#0c4a6e">🪄 토시마엔역</text>
+                <text x="-55" y="12" text-anchor="middle" font-size="10.5" font-weight="800" fill="#0284c7">해리포터 스튜디오</text>
+              </g>
+
+              <!-- Shinjuku -->
+              <g class="map-node" data-st="shinjuku" transform="translate(160, 335)">
+                <circle cx="0" cy="0" r="13" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
+                <text x="-18" y="-4" text-anchor="end" font-size="14" font-weight="900" fill="#0f172a">신주쿠</text>
+                <text x="-18" y="12" text-anchor="end" font-size="11" font-weight="800" fill="#be123c">🍣히마와리·우오베이</text>
+                <text x="-18" y="26" text-anchor="end" font-size="11" font-weight="700" fill="#475569">🛍️백화점·드럭스토어</text>
+              </g>
+
+              <!-- Harajuku / Omotesando -->
+              <g class="map-node" data-st="omotesando" transform="translate(260, 488)">
+                <circle cx="0" cy="0" r="10" fill="#7c3aed" stroke="#ffffff" stroke-width="2.5"/>
+                <text x="0" y="-16" text-anchor="middle" font-size="12.5" font-weight="900" fill="#0f172a">하라주쿠·오모테산도</text>
+                <text x="0" y="-31" text-anchor="middle" font-size="11" font-weight="800" fill="#6d28d9">🌲메이지신궁 · 🐷마이센 돈카츠</text>
+              </g>
+
+              <!-- Shibuya -->
+              <g class="map-node" data-st="shibuya" transform="translate(175, 492)">
+                <circle cx="0" cy="0" r="13" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
+                <text x="-18" y="0" text-anchor="end" font-size="14.5" font-weight="900" fill="#0f172a">시부야</text>
+                <text x="-18" y="16" text-anchor="end" font-size="11.5" font-weight="800" fill="#be123c">🌆시부야 스카이 전망대</text>
+                <text x="-18" y="30" text-anchor="end" font-size="11" font-weight="700" fill="#475569">🎮파르코 6층 · 🍣우오베이</text>
+              </g>
+
+              <!-- Akihabara -->
+              <g class="map-node" data-st="akihabara" transform="translate(450, 335)">
+                <circle cx="0" cy="0" r="9" fill="#475569" stroke="#ffffff" stroke-width="2.5"/>
+                <text x="-14" y="-8" text-anchor="end" font-size="12.5" font-weight="900" fill="#0f172a">아키하바라</text>
+                <text x="-14" y="7" text-anchor="end" font-size="10.5" font-weight="700" fill="#475569">🎮피규어·전자상가</text>
+              </g>
+
+              <!-- Tokyo / Otemachi -->
+              <g class="map-node" data-st="tokyo" transform="translate(465, 415)">
+                <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+                <text x="-16" y="4" text-anchor="end" font-size="13.5" font-weight="900" fill="#0f172a">도쿄역 (오테마치)</text>
+                <text x="-16" y="19" text-anchor="end" font-size="11" font-weight="800" fill="#0f766e">🏛️마루노우치 야경·캐릭터스트리트</text>
+              </g>
+
+              <!-- Ginza / Higashi-Ginza -->
+              <g class="map-node" data-st="ginza" transform="translate(515, 455)">
+                <circle cx="0" cy="0" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5"/>
+                <text x="15" y="4" font-size="13" font-weight="900" fill="#0f172a">긴자 · 히가시긴자</text>
+                <text x="15" y="18" font-size="11" font-weight="800" fill="#b45309">🛍️유니클로 12층 플래그십</text>
+              </g>
+
+              <!-- Roppongi & Tokyo Tower -->
+              <g class="map-node" data-st="roppongi" transform="translate(310, 535)">
+                <circle cx="0" cy="0" r="11" fill="#e11d48" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
+                <text x="0" y="25" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">롯폰기 · 도쿄타워(다이몬)</text>
+                <text x="0" y="40" text-anchor="middle" font-size="11" font-weight="800" fill="#be123c">🎄케야키자카 일루미네이션 · 🗼시바공원</text>
+              </g>
+
+              <!-- Kinshicho -->
+              <g class="map-node" data-st="kinshicho" transform="translate(790, 335)">
+                <circle cx="0" cy="0" r="11" fill="#e11d48" stroke="#ffffff" stroke-width="3"/>
+                <text x="16" y="-4" font-size="13" font-weight="900" fill="#0f172a">긴시초</text>
+                <text x="16" y="11" font-size="11" font-weight="700" fill="#475569">🛒대형마트·JR환승</text>
+              </g>
+
+              <!-- Shin-Toyosu (teamLab Planets) -->
+              <g class="map-node" data-st="toyosu" transform="translate(660, 595)">
+                <circle cx="0" cy="0" r="12" fill="#0284c7" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+                <text x="18" y="-2" font-size="13" font-weight="900" fill="#0f172a">✨ 신토요스 · 오다이바</text>
+                <text x="18" y="14" font-size="11.5" font-weight="800" fill="#0284c7">팀랩 플래닛 도쿄 (4일차)</text>
+              </g>
+
+              <!-- Tokyo Disney Resort -->
+              <g class="map-node" data-st="disney" transform="translate(885, 455)">
+                <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+                <text x="0" y="28" text-anchor="middle" font-size="12.5" font-weight="900" fill="#0f172a">🎢 도쿄 디즈니 리조트</text>
+                <text x="0" y="43" text-anchor="middle" font-size="11" font-weight="700" fill="#be123c">디즈니씨 (3일차 선택B)</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Interactive Station Info Box -->
+          <div class="st-info-bar" id="st-info-bar">
+            <div id="st-info-text">
+              💡 <b>역 상세 안내:</b> 위 노선도에서 <b>오시아게, 시부야, 우에노, 아사쿠사, 롯폰기 등 역 동그라미(🔴)</b>를 터치해 보세요!
+            </div>
+            <a class="btn-link primary" id="st-info-link" href="https://www.google.com/maps/search/?api=1&query=Oshiage+Station+Tokyo" target="_blank" rel="noopener">📍 구글맵 열기</a>
+          </div>
+
+          <div class="map-legend">
+            <span class="legend-item"><span class="legend-line" style="background:#e85298;"></span>게이세이선·도에이 아사쿠사선 (나리타↔오시아게↔아사쿠사↔긴자)</span>
+            <span class="legend-item"><span class="legend-line" style="background:#9b7ede;"></span>도쿄메트로 한조몬선 (오시아게↔도쿄역↔오모테산도↔시부야)</span>
+            <span class="legend-item"><span class="legend-line" style="background:#f59e0b;"></span>도쿄메트로 긴자선 (아사쿠사↔우에노↔긴자↔시부야)</span>
+            <span class="legend-item"><span class="legend-line" style="background:#65a30d;"></span>JR 야마노테선 (순환선)</span>
+            <span class="legend-item"><span class="legend-line" style="background:#0284c7;"></span>스카이라이너 / 유리카모메 / 세이부선</span>
+          </div>
+        </div>
+
+        <!-- Original Reference Image View -->
+        <div id="view-map-orig" style="display:none;text-align:center;">
+          <img src="tokyo-route-map.png" alt="도쿄 스카이트리 및 주요 지하철 노선표 원본" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #e2e8f0;">
+          <p style="margin:8px 0 0;font-size:12.5px;color:var(--muted);">▲ 원본 참고 노선표 이미지 (모바일에서 두 손가락으로 확대 가능)</p>
+        </div>
+      </div>
+
+      <h3 class="sub-h3">4️⃣ 노선별 정차역 순서 상세 카드 (공식 색상·역 번호)</h3>
       <p style="margin:0 0 10px;font-size:13.5px;color:#475569;">
         도쿄 지하철은 <b>노선 색깔과 알파벳+숫자(역 번호)</b>만 보고 따라가면 절대 길을 잃지 않습니다! (모바일에서는 좌우로 밀어서 역 순서를 확인하세요)
       </p>
@@ -1874,6 +2199,128 @@
           dayPanels.forEach(p => {
             p.classList.toggle('active', p.id === `panel-${target}`);
           });
+        }
+      });
+    });
+
+    // 3.5 Interactive Subway Map Switcher & Station Node Click
+    const btnMapCustom = document.getElementById('btn-map-custom');
+    const btnMapOrig = document.getElementById('btn-map-orig');
+    const viewMapCustom = document.getElementById('view-map-custom');
+    const viewMapOrig = document.getElementById('view-map-orig');
+
+    if (btnMapCustom && btnMapOrig) {
+      btnMapCustom.addEventListener('click', () => {
+        btnMapCustom.classList.add('active');
+        btnMapOrig.classList.remove('active');
+        viewMapCustom.style.display = 'block';
+        viewMapOrig.style.display = 'none';
+      });
+      btnMapOrig.addEventListener('click', () => {
+        btnMapOrig.classList.add('active');
+        btnMapCustom.classList.remove('active');
+        viewMapOrig.style.display = 'block';
+        viewMapCustom.style.display = 'none';
+      });
+    }
+
+    const stationData = {
+      narita: {
+        title: '✈️ 나리타 국제공항 (T3 에어로케이 ↔ T2 지하철역)',
+        desc: 'T3 입국 후 무료셔틀/도보(10분)로 T2역 이동 → 스카이라이너(우에노 41분) 또는 스카이액세스 특급(오시아게 50분 직통) 탑승!',
+        query: 'Narita+Airport+Terminal+2+Station'
+      },
+      oshiage: {
+        title: '🏠 오시아게역 (A20 / Z14 · 스카이트리 앞역)',
+        desc: '후보 1호 숙소(아스틸레 오시아게 도보 6분) · B3 출구 앞 라이프 센트럴 스퀘어 대형마트(A5 와규) · 한조몬선(시부야/도쿄역 직통) · 아사쿠사선(센소지 3분)',
+        query: 'Oshiage+Station+Tokyo'
+      },
+      asakusa: {
+        title: '🏮 아사쿠사역 (A18 / G19)',
+        desc: '센소지 & 카미나리몬(1번/A4 출구 도보 2분) · 나카미세 간식 거리 · 다이고쿠야 텐동 · 스미다강 스카이트리 뷰',
+        query: 'Sensoji+Temple+Asakusa'
+      },
+      ueno: {
+        title: '🚅 우에노 · 오카치마치역 (G16 / H18 / JY05)',
+        desc: '게이세이 스카이라이너 종점 · 요시이케 본점(A5 와규 마트) · 스시로 우에노점 · 이타마에 스시 · 우에노 공원 & 아메요코 시장',
+        query: 'Ueno+Station+Tokyo'
+      },
+      otsuka: {
+        title: '🛒 오츠카 · 닛포리역 (JY12 / JY07)',
+        desc: '닛포리역(스카이라이너↔야마노테선 초고속 환승) · 오츠카역(사카가미 마트, 라이프 신오츠카점, 독채 에어비앤비 밀집지)',
+        query: 'Otsuka+Station+Tokyo'
+      },
+      ikebukuro: {
+        title: '🎮 이케부쿠로역 (JY13)',
+        desc: '선샤인시티(세계 최대 가챠샵·메가 포켓몬센터) · 해리포터 스튜디오 가는 세이부 이케부쿠로선 출발역(17분 소요)',
+        query: 'Sunshine+City+Ikebukuro'
+      },
+      toshimaen: {
+        title: '🪄 토시마엔역 (세이부선 SI39)',
+        desc: '워너브라더스 해리포터 스튜디오 투어 도쿄 (A2 출구 도보 2분) · 이케부쿠로역에서 무환승 17분!',
+        query: 'Warner+Bros.+Studio+Tour+Tokyo+The+Making+of+Harry+Potter'
+      },
+      shinjuku: {
+        title: '🍣 신주쿠역 (JY17)',
+        desc: '태블릿 초밥 맛집(우오베이 가부키초점, 이타마에 스시 토호시네마점, 히마와리 스시, 스시로) · 대형 백화점 및 드럭스토어 쇼핑',
+        query: 'Shinjuku+Station+Tokyo'
+      },
+      omotesando: {
+        title: '🌲 하라주쿠(JY19) · 오모테산도역(Z02 / G02)',
+        desc: '메이지신궁 숲길 · 다케시타 거리 크레페 · 캣스트리트 쇼핑 · 돈카츠 마이센 오모테산도 본점(오모테산도역 A2 출구 도보 3분)',
+        query: 'Tonkatsu+Maisen+Aoyama+Honten'
+      },
+      shibuya: {
+        title: '🌆 시부야역 (Z01 / G01 / JY20)',
+        desc: '시부야 스카이 전망대(B6 출구 직결) · 스크램블 교차로 · 시부야 파르코 6층(닌텐도·포켓몬센터) · 우오베이 시부야 도겐자카점(신칸센 레일 초밥)',
+        query: 'SHIBUYA+SKY+Tokyo'
+      },
+      akihabara: {
+        title: '🎮 아키하바라역 (JY03 / H16)',
+        desc: '전자상가 출구(Electric Town Exit) · 라디오회관 피규어 · 애니메이션 굿즈 · 가챠샵 투어',
+        query: 'Akihabara+Station+Tokyo'
+      },
+      tokyo: {
+        title: '🏛️ 도쿄역(JY01) · 오테마치역(Z08)',
+        desc: '마루노우치 중앙출구(붉은 벽돌 도쿄역 야경 & 일루미네이션) · 야에스 지하중앙구(도쿄 캐릭터 스트리트 굿즈 총집합)',
+        query: 'Tokyo+Station+Marunouchi'
+      },
+      ginza: {
+        title: '🛍️ 긴자역(G09 / H09) · 히가시긴자역(A11)',
+        desc: '긴자 중앙거리 보행자 천국 · 유니클로 글로벌 플래그십 스토어(12층 규모) · 긴자 백화점 쇼핑',
+        query: 'Uniqlo+Ginza+Tokyo'
+      },
+      roppongi: {
+        title: '🎄 롯폰기역(H04 / E23) · 다이몬역(A09)',
+        desc: '롯폰기역 1C 출구(케야키자카 거리 크리스마스 일루미네이션 & 도쿄타워 뷰) · 프린스 시바공원 도쿄타워 야경 포토존',
+        query: 'Roppongi+Keyakizaka+Dori'
+      },
+      kinshicho: {
+        title: '🛒 긴시초역 (Z13 / JR 소부선)',
+        desc: '한조몬선 & JR 소부선 환승 요지 · 역 앞 라이프(LIFE) 마트 및 아카짱혼포/쇼핑몰 밀집',
+        query: 'Kinshicho+Station+Tokyo'
+      },
+      toyosu: {
+        title: '✨ 신토요스역 (유리카모메 U15)',
+        desc: '팀랩 플래닛 도쿄 (역 출구 바로 앞 도보 1분) · 맨발로 물과 빛·꽃의 공간을 걷는 몰입형 미디어 아트 뮤지엄',
+        query: 'teamLab+Planets+TOKYO'
+      },
+      disney: {
+        title: '🎢 도쿄 디즈니 리조트 (마이하마역)',
+        desc: '3일차 선택 코스 B · 전 세계 유일 바다 테마의 도쿄 디즈니씨(DisneySea) & 판타지 스프링스',
+        query: 'Tokyo+DisneySea'
+      }
+    };
+
+    const stInfoText = document.getElementById('st-info-text');
+    const stInfoLink = document.getElementById('st-info-link');
+    document.querySelectorAll('.map-node').forEach(node => {
+      node.addEventListener('click', () => {
+        const key = node.dataset.st;
+        const info = stationData[key];
+        if (info && stInfoText && stInfoLink) {
+          stInfoText.innerHTML = `<strong style="color:#0f172a;font-size:14.5px;">${info.title}</strong><br><span style="color:#334155;">${info.desc}</span>`;
+          stInfoLink.href = `https://www.google.com/maps/search/?api=1&query=${info.query}`;
         }
       });
     });
