@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <title>2026 도쿄 가족여행 완벽 가이드 | 12.02(수)~12.06(일) 4박 5일</title>
+  <title>2026 도쿄 가족여행 완벽 가이드 | 12.01(화)~12.05(토) 4박 5일</title>
   <style>
     :root {
       --bg: #f4f7f9;
@@ -171,6 +171,34 @@
       margin: 0 auto;
       padding: 18px 14px;
     }
+    .progress-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .prog-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+    .prog-card .step-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .prog-card .step-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .prog-card.done { border-left: 4px solid #10b981; background: #f0fdf4; }
+    .prog-card.active { border-left: 4px solid #f59e0b; background: #fffbeb; }
+    .prog-card.wait { border-left: 4px solid #3b82f6; }
+
     .cat-section {
       display: none;
       background: var(--card);
@@ -425,7 +453,7 @@
     .vocab-jp { font-size: 17px; font-weight: 900; color: #be123c; display: block; }
     .vocab-kr { font-size: 12px; font-weight: 700; color: #4c0519; }
 
-    /* Subway Line Visual Cards */
+    /* Subway Map & Visual Cards */
     .map-container {
       border: 1.5px solid var(--line);
       border-radius: 14px;
@@ -466,7 +494,7 @@
     .map-svg {
       display: block;
       width: 100%;
-      min-width: 760px;
+      min-width: 780px;
       height: auto;
       user-select: none;
     }
@@ -772,6 +800,7 @@
 
     @media (max-width: 820px) {
       .hero h1 { font-size: 21px; }
+      .progress-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .flight-grid { grid-template-columns: 1fr; }
       .cards-grid, .cards-grid-3 { grid-template-columns: 1fr; }
       .check-grid { grid-template-columns: 1fr; }
@@ -787,7 +816,7 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="top-links">
-        <span class="badge-dday" id="dday-badge">✈️ 2026.12.02(수) 출발</span>
+        <span class="badge-dday" id="dday-badge">✈️ 2026.12.01(화) 출발</span>
         <nav class="site-nav">
           <a href="vacation.html">📅 가족 휴가 캘린더</a>
           <a href="winter.html">❄️ 윈터스쿨</a>
@@ -795,13 +824,12 @@
         </nav>
       </div>
       <h1>🇯🇵 2026 도쿄 가족여행 마스터 가이드</h1>
-      <p>2026.12.02(수) ~ 12.06(일) 4박 5일 · 4인 가족 (최성우·유태현·최민혁·최수민)</p>
+      <p>2026.12.01(화) ~ 12.05(토) 4박 5일 · 4인 가족 (최성우·유태현·최민혁·최수민)</p>
       <div class="hero-chips">
-        <span class="chip done">✅ 항공권 완료 (07:25 출국 / 12:55 귀국)</span>
-        <span class="chip done">✅ 좌석 7C~7F · 8C~8F 연석</span>
-        <span class="chip todo">⏳ 숙소 선정 중</span>
-        <span class="chip">🥩 대형마트 와규 파티 2회+</span>
-        <span class="chip">🍣 태블릿 초밥 3회</span>
+        <span class="chip done">✅ 항공권 완료 (12/1 07:25 출국 · 12/5 18:55 귀국)</span>
+        <span class="chip done">✅ 숙소 완료 (Stay Ari Arakicho A 701호 · 신주쿠)</span>
+        <span class="chip">🥩 숙소 앞 마트 와규 파티 2회+</span>
+        <span class="chip">🍣 한국어 태블릿 초밥 3회</span>
       </div>
     </div>
   </header>
@@ -811,30 +839,54 @@
     <nav class="cat-bar" aria-label="카테고리 메뉴">
       <button class="cat-btn active" data-cat="all">📑 전체보기</button>
       <button class="cat-btn" data-cat="flights">✈️ 항공편</button>
-      <button class="cat-btn" data-cat="transport">🚅 교통편</button>
-      <button class="cat-btn" data-cat="hotels">🏠 숙소</button>
-      <button class="cat-btn" data-cat="itinerary">🗓️ 여행일정</button>
+      <button class="cat-btn" data-cat="hotels">🏠 확정숙소</button>
+      <button class="cat-btn" data-cat="transport">🚅 교통·노선도</button>
+      <button class="cat-btn" data-cat="itinerary">🗓️ 4박5일 일정</button>
       <button class="cat-btn" data-cat="spots">🗼 주요 관광스팟</button>
-      <button class="cat-btn" data-cat="food">🍣 주요 맛집·와규</button>
+      <button class="cat-btn" data-cat="food">🍣 맛집·와규마트</button>
       <button class="cat-btn" data-cat="checklist">☑️ 준비체크</button>
     </nav>
   </div>
 
   <main class="container">
 
+    <!-- STEP PROGRESS OVERVIEW -->
+    <div class="progress-grid">
+      <div class="prog-card done">
+        <div class="step-label">STEP 1 · 예약 완료</div>
+        <div class="step-title">✈️ 에어로케이 항공권</div>
+        <div style="font-size:12.5px;color:#047857;">12/1(07:25) ~ 12/5(18:55)<br>4인 총 1,654,400원</div>
+      </div>
+      <div class="prog-card done">
+        <div class="step-label">STEP 2 · 예약 완료</div>
+        <div class="step-title">🏠 신주쿠 에어비앤비</div>
+        <div style="font-size:12.5px;color:#047857;">Stay Ari Arakicho A 701호<br>4박 총 1,354,181원</div>
+      </div>
+      <div class="prog-card active">
+        <div class="step-label">STEP 3 · 11월 초 예매</div>
+        <div class="step-title">🎟️ 핵심 티켓 3대장</div>
+        <div style="font-size:12.5px;color:#b45309;">시부야 스카이(11/3 오픈)<br>해리포터·팀랩 플래닛</div>
+      </div>
+      <div class="prog-card wait">
+        <div class="step-label">STEP 4 · 출발 1~2주 전</div>
+        <div class="step-title">📱 교통·입국 준비</div>
+        <div style="font-size:12.5px;color:#1d4ed8;">공항특급열차·Suica<br>Visit Japan Web·eSIM</div>
+      </div>
+    </div>
+
     <!-- =========================================================
          1. 항공편 (FLIGHTS)
          ========================================================= -->
     <section class="cat-section active" data-section="flights" id="sec-flights">
       <div class="section-header">
-        <h2 class="section-title">✈️ 항공편 (에어로케이 확정 E-Ticket)</h2>
-        <span class="status-pill confirmed">발권·좌석지정 완료</span>
+        <h2 class="section-title">✈️ 항공편 (에어로케이 확정 E-Ticket · 12/1 화 ~ 12/5 토)</h2>
+        <span class="status-pill confirmed">발권 완료 (총 1,654,400원)</span>
       </div>
 
       <div class="flight-grid">
         <!-- Outbound -->
         <div class="flight-box outbound">
-          <span class="flight-badge">출국 (구간 1) · 2026.12.02 (수)</span>
+          <span class="flight-badge">출국 (구간 1) · 2026.12.01 (화요일)</span>
           <div style="font-weight:800;font-size:15px;">에어로케이 RF 392 · 기종 A320</div>
           <div class="flight-route">
             <div>
@@ -854,37 +906,37 @@
             </div>
           </div>
           <div class="flight-meta">
-            <div>💺 <b>지정 좌석:</b> <strong>7C, 7D, 7E, 7F</strong> (앞쪽 7열 4인 나란히)</div>
-            <div>🧳 <b>위탁 수하물:</b> <strong>총 30kg (15kg × 2개)</strong> — 최성우·유태현 님 명의</div>
-            <div>🎒 <b>기내 수하물:</b> <strong>4인 각 10kg (총 4개) 무료 반입</strong></div>
+            <div>🧳 <b>위탁 수하물:</b> <strong>총 45kg (15kg × 3개)</strong> — 최성우·유태현·최수민 님 명의</div>
+            <div>🎒 <b>기내 수하물:</b> <strong>4인 각 10kg (총 4개) 무료 반입</strong> (최민혁 님은 기내 10kg 이용)</div>
+            <div>⏰ <b>청주공항 도착:</b> <strong>오전 05:30~05:40까지</strong> 도착 필수 (06:25 수속 마감)</div>
           </div>
         </div>
 
         <!-- Inbound -->
         <div class="flight-box inbound">
-          <span class="flight-badge">귀국 (구간 2) · 2026.12.06 (일)</span>
-          <div style="font-weight:800;font-size:15px;">에어로케이 RF 321 · 기종 A320</div>
+          <span class="flight-badge">귀국 (구간 2) · 2026.12.05 (토요일)</span>
+          <div style="font-weight:800;font-size:15px;">에어로케이 RF 323 · 저녁 출발 황금시간대!</div>
           <div class="flight-route">
             <div>
               <div class="airport-code">NRT</div>
               <div class="airport-name">나리타 제3터미널</div>
-              <div class="flight-time">12:55 출발</div>
+              <div class="flight-time">18:55 출발</div>
             </div>
             <div class="flight-arrow">
-              <div>2시간 30분</div>
+              <div>2시간 35분</div>
               <div class="line"></div>
               <div>직항</div>
             </div>
             <div style="text-align:right;">
               <div class="airport-code">CJJ</div>
               <div class="airport-name">청주 제1터미널</div>
-              <div class="flight-time">15:25 도착</div>
+              <div class="flight-time">21:30 도착</div>
             </div>
           </div>
           <div class="flight-meta">
-            <div>💺 <b>지정 좌석:</b> <strong>8C, 8D, 8E, 8F</strong> (앞쪽 8열 4인 나란히)</div>
             <div>🧳 <b>위탁 수하물:</b> <strong>총 60kg (15kg × 4개 전원 포함!)</strong></div>
             <div>🎒 <b>기내 수하물:</b> <strong>4인 각 10kg (총 4개) 무료 반입</strong></div>
+            <div>⏰ <b>나리타공항 도착:</b> <strong>오후 16:30~16:50까지</strong> T3 도착 필수 (17:55 수속 마감)</div>
           </div>
         </div>
       </div>
@@ -894,120 +946,182 @@
           <thead>
             <tr>
               <th>예약번호</th>
-              <th>탑승객 성명</th>
-              <th>출국 (12/2 수) 좌석·수하물</th>
-              <th>귀국 (12/6 일) 좌석·수하물</th>
+              <th>탑승객 성명 (전자항공권)</th>
+              <th>출국 (12/1 화 07:25) 수하물</th>
+              <th>귀국 (12/5 토 18:55) 수하물</th>
               <th>결제 내역</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b style="color:var(--primary);">R7YA2A</b></td>
+              <td><b style="color:var(--primary);">F69AG5</b></td>
               <td><b>최성우</b> (SUNGWOO CHOI)<br><b>유태현</b> (TAEHYEON YU)</td>
-              <td>좌석 <b>7C, 7D</b><br>위탁 <b>각 15kg (총 30kg)</b></td>
-              <td>좌석 <b>8C, 8D</b><br>위탁 <b>각 15kg (총 30kg)</b></td>
-              <td>1인 430,600원<br><b>합계 861,200원</b></td>
+              <td>위탁 <b>각 15kg (총 30kg)</b><br><span style="color:var(--muted);font-size:12px;">운임 59,500원 + 세금</span></td>
+              <td>위탁 <b>각 15kg (총 30kg)</b><br><span style="color:var(--muted);font-size:12px;">운임 119,000원 + 세금</span></td>
+              <td>1인 423,100원<br><b>합계 846,200원</b></td>
             </tr>
             <tr>
-              <td><b style="color:var(--blue);">FHA27B</b></td>
-              <td><b>최민혁</b> (MINHYEOK CHOI)<br><b>최수민</b> (SUMIN CHOI)</td>
-              <td>좌석 <b>7E, 7F</b><br>위탁 <b>0kg</b> (기내 10kg만)</td>
-              <td>좌석 <b>8E, 8F</b><br>위탁 <b>각 15kg (총 30kg)</b></td>
-              <td>1인 409,600원<br><b>합계 819,200원</b></td>
+              <td><b style="color:var(--blue);">ED22Q4</b></td>
+              <td><b>최수민</b> (SUMIN CHOI)</td>
+              <td>위탁 <b>15kg</b><br><span style="color:var(--muted);font-size:12px;">특가운임 51,000원 + 세금</span></td>
+              <td>위탁 <b>15kg</b><br><span style="color:var(--muted);font-size:12px;">운임 119,000원 + 세금</span></td>
+              <td><b>414,600원</b></td>
+            </tr>
+            <tr>
+              <td><b style="color:var(--purple);">D6238P</b></td>
+              <td><b>최민혁</b> (MINHYEOK CHOI)</td>
+              <td>위탁 <b>0kg</b> (기내 10kg 무료)<br><span style="color:var(--muted);font-size:12px;">초특가운임 30,000원 + 세금</span></td>
+              <td>위탁 <b>15kg</b><br><span style="color:var(--muted);font-size:12px;">운임 119,000원 + 세금</span></td>
+              <td><b>393,600원</b></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="alert alert-amber">
-        <b>⏰ 공항 수속 마감 주의 (출발 60분 전 칼마감!)</b><br>
-        • <b>출국일(12/2 수):</b> 06:25에 수속이 마감됩니다. <b>오전 05:30~05:40까지 청주공항 도착</b> 필수! (부치는 큰 캐리어 2개는 반드시 <b>최성우·유태현</b> 님 이름으로 위탁)<br>
-        • <b>귀국일(12/6 일):</b> 11:55에 나리타 제3터미널(T3) 수속이 마감됩니다. <b>오전 10:30까지 나리타 공항 기차역 도착</b> 필수!
+      <div class="alert alert-teal">
+        <b>🎉 일정 변경으로 훨씬 좋아진 점 2가지!</b><br>
+        1. <b>귀국편이 12/5(토) 저녁 18:55 출발(RF 323)로 변경</b>되어, 마지막 5일차에도 오후 3시 30분까지 도쿄 시내에서 초밥 점심과 우에노·아메요코 시장 쇼핑을 여유롭게 다 즐길 수 있습니다!<br>
+        2. 3건 분리 발권으로 출국 시 <b>위탁수하물 3개(45kg)</b>를 확보하면서도 총 항공료는 이전보다 오히려 더 저렴해졌습니다.
       </div>
     </section>
 
     <!-- =========================================================
-         2. 교통편 (TRANSPORTATION)
+         2. 확정 숙소 (CONFIRMED ACCOMMODATION)
+         ========================================================= -->
+    <section class="cat-section active" data-section="hotels" id="sec-hotels">
+      <div class="section-header">
+        <h2 class="section-title">🏠 확정 숙소 (Stay Ari Arakicho A · 패밀리 아파트 701호)</h2>
+        <span class="status-pill confirmed">에어비앤비 예약 완료</span>
+      </div>
+
+      <div class="info-card rank-1" style="margin-bottom:16px;">
+        <div>
+          <span class="card-tag">✅ 예약코드: HMJ8RS9T5M · 4인 가족 확정 숙소</span>
+          <h3>Stay Ari Arakicho A, 패밀리 아파트 701 (신주쿠 아라키초)</h3>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:8px;">
+            📍 주소: <b>18-7 Arakichō, 신주쿠구(Shinjuku City), 도쿄도 160-0007, 일본</b> (東京都新宿区荒木町18-7)
+          </div>
+          <ul>
+            <li><b>체크인:</b> <b>2026년 12월 1일 (화) 오후 4:00 (16:00) 이후</b></li>
+            <li><b>체크아웃:</b> <b>2026년 12월 5일 (토) 오전 10:00까지</b></li>
+            <li><b>호스트:</b> <b>Jang 님</b> (한국어 소통 가능 · 연락처: <a href="tel:+819022131979"><b>+81 90-2213-1979</b></a>)</li>
+            <li><b>결제 금액:</b> <b>₩1,354,181</b> (4박 완납)</li>
+            <li><b>가장 가까운 지하철역 2곳 (도보 4~5분 더블 역세권!):</b>
+              <ol style="margin:4px 0;padding-left:18px;">
+                <li><b>도에이 신주쿠선 <span style="color:#65a30d;">아케보노바시역 (Akebonobashi · S03)</span></b> A1 또는 A4 출구 도보 4분 → <b>신주쿠역까지 단 2정거장(4분)!</b></li>
+                <li><b>도쿄메트로 마루노우치선 <span style="color:#e11d48;">요츠야산초메역 (Yotsuya-sanchome · M11)</span></b> 4번 출구 도보 5분 → <b>신주쿠·긴자·도쿄역·이케부쿠로 모두 환승 없이 직통!</b></li>
+              </ol>
+            </li>
+          </ul>
+        </div>
+        <div class="card-actions">
+          <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=18-7+Arakicho+Shinjuku+Tokyo" target="_blank" rel="noopener">📍 숙소 정확한 위치 (구글맵)</a>
+          <a class="btn-link primary" href="https://www.google.com/maps/dir/?api=1&destination=18-7+Arakicho+Shinjuku+Tokyo" target="_blank" rel="noopener">🧭 현재 위치에서 숙소 길찾기</a>
+        </div>
+      </div>
+
+      <h3 class="sub-h3">🥩 숙소에서 걸어서 2~5분! 와규 홈파티용 대형 마트 3곳</h3>
+      <p style="margin:0 0 12px;font-size:13.5px;color:#475569;">
+        숙소 동네(아라키초·요츠야산초메·아케보노바시)는 도쿄의 대표적인 고급 주거·미식 동네여서, <b>도보 2~5분 안에 훌륭한 슈퍼마켓이 3곳</b>이나 모여 있습니다!
+      </p>
+
+      <div class="cards-grid-3">
+        <div class="info-card highlight-rose">
+          <div>
+            <span class="card-tag">🥇 도보 4분 · 와규·사시미 퀄리티 1위</span>
+            <h3>1. 마루쇼 총본점 (丸正 総本店)</h3>
+            <p>요츠야산초메역 바로 옆에 최근 신축 빌딩으로 리뉴얼 오픈한 대형 슈퍼마켓입니다.</p>
+            <ul>
+              <li><b>흑모와규(쿠로게와규) 등심·갈비살 정육 코너</b>와 제철 과일, 마트 초밥·사시미 코너가 가장 크고 신선합니다!</li>
+              <li>1차·2차 와규 장보기는 이곳을 메인으로 추천합니다.</li>
+            </ul>
+          </div>
+          <div class="card-actions">
+            <a class="btn-link rose" href="https://www.google.com/maps/search/?api=1&query=Marusho+Sohonten+Yotsuya+3-12+Shinjuku" target="_blank" rel="noopener">📍 마루쇼 총본점 구글맵</a>
+          </div>
+        </div>
+
+        <div class="info-card rank-1">
+          <div>
+            <span class="card-tag">🥈 숙소 코앞 도보 2분(150m) · 밤 12시까지!</span>
+            <h3>2. 다이에 요츠야아라키초점 (ダイエー)</h3>
+            <p>숙소(18-7) 바로 옆 블록(23-4)에 2023년 11월 새로 오픈한 이온(AEON) 계열 2층 규모 마트입니다.</p>
+            <ul>
+              <li><b>오전 07:00 ~ 밤 24:00(자정)</b>까지 영업!</li>
+              <li>고기·채소·소스·즉석밥·음료·술·아침식사용 빵/푸딩을 언제든 2분 만에 사 올 수 있습니다.</li>
+            </ul>
+          </div>
+          <div class="card-actions">
+            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Daiei+Yotsuya+Arakicho+23-4+Shinjuku" target="_blank" rel="noopener">📍 다이에 아라키초점 구글맵</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div>
+            <span class="card-tag">🥉 도보 4분 · 아케보노바시역 앞 프리미엄 마트</span>
+            <h3>3. 산토쿠 스미요시점 (三徳 住吉店)</h3>
+            <p>아케보노바시역 바로 근처에 위치한 도쿄 전통의 고급 식자재 슈퍼마켓입니다.</p>
+            <ul>
+              <li>마블링 좋은 와규 부위와 수제 반찬, 고급 디저트·주류 라인업이 탄탄합니다.</li>
+              <li>아케보노바시역으로 귀가할 때 들르기 딱 좋습니다.</li>
+            </ul>
+          </div>
+          <div class="card-actions">
+            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Santoku+Sumiyoshi+6-11+Shinjuku" target="_blank" rel="noopener">📍 산토쿠 마트 구글맵</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. 교통편 & 시각화 노선도 맵 (TRANSPORTATION & SUBWAY MAP)
          ========================================================= -->
     <section class="cat-section active" data-section="transport" id="sec-transport">
       <div class="section-header">
-        <h2 class="section-title">🚅 교통편 (공항철도 & 도쿄 시내 지하철 완벽 정리)</h2>
-        <span class="status-pill guide">초행길 필수 가이드</span>
+        <h2 class="section-title">🚅 교통편 & 주요 관광지 지하철 노선도 맵</h2>
+        <span class="status-pill guide">확정 숙소(요츠야산초메·아케보노바시) 기준</span>
       </div>
 
-      <h3 class="sub-h3">1️⃣ 나리타 공항 제3터미널(T3) ↔ 도쿄 시내 이동 (게이세이 스카이라이너)</h3>
+      <h3 class="sub-h3">1️⃣ 나리타 공항(T3) ↔ 확정 숙소(Stay Ari Arakicho A) 이동 방법 2가지</h3>
       <div class="cards-grid">
         <div class="info-card rank-1">
           <div>
-            <span class="card-tag">🚅 가장 빠르고 편한 특급열차 (전 좌석 지정석)</span>
-            <h3>게이세이 스카이라이너 (Keisei Skyliner)</h3>
+            <span class="card-tag">🚄 방법 A · 캐리어 끌고 가장 편한 1회 환승 (추천!)</span>
+            <h3>나리타 익스프레스 (N'EX) → 도쿄역(또는 신주쿠역)</h3>
             <ul>
-              <li><b>소요 시간:</b> 나리타 제2터미널역 ↔ <b>닛포리역(36분)</b> / <b>우에노역(41분)</b> 무정차 직통!</li>
-              <li><b>배차 간격:</b> 약 20분마다 1대 운행</li>
-              <li><b>T3 이동법 (중요):</b> 에어로케이가 내리는 <b>제3터미널(T3)에는 기차역이 없습니다.</b> 입국장 밖 <b>무료 셔틀버스(5분)</b> 또는 <b>실내 연결 통로 도보(약 10~12분)</b>로 <b>제2터미널(T2) 지하 1층 철도역</b>으로 이동해 탑승합니다.</li>
-              <li><b>할인 예매 팁:</b> 클룩/마이리얼트립/공식 홈페이지에서 <b>스카이라이너 왕복 할인권</b>을 미리 사서 QR코드로 티켓 교환 시 약 10~15% 저렴합니다.</li>
+              <li><b>갈 때 (12/1 화 오전):</b> 나리타 제2·3터미널역에서 <b>나리타 익스프레스(N'EX)</b> 탑승 → <b>도쿄역 하차(53분)</b> → 도쿄메트로 <b>마루노우치선(M)</b>으로 1회 환승 → <b>요츠야산초메역(M11, 14분)</b> 하차!</li>
+              <li><b>또는 신주쿠 직행:</b> N'EX를 타고 <b>신주쿠역까지 한 번에 이동(약 75분)</b> 후, 신주쿠역 코인락커에 짐을 맡기고 바로 신주쿠에서 첫 초밥 점심 식사! (점심 후 숙소까지는 도에이 신주쿠선 2정거장·4분 또는 택시 1,200엔·7분!)</li>
             </ul>
-          </div>
-          <div class="card-actions">
-            <a class="btn-link primary" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/kr/" target="_blank" rel="noopener">🔗 스카이라이너 한국어 공식 안내</a>
           </div>
         </div>
 
         <div class="info-card">
           <div>
-            <span class="card-tag">⏱️ 첫날 & 마지막 날 추천 탑승 시간표</span>
-            <h3>우리 가족 스카이라이너 골든 타임</h3>
+            <span class="card-tag">🚅 방법 B · 마지막 날(12/5 토) 우에노 관광 후 귀국 시 최고!</span>
+            <h3>게이세이 스카이라이너 (우에노역 ↔ 나리타 41분 직통)</h3>
             <ul>
-              <li><b>12/2(수) 시내 들어갈 때:</b><br>
-                09:35 T3 착륙 → 입국심사·짐 찾기 → T2역 이동 → <b>10:30~10:50경 스카이라이너 탑승</b> → <b>11:15~11:30경 닛포리/우에노역 도착!</b></li>
-              <li><b>12/6(일) 공항 돌아갈 때 (12:55 비행기):</b><br>
-                우에노/닛포리역에서 <b>오전 09:40 또는 10:00 출발 스카이라이너 탑승</b> → <b>10:20~10:40 나리타 T2역 하차</b> → 10:55 T3 에어로케이 카운터 도착 (여유롭게 면세점 쇼핑 가능!)</li>
+              <li><b>올 때 (12/5 토 오후):</b> 마지막 날 오전 10시 체크아웃 후 마루노우치선/긴자선으로 <b>우에노역</b>으로 이동해 코인락커에 짐 보관 → 우에노 공원·아메요코 시장·초밥 점심!</li>
+              <li><b>공항 출발 골든타임 (18:55 비행기):</b> <b>게이세이 우에노역에서 오후 15:20 또는 15:40 출발 스카이라이너</b> 탑승 → <b>16:01~16:21 나리타 제2터미널역 도착</b> → T3 이동 후 여유롭게 면세점 쇼핑!</li>
             </ul>
           </div>
           <div class="card-actions">
-            <a class="btn-link" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/kr/traffic/skyliner.php" target="_blank" rel="noopener">🕒 실시간 시간표 확인</a>
+            <a class="btn-link primary" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/kr/traffic/skyliner.php" target="_blank" rel="noopener">🕒 스카이라이너 시간표 보기</a>
           </div>
         </div>
       </div>
 
-      <h3 class="sub-h3">2️⃣ 도쿄 시내 이동 수단 (교통카드 Suica vs 지하철 패스)</h3>
-      <div class="cards-grid">
-        <div class="info-card">
-          <div>
-            <span class="card-tag">💳 필수 1 · 모든 전철·JR·버스·편의점 만능</span>
-            <h3>스이카 (Suica) / 파스모 (PASMO) 교통카드</h3>
-            <ul>
-              <li><b>왜 필요한가요?</b> 도쿄에는 <b>JR 노선(야마노테선 등)</b>과 <b>도쿄메트로/도에이 지하철</b>이 섞여 있습니다. 교통카드 하나만 있으면 환승 계산 없이 한국 티머니처럼 찍고 다닙니다.</li>
-              <li><b>아이폰(iPhone) 사용자:</b> 지갑(Wallet) 앱 → <code>+</code> 버튼 → 교통카드 → 일본 <b>Suica</b> 즉시 무료 발급 (현대카드 비자/마스터 또는 애플페이로 바로 충전 가능!)</li>
-              <li><b>갤럭시(안드로이드) 사용자:</b> 나리타 공항 제2터미널 지하 철도역 개찰구 앞 매표기에서 <b>Welcome Suica</b> 또는 일반 Suica 실물 카드 발급 후 엔화 현금으로 충전 (1인당 우선 3,000엔 충전 추천)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div>
-            <span class="card-tag">🎫 필수 2 · 도쿄 핵심 노선 요약</span>
-            <h3>JR 야마노테선 & 도쿄 서브웨이 티켓 활용법</h3>
-            <ul>
-              <li><b>JR 야마노테선 (연두색 순환선):</b> 우에노·오카치마치·오츠카·이케부쿠로·신주쿠·하라주쿠·시부야·도쿄역을 둥글게 잇는 가장 편한 지상 전철입니다. <b>Suica 교통카드</b>로 탑승합니다.</li>
-              <li><b>도쿄 서브웨이 티켓 (24/48/72시간권):</b> 아사쿠사·긴자·롯폰기·오모테산도 등을 갈 때 무제한 탑승 가능한 지하철 패스입니다. 스카이라이너 왕복권과 묶음(패키지)으로 구매하면 매우 저렴합니다.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="sub-h3">3️⃣ 한눈에 보는 도쿄 핵심 노선도 맵 (우리 가족 여행 스팟 맞춤형)</h3>
+      <h3 class="sub-h3">2️⃣ 한눈에 보는 도쿄 핵심 노선도 맵 (확정 숙소 & 관광 스팟 시각화)</h3>
       <p style="margin:0 0 10px;font-size:13.5px;color:#475569;">
-        보내주신 노선표 구조를 바탕으로 <b>우리 가족 숙소 후보(오시아게·우에노)와 4박 5일 핵심 관광지·맛집</b>을 한 장의 지도에 시각화했습니다. <b>지도 위의 역(🔴)을 터치</b>하면 해당 역의 관광지·출구 정보가 아래에 표시됩니다!
+        확정 숙소인 <b>Stay Ari Arakicho A (요츠야산초메역 M11 / 아케보노바시역 S03)</b>를 중심으로 4박 5일 모든 관광지와 맛집 노선을 한 장에 그렸습니다. <b>역 동그라미(🔴)를 터치</b>하면 상세 출구와 맛집 정보가 아래에 나타납니다!
       </p>
 
       <div class="map-container">
         <div class="map-switch">
           <button type="button" class="map-btn active" id="btn-map-custom">🗺️ 우리 가족 맞춤 인터랙티브 노선도</button>
-          <button type="button" class="map-btn" id="btn-map-orig">🖼️ 원본 주요노선표 이미지 보기</button>
+          <button type="button" class="map-btn" id="btn-map-orig">🖼️ 참고용 주요노선표 원본 이미지</button>
         </div>
 
-        <!-- Custom Interactive SVG Schematic Map -->
+        <!-- Custom Interactive SVG Schematic Map (Zero Overlap, Centered on Confirmed Stay) -->
         <div id="view-map-custom">
           <div class="map-svg-scroll">
             <svg class="map-svg" viewBox="0 0 1180 740" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="도쿄 주요 지하철 및 관광 스팟 노선도">
@@ -1016,7 +1130,7 @@
                   <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-opacity="0.12"/>
                 </filter>
                 <style>
-                  .lbl-bg { fill: rgba(255, 255, 255, 0.92); stroke: #e2e8f0; stroke-width: 1px; rx: 6px; }
+                  .lbl-bg { fill: rgba(255, 255, 255, 0.94); stroke: #cbd5e1; stroke-width: 1.2px; rx: 6px; }
                   .line-pill { rx: 6px; filter: url(#shadow); }
                 </style>
               </defs>
@@ -1026,111 +1140,101 @@
               <rect x="12" y="12" width="1156" height="716" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
 
               <!-- Map Header -->
-              <text x="34" y="46" font-size="21" font-weight="900" fill="#0f172a">도쿄 가족여행 핵심 노선표 (공항 · 숙소 · 주요 관광지)</text>
-              <text x="34" y="68" font-size="13" font-weight="700" fill="#64748b">💡 역 동그라미를 터치하면 하단에 출구 번호·맛집·구글맵 링크가 표시됩니다</text>
+              <text x="34" y="46" font-size="21" font-weight="900" fill="#0f172a">도쿄 가족여행 핵심 노선표 (Stay Ari 확정숙소 · 공항 · 주요 관광지)</text>
+              <text x="34" y="68" font-size="13" font-weight="700" fill="#64748b">💡 지도 위의 역 동그라미를 터치하면 하단에 출구 번호·맛집·구글맵 바로가기가 표시됩니다</text>
 
               <!-- ======================== 1. RAIL LINES (GEOMETRY) ======================== -->
 
-              <!-- JR Yamanote Line (Oval Loop: x=250..570, y=170..570) -->
-              <rect x="250" y="170" width="320" height="400" rx="125" ry="125" fill="none" stroke="#64748b" stroke-width="11"/>
-              <rect x="250" y="170" width="320" height="400" rx="125" ry="125" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="10,7"/>
-              <rect x="242" y="162" width="336" height="416" rx="133" ry="133" fill="none" stroke="#84cc16" stroke-width="3.5" opacity="0.85"/>
+              <!-- JR Yamanote Line (Oval Loop: x=250..620, y=165..575) -->
+              <rect x="250" y="165" width="370" height="410" rx="125" ry="125" fill="none" stroke="#64748b" stroke-width="11"/>
+              <rect x="250" y="165" width="370" height="410" rx="125" ry="125" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="10,7"/>
+              <rect x="242" y="157" width="386" height="426" rx="133" ry="133" fill="none" stroke="#84cc16" stroke-width="3.5" opacity="0.85"/>
 
-              <!-- JR Chuo-Sobu Line (Horizontal across center y=350) -->
-              <line x1="215" y1="350" x2="940" y2="350" stroke="#64748b" stroke-width="7"/>
-              <line x1="215" y1="350" x2="940" y2="350" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="8,6"/>
+              <!-- Tokyo Metro Marunouchi Line (Red M: Ikebukuro 275,215 -> Shinjuku 250,350 -> Yotsuya-sanchome [STAY] 370,350 -> Akasaka-mitsuke 440,460 -> Ginza 670,490 -> Tokyo 620,420) -->
+              <path d="M 275 215 L 250 350 L 385 350 L 455 460 L 670 490 L 620 420" fill="none" stroke="#e11d48" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <!-- Toei Shinjuku Line (Leaf Green S: Shinjuku 250,340 -> Akebonobashi [STAY] 385,340 -> Akihabara/Bakuroyokoyama 720,340) -->
+              <line x1="250" y1="338" x2="860" y2="338" stroke="#65a30d" stroke-width="6.5" stroke-dasharray="10,5"/>
 
               <!-- Seibu Ikebukuro Line (Ikebukuro 275,215 -> Toshimaen 155,115) -->
               <path d="M 275 215 L 155 115" fill="none" stroke="#0284c7" stroke-width="8" stroke-linecap="round"/>
 
-              <!-- Keisei Skyliner (Narita 1055,115 -> Top 55 -> Ueno 545,225) -->
-              <path d="M 1055 115 L 1055 58 Q 1055 42 1035 42 L 565 42 Q 545 42 545 62 L 545 225" fill="none" stroke="#0284c7" stroke-width="6.5" stroke-dasharray="12,6"/>
+              <!-- Keisei Skyliner & N'EX (Narita 1045,115 -> Top 45 -> Ueno 595,220 & Tokyo 620,420) -->
+              <path d="M 1045 115 L 1045 55 Q 1045 40 1025 40 L 615 40 Q 595 40 595 60 L 595 220" fill="none" stroke="#0284c7" stroke-width="6.5" stroke-dasharray="12,6"/>
+              <path d="M 1045 135 L 1045 420 L 620 420" fill="none" stroke="#0284c7" stroke-width="5.5" stroke-dasharray="6,6"/>
 
-              <!-- Keisei Sky Access & Toei Asakusa Line (Pink) -->
-              <path d="M 1055 130 L 1055 210 Q 1055 225 1035 225 L 700 225 Q 655 225 655 270 L 655 495 Q 655 570 580 570 L 410 570" fill="none" stroke="#e85298" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Tokyo Metro Ginza Line (Orange G: Asakusa 760,220 -> Ueno 595,220 -> Akihabara 620,315 -> Ginza 670,490 -> Akasaka-mitsuke 455,460 -> Omotesando 350,515 -> Shibuya 265,520) -->
+              <path d="M 760 220 L 595 220 L 670 490 L 455 460 L 350 515 L 265 520" fill="none" stroke="#f59e0b" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-              <!-- Tokyo Metro Hanzomon Line (Purple: Oshiage 875,225 -> Kinshicho 875,350 -> Otemachi 570,435 -> Omotesando 335,515 -> Shibuya 250,515) -->
-              <path d="M 875 225 L 875 435 L 570 435 L 345 515 L 265 515" fill="none" stroke="#8F76D6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Toei Asakusa / Hibiya Line to Roppongi & Tokyo Tower -->
+              <path d="M 760 220 L 760 490 L 670 490 L 435 575" fill="none" stroke="#e85298" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-              <!-- Tokyo Metro Ginza Line (Orange: Asakusa 700,215 -> Ueno 545,215 -> Akihabara -> Ginza 615,495 -> Omotesando -> Shibuya 265,525) -->
-              <path d="M 700 215 L 545 215 L 615 410 L 615 525 L 265 525" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-
-              <!-- Yurikamome (Shimbashi/Ginza 615,525 -> Toyosu 755,655) -->
-              <path d="M 615 525 L 755 655" fill="none" stroke="#0284c7" stroke-width="5.5" stroke-dasharray="8,5"/>
-
-              <!-- Disney Resort Line / Shuttle (Kinshicho 875,350 -> Disney 1015,505) -->
-              <path d="M 875 350 L 1015 505" fill="none" stroke="#0284c7" stroke-width="5.5" stroke-dasharray="8,5"/>
+              <!-- Yurikamome (Shimbashi/Ginza 670,490 -> Toyosu 790,645) -->
+              <path d="M 670 490 L 790 645" fill="none" stroke="#0284c7" stroke-width="5.5" stroke-dasharray="8,5"/>
 
 
               <!-- ======================== 2. LINE NAME PILLS (NO OVERLAP) ======================== -->
 
               <!-- Skyliner Pill -->
-              <g transform="translate(650, 26)">
-                <rect class="line-pill" x="0" y="0" width="290" height="28" fill="#0284c7"/>
-                <text x="145" y="19" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">🚅 게이세이 스카이라이너 (우에노 41분 직통)</text>
+              <g transform="translate(665, 25)">
+                <rect class="line-pill" x="0" y="0" width="310" height="28" fill="#0284c7"/>
+                <text x="155" y="19" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">🚅 스카이라이너(우에노 41분) / N'EX(도쿄·신주쿠 직통)</text>
               </g>
 
-              <!-- Yamanote Pill (Inside Center-Top of Loop) -->
-              <g transform="translate(325, 192)">
-                <rect class="line-pill" x="0" y="0" width="170" height="26" fill="#65a30d"/>
-                <text x="85" y="18" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">JR 야마노테선 (순환)</text>
+              <!-- Yamanote Pill -->
+              <g transform="translate(345, 152)">
+                <rect class="line-pill" x="0" y="0" width="175" height="26" fill="#65a30d"/>
+                <text x="87" y="18" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">JR 야마노테선 (순환)</text>
               </g>
 
-              <!-- Chuo-Sobu Label -->
-              <g transform="translate(310, 336)">
-                <rect x="0" y="0" width="110" height="24" rx="5" fill="#475569"/>
-                <text x="55" y="16" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">JR 중앙·소부선</text>
+              <!-- Marunouchi Pill (Our Home Line!) -->
+              <g transform="translate(455, 368)">
+                <rect class="line-pill" x="0" y="0" width="225" height="28" fill="#e11d48"/>
+                <text x="112" y="19" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">M 마루노우치선 (숙소↔신주쿠·도쿄·긴자)</text>
               </g>
 
-              <!-- Hanzomon Pill -->
-              <g transform="translate(675, 419)">
-                <rect class="line-pill" x="0" y="0" width="175" height="28" fill="#8F76D6"/>
-                <text x="87" y="19" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">Z 한조몬선 (무환승 직통)</text>
-              </g>
-
-              <!-- Asakusa Line Pill -->
-              <g transform="translate(465, 555)">
-                <rect class="line-pill" x="0" y="0" width="160" height="28" fill="#e85298"/>
-                <text x="80" y="19" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">A 도에이 아사쿠사선</text>
+              <!-- Shinjuku Line Pill -->
+              <g transform="translate(650, 310)">
+                <rect class="line-pill" x="0" y="0" width="195" height="25" fill="#4d7c0f"/>
+                <text x="97" y="17" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">S 도에이 신주쿠선 (숙소↔신주쿠 4분)</text>
               </g>
 
               <!-- Ginza Line Pill -->
-              <g transform="translate(415, 510)">
-                <rect class="line-pill" x="0" y="0" width="150" height="26" fill="#f59e0b"/>
-                <text x="75" y="18" text-anchor="middle" font-size="12.5" font-weight="900" fill="#ffffff">G 도쿄메트로 긴자선</text>
+              <g transform="translate(475, 505)">
+                <rect class="line-pill" x="0" y="0" width="160" height="26" fill="#f59e0b"/>
+                <text x="80" y="18" text-anchor="middle" font-size="12.5" font-weight="900" fill="#ffffff">G 도쿄메트로 긴자선</text>
               </g>
 
-              <!-- Sky Access Label -->
-              <g transform="translate(945, 175)">
-                <rect x="0" y="0" width="102" height="36" rx="6" fill="#fdf2f8" stroke="#f472b6" stroke-width="1.5"/>
-                <text x="51" y="15" text-anchor="middle" font-size="11.5" font-weight="900" fill="#be185d">게이세이선 직결</text>
-                <text x="51" y="30" text-anchor="middle" font-size="10.5" font-weight="800" fill="#db2777">(오시아게 50분)</text>
+              <!-- N'EX Label on Right -->
+              <g transform="translate(915, 390)">
+                <rect x="0" y="0" width="120" height="40" rx="6" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.5"/>
+                <text x="60" y="17" text-anchor="middle" font-size="12" font-weight="900" fill="#0369a1">🚄 나리타 익스프레스</text>
+                <text x="60" y="33" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">도쿄역·신주쿠 직통</text>
               </g>
 
 
-              <!-- ======================== 3. LANDMARK BOXES ======================== -->
+              <!-- ======================== 3. CONFIRMED STAY & AIRPORT BOXES ======================== -->
 
-              <!-- Tokyo Skytree Landmark Box (Above Oshiage x=790..955, y=88..178) -->
-              <g transform="translate(795, 82)" filter="url(#shadow)">
-                <polygon points="78,0 82,0 86,42 74,42" fill="#0284c7"/>
-                <rect x="72" y="18" width="16" height="4" rx="2" fill="#0369a1"/>
-                <line x1="80" y1="-14" x2="80" y2="0" stroke="#0284c7" stroke-width="2.5"/>
-                <rect x="0" y="40" width="160" height="50" rx="8" fill="#0369a1"/>
-                <text x="80" y="61" text-anchor="middle" font-size="13.5" font-weight="900" fill="#ffffff">도쿄 스카이트리 타운</text>
-                <text x="80" y="80" text-anchor="middle" font-size="11.5" font-weight="700" fill="#bae6fd">🏠 아스틸레 오시아게 후보</text>
+              <!-- Narita Airport Box -->
+              <g class="map-node" data-st="narita" transform="translate(975, 85)" filter="url(#shadow)">
+                <rect x="0" y="0" width="165" height="54" rx="10" fill="#ffffff" stroke="#0284c7" stroke-width="2.5"/>
+                <text x="82" y="23" text-anchor="middle" font-size="14.5" font-weight="900" fill="#0f172a">✈️ 나리타공항 (NRT)</text>
+                <text x="82" y="42" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0369a1">12/1(09:35) · 12/5(18:55)</text>
               </g>
 
-              <!-- Narita Airport Box (x=985..1145, y=85..140) -->
-              <g class="map-node" data-st="narita" transform="translate(985, 85)" filter="url(#shadow)">
-                <rect x="0" y="0" width="155" height="52" rx="10" fill="#ffffff" stroke="#e11d48" stroke-width="2.5"/>
-                <text x="77" y="22" text-anchor="middle" font-size="14.5" font-weight="900" fill="#0f172a">✈️ 나리타공항</text>
-                <text x="77" y="40" text-anchor="middle" font-size="11.5" font-weight="800" fill="#be123c">T3(에어로케이) ↔ T2역</text>
+              <!-- ★ CONFIRMED STAY NODE (Yotsuya-sanchome M11 / Akebonobashi S03) at (385, 345) ★ -->
+              <g class="map-node" data-st="stay" transform="translate(385, 345)">
+                <circle cx="0" cy="0" r="16" fill="#e11d48" stroke="#ffffff" stroke-width="4" filter="url(#shadow)"/>
+                <rect x="-105" y="-88" width="235" height="66" rx="10" fill="#fff1f2" stroke="#e11d48" stroke-width="2.5" filter="url(#shadow)"/>
+                <text x="12" y="-65" text-anchor="middle" font-size="14" font-weight="900" fill="#881337">🏠 확정숙소: Stay Ari Arakicho A</text>
+                <text x="12" y="-46" text-anchor="middle" font-size="12" font-weight="800" fill="#be123c">요츠야산초메(M11) · 아케보노바시(S03)</text>
+                <text x="12" y="-29" text-anchor="middle" font-size="11" font-weight="800" fill="#0f766e">🥩 마루쇼총본점·다이에·산토쿠 마트 도보 2~4분</text>
               </g>
 
 
               <!-- ======================== 4. STATION NODES & CLEAN LABELS ======================== -->
 
-              <!-- 1. Toshimaen (Harry Potter) at (155, 115) -> Label to Left/Bottom -->
+              <!-- 1. Toshimaen (Harry Potter) at (155, 115) -->
               <g class="map-node" data-st="toshimaen" transform="translate(155, 115)">
                 <circle cx="0" cy="0" r="11" fill="#0284c7" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
                 <rect class="lbl-bg" x="-132" y="-22" width="116" height="44"/>
@@ -1138,124 +1242,100 @@
                 <text x="-74" y="14" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">해리포터 스튜디오</text>
               </g>
 
-              <!-- 2. Ikebukuro at (275, 215) -> Label Outside Left -->
+              <!-- 2. Ikebukuro at (275, 215) -->
               <g class="map-node" data-st="ikebukuro" transform="translate(275, 215)">
                 <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-168" y="-22" width="150" height="44"/>
-                <text x="-93" y="-3" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">이케부쿠로 (JY13)</text>
-                <text x="-93" y="14" text-anchor="middle" font-size="11" font-weight="800" fill="#0369a1">🎮선샤인시티 가챠샵</text>
+                <rect class="lbl-bg" x="-175" y="-22" width="156" height="44"/>
+                <text x="-97" y="-3" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">이케부쿠로 (M25/JY13)</text>
+                <text x="-97" y="14" text-anchor="middle" font-size="11" font-weight="800" fill="#0369a1">🎮선샤인시티 가챠샵</text>
               </g>
 
-              <!-- 3. Otsuka / Nippori at (410, 170) -> Label Above Loop -->
-              <g class="map-node" data-st="otsuka" transform="translate(410, 170)">
-                <circle cx="0" cy="0" r="10" fill="#65a30d" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-85" y="-56" width="170" height="42"/>
-                <text x="0" y="-38" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">오츠카 · 닛포리</text>
-                <text x="0" y="-21" text-anchor="middle" font-size="11" font-weight="800" fill="#0f766e">🛒라이프마트 · 스카이라이너</text>
+              <!-- 3. Shinjuku at (250, 345) -->
+              <g class="map-node" data-st="shinjuku" transform="translate(250, 345)">
+                <circle cx="0" cy="0" r="14" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
+                <rect class="lbl-bg" x="-215" y="-26" width="196" height="52"/>
+                <text x="-117" y="-5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#0f172a">신주쿠 (숙소에서 4분!)</text>
+                <text x="-117" y="15" text-anchor="middle" font-size="11.5" font-weight="800" fill="#be123c">🍣우오베이·스시로·이타마에·쇼핑</text>
               </g>
 
-              <!-- 4. Shinjuku at (250, 350) -> Label Outside Left -->
-              <g class="map-node" data-st="shinjuku" transform="translate(250, 350)">
-                <circle cx="0" cy="0" r="13" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-185" y="-24" width="166" height="48"/>
-                <text x="-102" y="-4" text-anchor="middle" font-size="14" font-weight="900" fill="#0f172a">신주쿠 (JY17)</text>
-                <text x="-102" y="15" text-anchor="middle" font-size="11" font-weight="800" fill="#be123c">🍣히마와리·우오베이·쇼핑</text>
+              <!-- 4. Akasaka-mitsuke (3-sec Transfer Hub) at (455, 460) -->
+              <g class="map-node" data-st="akasaka" transform="translate(455, 460)">
+                <circle cx="0" cy="0" r="9" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5"/>
+                <rect class="lbl-bg" x="-155" y="-38" width="142" height="38"/>
+                <text x="-84" y="-22" text-anchor="middle" font-size="12" font-weight="900" fill="#0f172a">아카사카미츠케</text>
+                <text x="-84" y="-7" text-anchor="middle" font-size="10.5" font-weight="800" fill="#d97706">⚡마루노우치↔긴자선 3초환승</text>
               </g>
 
-              <!-- 5. Harajuku / Omotesando at (345, 515) -> Label Inside Loop Above Node -->
-              <g class="map-node" data-st="omotesando" transform="translate(345, 515)">
-                <circle cx="0" cy="0" r="10" fill="#7c3aed" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-95" y="-58" width="175" height="44"/>
-                <text x="-7" y="-39" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">하라주쿠 · 오모테산도</text>
-                <text x="-7" y="-22" text-anchor="middle" font-size="11" font-weight="800" fill="#6d28d9">🌲메이지신궁 · 🐷마이센 본점</text>
+              <!-- 5. Harajuku / Omotesando at (350, 515) -->
+              <g class="map-node" data-st="omotesando" transform="translate(350, 515)">
+                <circle cx="0" cy="0" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
+                <rect class="lbl-bg" x="-85" y="16" width="170" height="44"/>
+                <text x="0" y="35" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">하라주쿠 · 오모테산도</text>
+                <text x="0" y="52" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">🌲메이지신궁 · 🐷마이센 본점</text>
               </g>
 
-              <!-- 6. Shibuya at (265, 520) -> Label Outside Left -->
+              <!-- 6. Shibuya at (265, 520) -->
               <g class="map-node" data-st="shibuya" transform="translate(265, 520)">
                 <circle cx="0" cy="0" r="13" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-205" y="-26" width="186" height="52"/>
-                <text x="-112" y="-5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#0f172a">시부야 (Z01 / JY20)</text>
-                <text x="-112" y="14" text-anchor="middle" font-size="11.5" font-weight="800" fill="#be123c">🌆시부야스카이 · 파르코 · 우오베이</text>
+                <rect class="lbl-bg" x="-215" y="-26" width="196" height="52"/>
+                <text x="-117" y="-5" text-anchor="middle" font-size="14.5" font-weight="900" fill="#0f172a">시부야 (G01 / JY20)</text>
+                <text x="-117" y="14" text-anchor="middle" font-size="11.5" font-weight="800" fill="#be123c">🌆시부야스카이 · 파르코 · 우오베이</text>
               </g>
 
-              <!-- 7. Ueno / Okachimachi at (545, 225) -> Label Inside Loop Left -->
-              <g class="map-node" data-st="ueno" transform="translate(545, 225)">
-                <circle cx="0" cy="0" r="13" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-195" y="14" width="185" height="46"/>
-                <text x="-102" y="33" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">우에노 · 오카치마치</text>
-                <text x="-102" y="50" text-anchor="middle" font-size="11" font-weight="800" fill="#0f766e">🍣스시로·이타마에 / 🥩요시이케</text>
+              <!-- 7. Ueno / Okachimachi at (595, 220) -->
+              <g class="map-node" data-st="ueno" transform="translate(595, 220)">
+                <circle cx="0" cy="0" r="13" fill="#0284c7" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
+                <rect class="lbl-bg" x="-195" y="-22" width="178" height="48"/>
+                <text x="-106" y="-2" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">우에노 · 오카치마치</text>
+                <text x="-106" y="16" text-anchor="middle" font-size="11" font-weight="800" fill="#0f766e">🚅스카이라이너 · 🍣스시로 · 아메요코</text>
               </g>
 
-              <!-- 8. Akihabara at (570, 350) -> Label Inside Loop Left-Top -->
-              <g class="map-node" data-st="akihabara" transform="translate(570, 350)">
+              <!-- 8. Asakusa at (760, 220) -->
+              <g class="map-node" data-st="asakusa" transform="translate(760, 220)">
+                <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+                <rect class="lbl-bg" x="18" y="-24" width="166" height="48"/>
+                <text x="101" y="-4" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">아사쿠사 (G19 / A18)</text>
+                <text x="101" y="15" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">🏮센소지 · 나카미세 · 스카이트리</text>
+              </g>
+
+              <!-- 9. Akihabara at (620, 315) -->
+              <g class="map-node" data-st="akihabara" transform="translate(620, 315)">
                 <circle cx="0" cy="0" r="10" fill="#475569" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-132" y="-48" width="122" height="40"/>
-                <text x="-71" y="-31" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">아키하바라</text>
-                <text x="-71" y="-15" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">🎮피규어·전자상가</text>
+                <rect class="lbl-bg" x="-135" y="-20" width="120" height="40"/>
+                <text x="-75" y="-3" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">아키하바라</text>
+                <text x="-75" y="13" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">🎮피규어·전자상가</text>
               </g>
 
-              <!-- 9. Tokyo / Otemachi at (570, 435) -> Label Inside Loop Left -->
-              <g class="map-node" data-st="tokyo" transform="translate(570, 435)">
+              <!-- 10. Tokyo Station at (620, 420) -->
+              <g class="map-node" data-st="tokyo" transform="translate(620, 420)">
+                <circle cx="0" cy="0" r="13" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
+                <rect class="lbl-bg" x="18" y="-24" width="210" height="48"/>
+                <text x="123" y="-4" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">도쿄역 (M17 · 숙소 14분 직통!)</text>
+                <text x="123" y="15" text-anchor="middle" font-size="11" font-weight="800" fill="#0f766e">🏛️마루노우치 야경 · 캐릭터 스트리트</text>
+              </g>
+
+              <!-- 11. Ginza at (670, 490) -->
+              <g class="map-node" data-st="ginza" transform="translate(670, 490)">
+                <circle cx="0" cy="0" r="12" fill="#f59e0b" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+                <rect class="lbl-bg" x="18" y="-22" width="205" height="46"/>
+                <text x="120" y="-2" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">긴자역 (M16 · 숙소 11분 직통!)</text>
+                <text x="120" y="16" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">🛍️유니클로 12층 본점 · 보행자천국</text>
+              </g>
+
+              <!-- 12. Roppongi / Tokyo Tower at (435, 575) -->
+              <g class="map-node" data-st="roppongi" transform="translate(435, 575)">
                 <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-192" y="-34" width="176" height="44"/>
-                <text x="-104" y="-15" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">도쿄역 · 오테마치 (Z08)</text>
-                <text x="-104" y="2" text-anchor="middle" font-size="11" font-weight="800" fill="#0f766e">🏛️마루노우치 야경·캐릭터거리</text>
+                <rect class="lbl-bg" x="-15" y="16" width="230" height="48"/>
+                <text x="100" y="36" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">롯폰기(H04) · 도쿄타워(카미야초/다이몬)</text>
+                <text x="100" y="54" text-anchor="middle" font-size="11.5" font-weight="800" fill="#be123c">🎄케야키자카 일루미네이션 · 🗼시바공원</text>
               </g>
 
-              <!-- 10. Asakusa at (700, 225) -> Label Above Node -->
-              <g class="map-node" data-st="asakusa" transform="translate(700, 225)">
-                <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-78" y="-62" width="156" height="46"/>
-                <text x="0" y="-42" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">아사쿠사 (A18 / G19)</text>
-                <text x="0" y="-24" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">🏮센소지 · 나카미세 간식</text>
-              </g>
-
-              <!-- 11. Oshiage at (875, 225) -> Label to the Right -->
-              <g class="map-node" data-st="oshiage" transform="translate(875, 225)">
-                <circle cx="0" cy="0" r="14" fill="#e11d48" stroke="#ffffff" stroke-width="3.5" filter="url(#shadow)"/>
-                <rect x="18" y="10" width="185" height="50" rx="8" fill="#fff1f2" stroke="#f43f5e" stroke-width="2" filter="url(#shadow)"/>
-                <text x="110" y="31" text-anchor="middle" font-size="13.5" font-weight="900" fill="#881337">오시아게 (A20 / Z14)</text>
-                <text x="110" y="49" text-anchor="middle" font-size="11.5" font-weight="800" fill="#be123c">🏠숙소후보 · 🛒라이프 대형마트</text>
-              </g>
-
-              <!-- 12. Kinshicho at (875, 350) -> Label to Right -->
-              <g class="map-node" data-st="kinshicho" transform="translate(875, 350)">
-                <circle cx="0" cy="0" r="11" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="18" y="-22" width="140" height="42"/>
-                <text x="88" y="-4" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">긴시초 (Z13)</text>
-                <text x="88" y="13" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">🛒대형마트 · JR소부선</text>
-              </g>
-
-              <!-- 13. Ginza / Higashi-Ginza at (655, 495) -> Label to Right -->
-              <g class="map-node" data-st="ginza" transform="translate(655, 495)">
-                <circle cx="0" cy="0" r="11" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="16" y="-22" width="165" height="44"/>
-                <text x="98" y="-3" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">긴자 · 히가시긴자</text>
-                <text x="98" y="14" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">🛍️유니클로 12층 플래그십</text>
-              </g>
-
-              <!-- 14. Roppongi / Daimon (Tokyo Tower) at (410, 570) -> Label Below -->
-              <g class="map-node" data-st="roppongi" transform="translate(410, 570)">
-                <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-110" y="18" width="220" height="48"/>
-                <text x="0" y="38" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0f172a">롯폰기(H04) · 도쿄타워(다이몬 A09)</text>
-                <text x="0" y="56" text-anchor="middle" font-size="11.5" font-weight="800" fill="#be123c">🎄케야키자카 일루미네이션 · 🗼시바공원</text>
-              </g>
-
-              <!-- 15. Shin-Toyosu (teamLab Planets) at (755, 655) -> Label to Right -->
-              <g class="map-node" data-st="toyosu" transform="translate(755, 655)">
+              <!-- 13. Shin-Toyosu (teamLab Planets) at (790, 645) -->
+              <g class="map-node" data-st="toyosu" transform="translate(790, 645)">
                 <circle cx="0" cy="0" r="12" fill="#0284c7" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="18" y="-22" width="180" height="46"/>
-                <text x="108" y="-2" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0c4a6e">✨ 신토요스역 (유리카모메)</text>
-                <text x="108" y="16" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0284c7">팀랩 플래닛 도쿄 (4일차)</text>
-              </g>
-
-              <!-- 16. Tokyo Disney Resort at (1015, 505) -> Label Below -->
-              <g class="map-node" data-st="disney" transform="translate(1015, 505)">
-                <circle cx="0" cy="0" r="12" fill="#e11d48" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
-                <rect class="lbl-bg" x="-78" y="18" width="156" height="46"/>
-                <text x="0" y="38" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">🎢 도쿄 디즈니 리조트</text>
-                <text x="0" y="55" text-anchor="middle" font-size="11" font-weight="800" fill="#be123c">도쿄 디즈니씨 (3일차 선택B)</text>
+                <rect class="lbl-bg" x="18" y="-24" width="185" height="46"/>
+                <text x="110" y="-4" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0c4a6e">✨ 신토요스역 (유리카모메)</text>
+                <text x="110" y="14" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0284c7">팀랩 플래닛 도쿄 (4일차)</text>
               </g>
             </svg>
           </div>
@@ -1263,289 +1343,97 @@
           <!-- Interactive Station Info Box -->
           <div class="st-info-bar" id="st-info-bar">
             <div id="st-info-text">
-              💡 <b>역 상세 안내:</b> 위 노선도에서 <b>오시아게, 시부야, 우에노, 아사쿠사, 롯폰기 등 역 동그라미(🔴)</b>를 터치해 보세요!
+              💡 <b>역 상세 안내:</b> 위 노선도에서 <b>🏠 확정숙소(요츠야산초메/아케보노바시), 신주쿠, 시부야, 도쿄역 등 역 동그라미(🔴)</b>를 터치해 보세요!
             </div>
-            <a class="btn-link primary" id="st-info-link" href="https://www.google.com/maps/search/?api=1&query=Oshiage+Station+Tokyo" target="_blank" rel="noopener">📍 구글맵 열기</a>
+            <a class="btn-link primary" id="st-info-link" href="https://www.google.com/maps/search/?api=1&query=18-7+Arakicho+Shinjuku+Tokyo" target="_blank" rel="noopener">📍 구글맵 열기</a>
           </div>
 
           <div class="map-legend">
-            <span class="legend-item"><span class="legend-line" style="background:#e85298;"></span>게이세이선·도에이 아사쿠사선 (나리타↔오시아게↔아사쿠사↔긴자)</span>
-            <span class="legend-item"><span class="legend-line" style="background:#9b7ede;"></span>도쿄메트로 한조몬선 (오시아게↔도쿄역↔오모테산도↔시부야)</span>
-            <span class="legend-item"><span class="legend-line" style="background:#f59e0b;"></span>도쿄메트로 긴자선 (아사쿠사↔우에노↔긴자↔시부야)</span>
-            <span class="legend-item"><span class="legend-line" style="background:#65a30d;"></span>JR 야마노테선 (순환선)</span>
-            <span class="legend-item"><span class="legend-line" style="background:#0284c7;"></span>스카이라이너 / 유리카모메 / 세이부선</span>
+            <span class="legend-item"><span class="legend-line" style="background:#e11d48;"></span>M 도쿄메트로 마루노우치선 (숙소 요츠야산초메 ↔ 신주쿠·긴자·도쿄역·이케부쿠로 직통!)</span>
+            <span class="legend-item"><span class="legend-line" style="background:#65a30d;"></span>S 도에이 신주쿠선 (숙소 아케보노바시 ↔ 신주쿠 4분!) & JR 야마노테선</span>
+            <span class="legend-item"><span class="legend-line" style="background:#f59e0b;"></span>G 도쿄메트로 긴자선 (아사쿠사↔우에노↔긴자↔아카사카미츠케↔오모테산도↔시부야)</span>
+            <span class="legend-item"><span class="legend-line" style="background:#0284c7;"></span>스카이라이너 / 나리타익스프레스 / 유리카모메 / 세이부선</span>
           </div>
         </div>
 
         <!-- Original Reference Image View -->
         <div id="view-map-orig" style="display:none;text-align:center;">
-          <img src="tokyo-route-map.png" alt="도쿄 스카이트리 및 주요 지하철 노선표 원본" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #e2e8f0;">
-          <p style="margin:8px 0 0;font-size:12.5px;color:var(--muted);">▲ 원본 참고 노선표 이미지 (모바일에서 두 손가락으로 확대 가능)</p>
+          <img src="tokyo-route-map.png" alt="도쿄 주요 지하철 노선표 참고 이미지" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #e2e8f0;">
+          <p style="margin:8px 0 0;font-size:12.5px;color:var(--muted);">▲ 참고용 노선표 이미지 (모바일에서 두 손가락으로 확대 가능)</p>
         </div>
       </div>
 
-      <h3 class="sub-h3">4️⃣ 노선별 정차역 순서 상세 카드 (공식 색상·역 번호)</h3>
-      <p style="margin:0 0 10px;font-size:13.5px;color:#475569;">
-        도쿄 지하철은 <b>노선 색깔과 알파벳+숫자(역 번호)</b>만 보고 따라가면 절대 길을 잃지 않습니다! (모바일에서는 좌우로 밀어서 역 순서를 확인하세요)
-      </p>
-
-      <div class="subway-list">
-        <!-- Hanzomon Line (Z) -->
-        <div class="subway-card" style="border-left:5px solid #8F76D6;">
-          <div class="subway-head">
-            <span class="line-badge" style="background:#8F76D6;">Z</span>
-            <h4 class="subway-title">도쿄메트로 한조몬선 (보라색)</h4>
-            <span class="subway-sub">⭐ 오시아게(숙소 후보)에서 도쿄역·오모테산도·시부야까지 환승 없이 한 번에 직통!</span>
-          </div>
-          <div class="station-flow">
-            <div class="st-node" style="border-color:#8F76D6;background:#faf5ff;">
-              <span class="st-code" style="background:#8F76D6;">Z 14</span>
-              <div class="st-name">오시아게 (스카이트리)</div>
-              <div class="st-spot">🏠 숙소 후보 1호<br>🛒 라이프 대형마트</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#8F76D6;">Z 09</span>
-              <div class="st-name">미츠코시마에</div>
-              <div class="st-spot">🛍️ 니혼바시 백화점<br>(긴자선 환승)</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#8F76D6;">Z 08</span>
-              <div class="st-name">오테마치 (도쿄역)</div>
-              <div class="st-spot">🏛️ 도쿄역 마루노우치<br>🧸 캐릭터 스트리트</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#8F76D6;">Z 02</span>
-              <div class="st-name">오모테산도</div>
-              <div class="st-spot">🐷 돈카츠 마이센 본점<br>🛍️ 캣스트리트·하라주쿠</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node" style="border-color:#8F76D6;background:#faf5ff;">
-              <span class="st-code" style="background:#8F76D6;">Z 01</span>
-              <div class="st-name">시부야</div>
-              <div class="st-spot">🌆 시부야 스카이·파르코<br>🍣 우오베이 초밥</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Asakusa Line (A) -->
-        <div class="subway-card" style="border-left:5px solid #E85298;">
-          <div class="subway-head">
-            <span class="line-badge" style="background:#E85298;">A</span>
-            <h4 class="subway-title">도에이 아사쿠사선 (장미색 · 나리타 스카이액세스 직결)</h4>
-            <span class="subway-sub">⭐ 나리타공항 ↔ 오시아게 ↔ 아사쿠사(3분) ↔ 히가시긴자 ↔ 다이몬(도쿄타워) 직통!</span>
-          </div>
-          <div class="station-flow">
-            <div class="st-node">
-              <span class="st-code" style="background:#0284c7;">KS</span>
-              <div class="st-name">나리타공항 (T2역)</div>
-              <div class="st-spot">✈️ 스카이액세스 특급<br>(오시아게 50분 직통)</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node" style="border-color:#E85298;background:#fff1f2;">
-              <span class="st-code" style="background:#E85298;">A 20</span>
-              <div class="st-name">오시아게</div>
-              <div class="st-spot">🏠 숙소 후보 1호<br>🗼 도쿄 스카이트리</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#E85298;">A 18</span>
-              <div class="st-name">아사쿠사 (3분)</div>
-              <div class="st-spot">🏮 센소지·카미나리몬<br>🍡 나카미세 간식거리</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#E85298;">A 11</span>
-              <div class="st-name">히가시긴자</div>
-              <div class="st-spot">🛍️ 긴자 중앙거리<br>유니클로 12층 본점</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#E85298;">A 09</span>
-              <div class="st-name">다이몬 (시바공원)</div>
-              <div class="st-spot">🗼 도쿄타워 포토존<br>(오에도선 롯폰기 환승)</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- JR Yamanote Line (JY) -->
-        <div class="subway-card" style="border-left:5px solid #65a30d;">
-          <div class="subway-head">
-            <span class="line-badge" style="background:#65a30d;">JY</span>
-            <h4 class="subway-title">JR 야마노테선 (연두색 지상 순환선)</h4>
-            <span class="subway-sub">⭐ 도쿄의 2호선! 우에노·아키하바라·도쿄역·시부야·하라주쿠·신주쿠·이케부쿠로 연결</span>
-          </div>
-          <div class="station-flow">
-            <div class="st-node" style="border-color:#65a30d;background:#f7fee7;">
-              <span class="st-code" style="background:#65a30d;">JY 05</span>
-              <div class="st-name">우에노 / 오카치마치</div>
-              <div class="st-spot">🚅 스카이라이너 종점<br>🥩 요시이케·스시로</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#65a30d;">JY 03</span>
-              <div class="st-name">아키하바라</div>
-              <div class="st-spot">🎮 피규어·가챠샵<br>전자상가 거리</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#65a30d;">JY 01</span>
-              <div class="st-name">도쿄역</div>
-              <div class="st-spot">🏛️ 마루노우치 야경<br>🧸 캐릭터 스트리트</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#65a30d;">JY 20</span>
-              <div class="st-name">시부야</div>
-              <div class="st-spot">🌆 시부야 스카이<br>스크램블·파르코</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#65a30d;">JY 19</span>
-              <div class="st-name">하라주쿠</div>
-              <div class="st-spot">🌲 메이지신궁 숲길<br>다케시타 크레페</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#65a30d;">JY 17</span>
-              <div class="st-name">신주쿠</div>
-              <div class="st-spot">🍣 이타마에·히마와리<br>대형 백화점·쇼핑</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#65a30d;">JY 13</span>
-              <div class="st-name">이케부쿠로</div>
-              <div class="st-spot">🪄 해리포터선 환승<br>선샤인시티 가챠샵</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ginza Line (G) & Hibiya Line (H) -->
-        <div class="subway-card" style="border-left:5px solid #FF9500;">
-          <div class="subway-head">
-            <span class="line-badge" style="background:#FF9500;">G</span>
-            <h4 class="subway-title">도쿄메트로 긴자선 (주황색) & 히비야선 (은회색 H)</h4>
-            <span class="subway-sub">⭐ 아사쿠사 ↔ 우에노 ↔ 아키하바라 ↔ 긴자 ↔ 롯폰기(일루미네이션) ↔ 시부야 핵심 연결</span>
-          </div>
-          <div class="station-flow">
-            <div class="st-node">
-              <span class="st-code" style="background:#FF9500;">G 19</span>
-              <div class="st-name">아사쿠사</div>
-              <div class="st-spot">🏮 센소지·나카미세<br>우에노까지 5분</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#FF9500;">G 16 / H 18</span>
-              <div class="st-name">우에노</div>
-              <div class="st-spot">🍣 스시로·이타마에<br>우에노 공원·아메요코</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#FF9500;">G 09 / H 09</span>
-              <div class="st-name">긴자</div>
-              <div class="st-spot">🛍️ 긴자 보행자천국<br>유니클로 12층 본점</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#64748b;">H 05</span>
-              <div class="st-name">카미야초 (히비야선)</div>
-              <div class="st-spot">🗼 도쿄타워 도보 7분</div>
-            </div>
-            <div class="st-arrow">↔</div>
-            <div class="st-node">
-              <span class="st-code" style="background:#64748b;">H 04</span>
-              <div class="st-name">롯폰기 (히비야선)</div>
-              <div class="st-spot">🎄 케야키자카 거리<br>크리스마스 일루미네이션</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="sub-h3">4️⃣ 주요 관광 스팟별 [하차역 · 출구 번호 · 이동 루트] 한눈에 보기</h3>
+      <h3 class="sub-h3">3️⃣ 확정 숙소(요츠야산초메역 M11 / 아케보노바시역 S03) 출발 주요 관광지 이동표</h3>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>관광지 / 맛집 스팟</th>
-              <th>하차역 (노선 기호)</th>
-              <th>가장 가까운 출구</th>
-              <th>오시아게역(숙소후보) 출발 기준</th>
+              <th>목적지 (관광지 / 맛집)</th>
+              <th>숙소에서 타는 역 & 노선</th>
+              <th>하차역 & 가장 가까운 출구</th>
+              <th>소요 시간 (환승 여부)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>🌆 시부야 스카이 / 스크램블</b></td>
-              <td><b>시부야역</b> (<b style="color:#8F76D6;">Z01</b> / <b style="color:#FF9500;">G01</b> / <b style="color:#65a30d;">JY20</b>)</td>
-              <td><b>B6 출구</b> (스크램블 스퀘어 직결)</td>
-              <td><b style="color:#8F76D6;">한조몬선(Z)</b> <b>환승 없이 34분 직통!</b></td>
+              <td><b>🍣 신주쿠 (우오베이·스시로·이타마에·쇼핑)</b></td>
+              <td><b>아케보노바시역(S03)</b> 또는 <b>요츠야산초메역(M11)</b></td>
+              <td><b>신주쿠산초메역(M09/S02)</b> 또는 <b>신주쿠역(M08/S01)</b></td>
+              <td><b>환승 없이 3~5분 직통!</b> (1~2정거장)</td>
             </tr>
             <tr>
-              <td><b>🎮 시부야 파르코(닌텐도·포켓몬) / 우오베이</b></td>
-              <td><b>시부야역</b> (<b style="color:#8F76D6;">Z01</b> / <b style="color:#65a30d;">JY20</b>)</td>
-              <td><b>하치코 출구(A6b)</b> 도보 5분</td>
-              <td><b style="color:#8F76D6;">한조몬선(Z)</b> <b>환승 없이 34분 직통!</b></td>
+              <td><b>🛍️ 긴자 중앙거리 / 유니클로 12층 본점</b></td>
+              <td><b>요츠야산초메역 (<span style="color:#e11d48;">마루노우치선 M11</span>)</b></td>
+              <td><b>긴자역 (M16)</b> · A2 출구</td>
+              <td><b>환승 없이 11분 직통!</b> (5정거장)</td>
+            </tr>
+            <tr>
+              <td><b>🏛️ 도쿄역 마루노우치 야경 / 캐릭터 스트리트</b></td>
+              <td><b>요츠야산초메역 (<span style="color:#e11d48;">마루노우치선 M11</span>)</b></td>
+              <td><b>도쿄역 (M17)</b> · 마루노우치 중앙구 / 야에스 지하중앙구</td>
+              <td><b>환승 없이 14분 직통!</b> (6정거장)</td>
+            </tr>
+            <tr>
+              <td><b>🌆 시부야 스카이 / 파르코 / 우오베이 시부야</b></td>
+              <td><b>요츠야산초메역(M11)</b> → 아카사카미츠케역(M13)</td>
+              <td>맞은편 <b>긴자선(G)</b> 3초 평면환승 → <b>시부야역(G01) B6 출구</b></td>
+              <td><b>약 14분</b> (같은 승강장 맞은편 환승!)</td>
+            </tr>
+            <tr>
+              <td><b>🐷 오모테산도 (마이센 돈카츠) / 하라주쿠</b></td>
+              <td><b>요츠야산초메역(M11)</b> → 아카사카미츠케역(M13)</td>
+              <td>맞은편 <b>긴자선(G)</b> 3초 평면환승 → <b>오모테산도역(G02) A2 출구</b></td>
+              <td><b>약 11분</b> (같은 승강장 맞은편 환승!)</td>
             </tr>
             <tr>
               <td><b>🏮 아사쿠사 센소지 / 카미나리몬</b></td>
-              <td><b>아사쿠사역</b> (<b style="color:#E85298;">A18</b> / <b style="color:#FF9500;">G19</b>)</td>
-              <td><b>A4 출구</b> 또는 <b>1번 출구</b> (도보 2분)</td>
-              <td><b style="color:#E85298;">아사쿠사선(A)</b> <b>2정거장 · 3분 직통!</b></td>
+              <td><b>요츠야산초메역(M11)</b> → 아카사카미츠케역(M13)</td>
+              <td><b>긴자선(G)</b> 환승 → <b>아사쿠사역(G19) 1번 출구</b></td>
+              <td><b>약 28분</b></td>
             </tr>
             <tr>
-              <td><b>🛍️ 긴자 중앙거리 / 유니클로 12층</b></td>
-              <td><b>긴자역</b> (<b style="color:#FF9500;">G09</b>) / <b>히가시긴자역</b> (<b style="color:#E85298;">A11</b>)</td>
-              <td>긴자역 <b>A2 출구</b> / 히가시긴자 <b>A1 출구</b></td>
-              <td><b style="color:#E85298;">아사쿠사선(A)</b> 히가시긴자역 <b>16분 직통!</b></td>
+              <td><b>🎄 롯폰기 케야키자카 일루미네이션 / 도쿄타워</b></td>
+              <td><b>요츠야산초메역(M11)</b> → 가스미가세키역(M15)</td>
+              <td>히비야선 환승 → <b>롯폰기역(H04) 1C 출구</b> / <b>카미야초역(H05)</b></td>
+              <td><b>약 16분</b> (또는 택시로 12분)</td>
             </tr>
             <tr>
-              <td><b>🎄 롯폰기 케야키자카 일루미네이션</b></td>
-              <td><b>롯폰기역</b> (<b style="color:#64748b;">H04</b> / <b style="color:#be185d;">E23</b>)</td>
-              <td><b>1C 출구</b> (롯폰기힐즈 연결)</td>
-              <td>아사쿠사선 다이몬역 → 오에도선(E) 롯폰기 (총 28분)</td>
-            </tr>
-            <tr>
-              <td><b>🗼 도쿄타워 / 프린스 시바공원</b></td>
-              <td><b>아카바네바시역</b> (<b style="color:#be185d;">E21</b>) / <b>다이몬역</b> (<b style="color:#E85298;">A09</b>)</td>
-              <td>아카바네바시 출구 도보 3분 / 다이몬 A6 도보 10분</td>
-              <td><b style="color:#E85298;">아사쿠사선(A)</b> 다이몬역 <b>20분 직통!</b></td>
-            </tr>
-            <tr>
-              <td><b>🪄 해리포터 스튜디오 투어</b></td>
-              <td><b>토시마엔역</b> (세이부선 <b>SI39</b>)</td>
-              <td><b>A2 출구</b> 도보 2분</td>
-              <td>이케부쿠로역에서 <b>세이부 이케부쿠로선</b> 탑승 (17분)</td>
+              <td><b>🪄 해리포터 스튜디오 투어 도쿄</b></td>
+              <td>신주쿠역 또는 이케부쿠로역 이동</td>
+              <td>세이부 이케부쿠로선 → <b>토시마엔역(SI39) A2 출구</b></td>
+              <td><b>약 32분</b></td>
             </tr>
             <tr>
               <td><b>✨ 팀랩 플래닛 도쿄 (토요스)</b></td>
-              <td><b>신토요스역</b> (유리카모메 <b>U15</b>)</td>
-              <td>역 출구 바로 앞 도보 1분</td>
-              <td>신바시역(<b style="color:#E85298;">A10</b> 직통) → 유리카모메 환승</td>
+              <td><b>요츠야산초메역(M11)</b> → 긴자역 → 유리카모메(신바시)</td>
+              <td><b>신토요스역 (U15)</b> · 역 출구 도보 1분</td>
+              <td><b>약 33분</b></td>
             </tr>
             <tr>
-              <td><b>🌲 메이지신궁 / 하라주쿠 다케시타</b></td>
-              <td><b>하라주쿠역</b> (<b style="color:#65a30d;">JY19</b>) / <b>오모테산도역</b> (<b style="color:#8F76D6;">Z02</b>)</td>
-              <td>서쪽 출구(메이지신궁) / 동쪽 출구(다케시타)</td>
-              <td><b style="color:#8F76D6;">한조몬선(Z)</b> 오모테산도역 <b>31분 직통!</b></td>
-            </tr>
-            <tr>
-              <td><b>🐷 오모테산도 (마이센 돈카츠·캣스트리트)</b></td>
-              <td><b>오모테산도역</b> (<b style="color:#8F76D6;">Z02</b> / <b style="color:#FF9500;">G02</b>)</td>
-              <td><b>A2 출구</b> 도보 3분 (마이센 본점)</td>
-              <td><b style="color:#8F76D6;">한조몬선(Z)</b> <b>환승 없이 31분 직통!</b></td>
-            </tr>
-            <tr>
-              <td><b>🏛️ 도쿄역 야경 / 캐릭터 스트리트</b></td>
-              <td><b>도쿄역</b> (<b style="color:#65a30d;">JY01</b>) / <b>오테마치역</b> (<b style="color:#8F76D6;">Z08</b>)</td>
-              <td><b>마루노우치 중앙출구</b>(야경) / <b>야에스 지하중앙구</b>(캐릭터)</td>
-              <td><b style="color:#8F76D6;">한조몬선(Z)</b> 오테마치역 <b>16분 직통!</b> (지하 연결)</td>
-            </tr>
-            <tr>
-              <td><b>🍣 우에노 (스시로·이타마에·요시이케 마트)</b></td>
-              <td><b>우에노역</b> (<b style="color:#FF9500;">G16</b>/<b style="color:#65a30d;">JY05</b>) / <b>오카치마치역</b> (<b style="color:#65a30d;">JY04</b>)</td>
-              <td>우에노 시노바즈 출구 / 오카치마치 북쪽 출구</td>
-              <td>아사쿠사역 환승 후 긴자선 우에노 (약 12분)</td>
+              <td><b>🚅 우에노 공원 / 아메요코 / 스카이라이너(귀국)</b></td>
+              <td><b>요츠야산초메역(M11)</b> → 아카사카미츠케역(G)</td>
+              <td><b>우에노역 (G16)</b> · 시노바즈 출구</td>
+              <td><b>약 22분</b></td>
             </tr>
           </tbody>
         </table>
@@ -1553,293 +1441,189 @@
     </section>
 
     <!-- =========================================================
-         3. 숙소 (ACCOMMODATIONS)
-         ========================================================= -->
-    <section class="cat-section active" data-section="hotels" id="sec-hotels">
-      <div class="section-header">
-        <h2 class="section-title">🏠 숙소 (환승역 + 큰 침대 2개 이상 + 주방·와규 마트)</h2>
-        <span class="status-pill selecting">후보 비교 및 예약 단계</span>
-      </div>
-
-      <h3 class="sub-h3">⭐ 우리 가족이 찜한 에어비앤비 후보 숙소</h3>
-      <div class="info-card highlight-rose" style="margin-bottom:18px;">
-        <div>
-          <span class="card-tag">📌 에어비앤비 후보 1호 · 평점 ★4.82 (스미다구 오시아게)</span>
-          <h3>아스틸레 오시아게 (Astile Oshiage · 오시아게역 도보 6분 / 스카이트리 도보권)</h3>
-          <div style="font-size:12.5px;color:var(--muted);">체크인: 2026.12.02(수) ~ 체크아웃: 2026.12.06(일) · 성인 4명 설정 링크</div>
-          <ul>
-            <li><b>공항 직통 교통:</b> 나리타 공항 제2터미널역에서 <b>게이세이 스카이액세스 특급(Access Express)</b> 탑승 시 <b>환승 없이 오시아게역까지 약 50분 직통!</b> (편도 약 1,210엔)</li>
-            <li><b>시내 환승 (4개 노선 교차):</b> <b>오시아게역</b>에서 아사쿠사(3분), 시부야·오모테산도·도쿄역 인근(한조몬선 직통), 긴자(아사쿠사선 직통) 모두 환승 없이 한 번에 이동 가능!</li>
-            <li><b>초대형 와규 마트 (도보 4~5분):</b> 오시아게역 바로 앞에 프리미엄 대형마트인 <b>'라이프 센트럴 스퀘어 오시아게역전점 (LIFE Central Square)'</b>이 있어 A5 흑모와규와 초밥·과일 장보기에 최상의 환경입니다.</li>
-            <li><b>주변 인프라:</b> 도쿄 스카이트리 & 소라마치 쇼핑몰(포켓몬센터, 회전초밥 토리톤 등) 도보 거리</li>
-          </ul>
-        </div>
-        <div class="card-actions">
-          <a class="btn-link rose" href="https://www.airbnb.co.kr/properties/1715246067332444079?check_in=2026-12-02&check_out=2026-12-06&guests=1&adults=4&anchor_room_id=1302492764188972319&s=67&unique_share_id=3e5ad482-7ae1-4547-88ed-937a90c8f699" target="_blank" rel="noopener">🔗 에어비앤비 숙소 후보 바로가기 (12/2~12/6 · 4인)</a>
-          <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Astile+Oshiage+Sumida+Tokyo" target="_blank" rel="noopener">📍 숙소 위치 구글맵</a>
-          <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=LIFE+Central+Square+Oshiage+Ekimae" target="_blank" rel="noopener">🛒 인근 라이프 대형마트 구글맵</a>
-        </div>
-      </div>
-
-      <h3 class="sub-h3">🅰️ 비교용 추천: 주방·식탁·프런트 짐보관 완비 '아파트형 레지던스 호텔' TOP 4</h3>
-      <p style="margin:0 0 12px;font-size:13.5px;color:#475569;">
-        첫날 오전 11시 반에 도쿄 시내에 도착하므로, <b>프런트에 캐리어 4개를 바로 맡기고 점심 초밥을 먹으러 갈 수 있는 레지던스 호텔</b>이 동선상 가장 편리합니다.
-      </p>
-
-      <div class="cards-grid">
-        <div class="info-card rank-1">
-          <div>
-            <span class="card-tag">🥇 1순위 · 가성비·와규마트·공항직통 밸런스 1위</span>
-            <h3>호텔 먼데이 아파트 프리미엄 우에노 오카치마치</h3>
-            <div style="font-size:12.5px;color:var(--muted);">MONday Apart Premium Ueno Okachimachi</div>
-            <ul>
-              <li><b>역 거리:</b> JR 오카치마치역 도보 3분 / 스카이라이너 우에노역 도보 8분</li>
-              <li><b>침대/주방:</b> 큰 침대 2개 + 2층침대(또는 소파베드), <b>인덕션·프라이팬·환풍기·식탁·객실 내 세탁건조기</b> 완비</li>
-              <li><b>와규 마트:</b> 9층짜리 정육·해산물 백화점 <b>요시이케 본점 도보 3분!</b></li>
-              <li><b>예상 가격:</b> 4인 1박 약 28만~38만 원 선</li>
-            </ul>
-          </div>
-          <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=MONday+Apart+Premium+Ueno+Okachimachi" target="_blank" rel="noopener">📍 구글맵 보기</a>
-            <a class="btn-link" href="https://www.airbnb.co.kr/s/Ueno--Tokyo/homes?checkin=2026-12-02&checkout=2026-12-06&adults=4" target="_blank" rel="noopener">🔍 에어비앤비 검색</a>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div>
-            <span class="card-tag">🥈 2순위 · 가장 넓고 쾌적한 프리미엄 패밀리룸</span>
-            <h3>미마루 도쿄 우에노 오카치마치 / 우에노 이스트</h3>
-            <div style="font-size:12.5px;color:var(--muted);">MIMARU Tokyo Ueno Okachimachi / East</div>
-            <ul>
-              <li><b>역 거리:</b> 스카이라이너 우에노역 · JR 오카치마치역 도보 3~5분</li>
-              <li><b>침대/주방:</b> 40㎡ 이상 넓은 객실, <b>대형 아일랜드 식탁 + 완벽한 주방(인덕션·후드·조리도구 풀세트)</b></li>
-              <li><b>와규 마트:</b> <b>요시이케 본점</b> 및 마츠자카야 백화점 식품관 도보 3분</li>
-              <li><b>예상 가격:</b> 4인 1박 약 38만~48만 원 선</li>
-            </ul>
-          </div>
-          <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=MIMARU+Tokyo+Ueno+Okachimachi" target="_blank" rel="noopener">📍 구글맵 보기</a>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div>
-            <span class="card-tag">🥉 3순위 · 신축급 가성비 최강 레지던스</span>
-            <h3>민 우에노 / 민 우에노 신오카치마치</h3>
-            <div style="font-size:12.5px;color:var(--muted);">Minn Ueno / Minn Ueno Shin-Okachimachi</div>
-            <ul>
-              <li><b>역 거리:</b> 우에노·오카치마치역 도보 5~7분</li>
-              <li><b>침대/주방:</b> <b>퀸/더블베드 2개 이상</b> 쿼드러플/디럭스룸, 넓은 식탁·주방·세탁기 구비</li>
-              <li><b>와규 마트:</b> 요시이케 본점 도보 5분 + 숙소 옆 현지 마트 도보 2분</li>
-              <li><b>예상 가격:</b> 4인 1박 약 23만~32만 원 선</li>
-            </ul>
-          </div>
-          <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Minn+Ueno+Tokyo" target="_blank" rel="noopener">📍 구글맵 보기</a>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div>
-            <span class="card-tag">🏅 4순위 · 조용한 현지 역세권 독채/맨션 에어비앤비</span>
-            <h3>오츠카역 / 스가모역 독채·맨션 (JR 야마노테선)</h3>
-            <div style="font-size:12.5px;color:var(--muted);">Otsuka Station / Sugamo Station Airbnb</div>
-            <ul>
-              <li><b>역 거리:</b> 스카이라이너 닛포리역 환승 8분 / 이케부쿠로 1정거장, 신주쿠·시부야 직통</li>
-              <li><b>침대/주방:</b> 방 2개(2LDK) 50㎡ 이상 신축 아파트형 에어비앤비 밀집 지역</li>
-              <li><b>와규 마트:</b> <b>라이프(LIFE) 신오츠카/스가모점</b>, <b>사카가미 프리미엄 마트</b></li>
-            </ul>
-          </div>
-          <div class="card-actions">
-            <a class="btn-link primary" href="https://www.airbnb.co.kr/s/Otsuka-Station--Tokyo/homes?checkin=2026-12-02&checkout=2026-12-06&adults=4&min_bedrooms=2" target="_blank" rel="noopener">🔍 오츠카역 에어비앤비 바로가기</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="alert alert-teal">
-        <b>🔍 에어비앤비 직접 예약 시 실패 없는 5대 체크리스트:</b><br>
-        ① 인원은 반드시 <b>성인 4명</b>으로 설정 (일본은 만 12세 이상 성인 요금/침구 적용)<br>
-        ② 주방 사진에서 <b>2구 이상 인덕션 + 큰 프라이팬 + 환풍기(후드)</b> 유무 확인<br>
-        ③ <b>4인용 다이닝 식탁과 의자 4개</b> 확인<br>
-        ④ <b>엘리베이터 유무</b> 확인 (귀국일 캐리어 8개 이동 대비)<br>
-        ⑤ 첫날 11:30경 도착 시 <b>사전 짐 보관(Early Luggage Drop-off)</b> 가능 여부 확인
-      </div>
-    </section>
-
-    <!-- =========================================================
-         4. 여행일정 (5-DAY ITINERARY)
+         4. 4박 5일 상세 여행일정 (5-DAY ITINERARY: 12/1 TUE ~ 12/5 SAT)
          ========================================================= -->
     <section class="cat-section active" data-section="itinerary" id="sec-itinerary">
       <div class="section-header">
-        <h2 class="section-title">🗓️ 4박 5일 상세 여행일정 (일자별 동선)</h2>
-        <span class="status-pill confirmed">09:35 도착 / 12:55 출발 맞춤</span>
+        <h2 class="section-title">🗓️ 확정 4박 5일 상세 여행일정 (12.01 화 ~ 12.05 토)</h2>
+        <span class="status-pill confirmed">12/1 09:35 도착 ~ 12/5 18:55 출발</span>
       </div>
 
       <div class="day-tabs" role="tablist">
-        <button class="day-tab active" data-day="day1">1일차 (12/2 수)</button>
-        <button class="day-tab" data-day="day2">2일차 (12/3 목)</button>
-        <button class="day-tab" data-day="day3">3일차 (12/4 금)</button>
-        <button class="day-tab" data-day="day4">4일차 (12/5 토)</button>
-        <button class="day-tab" data-day="day5">5일차 (12/6 일)</button>
+        <button class="day-tab active" data-day="day1">1일차 (12/1 화)</button>
+        <button class="day-tab" data-day="day2">2일차 (12/2 수)</button>
+        <button class="day-tab" data-day="day3">3일차 (12/3 목)</button>
+        <button class="day-tab" data-day="day4">4일차 (12/4 금)</button>
+        <button class="day-tab" data-day="day5">5일차 (12/5 토)</button>
         <button class="day-tab" data-day="all">전체일정 펼치기</button>
       </div>
 
-      <!-- DAY 1 -->
+      <!-- DAY 1: Dec 1 (Tue) -->
       <div class="day-panel active" id="panel-day1">
         <div class="day-banner">
-          <h3>1일차 · 12월 2일(수) : 09:35 나리타 도착 → 우에노 초밥 → 시부야 → 1차 와규 파티</h3>
-          <p>오전 일찍 도착하는 황금 스케줄! 우에노에 짐을 맡기고 첫 초밥 식사 후 시부야 일몰·야경을 즐깁니다.</p>
+          <h3>1일차 · 12월 1일(화) : 09:35 나리타 도착 → 신주쿠 태블릿 초밥 → 숙소 체크인 → 시부야 → 1차 와규 파티</h3>
+          <p>오전 09:35 도착! 신주쿠에서 첫 태블릿 초밥 점심을 먹고 오후 4시 숙소 체크인 후, 시부야 야경과 첫 와규 만찬을 즐깁니다.</p>
         </div>
         <div class="timeline">
           <div class="tl-item">
             <span class="tl-time">05:30 ~ 09:35</span>
-            <h4 class="tl-title">청주공항 수속(07:25 출발 RF392) → 나리타 T3 도착(09:35)</h4>
-            <p class="tl-desc">7열 앞좌석(7C~7F)에서 빠르게 하기 → 입국심사 통과 → 제2터미널역에서 <b>게이세이 스카이라이너</b> 탑승(우에노까지 41분 직통).</p>
-          </div>
-          <div class="tl-item">
-            <span class="tl-time">11:15 ~ 11:45</span>
-            <h4 class="tl-title">숙소 프런트(또는 우에노역 코인락커)에 캐리어 보관</h4>
-            <p class="tl-desc">가벼운 차림으로 우에노/아메요코 거리로 이동합니다.</p>
+            <h4 class="tl-title">청주공항 수속(07:25 출발 RF392) → 나리타 제3터미널 도착(09:35)</h4>
+            <p class="tl-desc">입국 심사 후 제2터미널 지하 철도역으로 이동 → <b>나리타 익스프레스(N'EX, 신주쿠/도쿄행)</b> 또는 <b>스카이라이너</b> 탑승.</p>
           </div>
           <div class="tl-item meal">
-            <span class="tl-time">11:45 ~ 13:00 · 점심 (태블릿 초밥 1회차)</span>
-            <h4 class="tl-title">🍣 스시로 우에노점 또는 이타마에 스시 우에노점</h4>
-            <p class="tl-desc">한국어 터치패드로 가족 각자 먹고 싶은 초밥과 우동, 디저트를 마음껏 주문하는 첫 식사!</p>
+            <span class="tl-time">12:00 ~ 13:30 · 점심 (태블릿 초밥 1회차)</span>
+            <h4 class="tl-title">🍣 스시로 신주쿠산초메점 또는 우오베이 신주쿠 가부키초점</h4>
+            <p class="tl-desc">신주쿠역(또는 요츠야산초메역) 코인락커에 큰 캐리어 3개를 보관한 뒤, 한국어 대형 터치패드로 주문하는 즐거운 첫 초밥 식사!</p>
           </div>
           <div class="tl-item">
-            <span class="tl-time">13:00 ~ 15:30</span>
-            <h4 class="tl-title">우에노 공원 & 아메요코 시장 산책 → 숙소 체크인 및 휴식</h4>
-            <p class="tl-desc">새벽 비행 피로를 풀기 위해 15:00 체크인 후 숙소에서 잠시 휴식합니다.</p>
+            <span class="tl-time">13:30 ~ 15:40</span>
+            <h4 class="tl-title">신주쿠 백화점(이세탄/다카시마야) & 신주쿠 기요엔 주변 가벼운 산책</h4>
+            <p class="tl-desc">체크인 시간(16:00)에 맞춰 요츠야산초메역(M11) 또는 아케보노바시역(S03)으로 이동합니다(신주쿠에서 단 4분!).</p>
           </div>
           <div class="tl-item">
-            <span class="tl-time">16:00 ~ 19:30</span>
-            <h4 class="tl-title">시부야 스크램블 교차로 · 시부야 파르코(닌텐도·포켓몬) · 시부야 스카이</h4>
-            <p class="tl-desc">15세·18세 자녀들이 열광하는 시부야 파르코 6층 구경 후, <b>시부야 스카이 전망대(사전예약 필수)</b>에서 환상적인 도쿄 야경 감상!</p>
+            <span class="tl-time">16:00 ~ 17:00</span>
+            <h4 class="tl-title">🏠 Stay Ari Arakicho A (패밀리 아파트 701호) 체크인 및 휴식</h4>
+            <p class="tl-desc">숙소에 짐을 풀고 주방(인덕션·프라이팬·냉장고)을 확인한 뒤 잠시 새벽 비행 피로를 풉니다.</p>
+          </div>
+          <div class="tl-item">
+            <span class="tl-time">17:15 ~ 20:00</span>
+            <h4 class="tl-title">🌆 시부야 스크램블 교차로 · 시부야 파르코(닌텐도·포켓몬) · 시부야 스카이 야경</h4>
+            <p class="tl-desc">요츠야산초메역에서 14분 만에 시부야 도착! 15·18세 자녀 최애 코너인 파르코 6층 구경 및 <b>시부야 스카이 전망대(사전예약 필수)</b> 야경 감상.</p>
           </div>
           <div class="tl-item wagyu">
-            <span class="tl-time">20:00 ~ 22:00 · 저녁 (숙소 와규 홈파티 1회차)</span>
-            <h4 class="tl-title">🥩 마트(요시이케 / 라이프) A5 흑모와규 장보기 & 스테이크 만찬</h4>
-            <p class="tl-desc">A5 등심(사로인)·갈비살(카루비), 생와사비, 숙주나물, 즉석밥, 하이볼/메론소다를 사서 숙소에서 푸짐하게 구워 먹습니다.</p>
+            <span class="tl-time">20:30 ~ 22:30 · 저녁 (숙소 와규 홈파티 1회차)</span>
+            <h4 class="tl-title">🥩 숙소 도보 2~4분 마트(마루쇼 총본점 & 다이에) 1차 와규 장보기 & 스테이크 파티!</h4>
+            <p class="tl-desc">A5 흑모와규 등심(사로인)·갈비살(카루비), 생와사비, 야키니쿠 소스, 고시히카리 즉석밥, 하이볼/메론소다를 사서 701호 식탁에서 첫날 만찬!</p>
           </div>
         </div>
       </div>
 
-      <!-- DAY 2 -->
+      <!-- DAY 2: Dec 2 (Wed) -->
       <div class="day-panel" id="panel-day2">
         <div class="day-banner">
-          <h3>2일차 · 12월 3일(목) : 아사쿠사 센소지 → 아키하바라·긴자 → 롯폰기 & 도쿄타워 야경</h3>
-          <p>도쿄의 가장 일본다운 풍경부터 화려한 크리스마스 일루미네이션과 도쿄타워까지 만나는 날입니다.</p>
+          <h3>2일차 · 12월 2일(수) : 아사쿠사 센소지 → 아키하바라·긴자 → 롯폰기 일루미네이션 & 도쿄타워</h3>
+          <p>도쿄의 가장 전통적인 거리부터 12월 크리스마스 일루미네이션과 도쿄타워 야경까지 만나는 핵심 관광일입니다.</p>
         </div>
         <div class="timeline">
           <div class="tl-item">
             <span class="tl-time">09:30 ~ 12:00</span>
-            <h4 class="tl-title">아사쿠사 센소지 & 카미나리몬 & 나카미세 거리 간식 투어</h4>
-            <p class="tl-desc">거대한 붉은 등불 앞 가족사진 촬영 후 메론빵, 멘치카츠, 실타래 말차 아이스크림, 당고 맛보기 & 스미다강 스카이트리 뷰 산책.</p>
+            <h4 class="tl-title">🏮 아사쿠사 센소지 & 카미나리몬 & 나카미세 거리 간식 투어</h4>
+            <p class="tl-desc">붉은 대제등 앞 4인 가족사진 촬영 → 메론빵, 멘치카츠, 실타래 말차 아이스크림, 당고 맛보기 & 스미다강변 스카이트리 뷰 산책.</p>
           </div>
           <div class="tl-item meal">
-            <span class="tl-time">12:30 ~ 13:50 · 점심</span>
-            <h4 class="tl-title">🍱 모토무라 규카츠 또는 아사쿠사 텐동(다이고쿠야/카네코한노스케)</h4>
-            <p class="tl-desc">개인 미니 화로에 살짝 구워 먹는 규카츠나 바삭한 텐동으로 든든한 점심 식사.</p>
+            <span class="tl-time">12:15 ~ 13:40 · 점심</span>
+            <h4 class="tl-title">🍱 모토무라 규카츠 또는 아사쿠사 다이고쿠야 텐동</h4>
+            <p class="tl-desc">개인 미니 돌판 화로에 구워 먹는 살살 녹는 규카츠 또는 고소한 참기름 향의 전통 텐동 점심 식사.</p>
           </div>
           <div class="tl-item">
             <span class="tl-time">14:00 ~ 17:30</span>
-            <h4 class="tl-title">아키하바라 (피규어·가챠·전자상가) & 긴자 (유니클로 12층 플래그십)</h4>
+            <h4 class="tl-title">🎮 아키하바라(피규어·전자상가) & 🛍️ 긴자(유니클로 12층 플래그십·보행자천국)</h4>
             <p class="tl-desc">자녀들과 아키하바라 구경 후 긴자 중앙거리 및 유니클로 글로벌 플래그십 스토어 쇼핑.</p>
           </div>
           <div class="tl-item">
             <span class="tl-time">18:00 ~ 20:00</span>
-            <h4 class="tl-title">🎄 롯폰기 케야키자카 일루미네이션 & 도쿄타워(시바공원)</h4>
-            <p class="tl-desc">12월 도쿄 여행 최고의 명장면! 푸른빛 크리스마스 조명 거리 한가운데 우뚝 솟은 붉은 도쿄타워 배경으로 가족 인생샷 촬영.</p>
+            <h4 class="tl-title">🎄 롯폰기 케야키자카 일루미네이션 & 🗼 도쿄타워(프린스 시바공원)</h4>
+            <p class="tl-desc">푸른빛 크리스마스 조명 가로수길 중앙에 솟은 붉은 도쿄타워를 배경으로 가족 인생샷 촬영!</p>
           </div>
           <div class="tl-item meal">
             <span class="tl-time">20:30 ~ 22:00 · 저녁 (태블릿 초밥 2회차)</span>
-            <h4 class="tl-title">🍣 우오베이(신칸센 레일 초밥) 또는 신주쿠 히마와리 스시</h4>
-            <p class="tl-desc">터치패드로 주문하면 신칸센 레일로 바로 배달되는 즐거운 초밥 저녁 식사.</p>
+            <h4 class="tl-title">🍣 신주쿠 이타마에 스시(참치 전문) 또는 히마와리 스시</h4>
+            <p class="tl-desc">신주쿠로 돌아와 한국어 태블릿으로 참치 모둠과 제철 초밥을 주문해 든든하게 저녁 식사 후 숙소(4분 거리) 복귀!</p>
           </div>
         </div>
       </div>
 
-      <!-- DAY 3 -->
+      <!-- DAY 3: Dec 3 (Thu) -->
       <div class="day-panel" id="panel-day3">
         <div class="day-banner">
-          <h3>3일차 · 12월 4일(금) : 해리포터 스튜디오(또는 디즈니씨) → 신주쿠 → 2차 와규 파티</h3>
-          <p>온 가족 취향 저격 테마파크 데이! 저녁에는 다리 아프게 줄 설 필요 없이 숙소에서 2차 와규 & 사시미 파티를 엽니다.</p>
+          <h3>3일차 · 12월 3일(목) : 해리포터 스튜디오(또는 디즈니씨) → 이케부쿠로·신주쿠 → 2차 와규 파티</h3>
+          <p>온 가족 취향 저격 테마 데이! 저녁에는 식당 줄 설 필요 없이 숙소 앞 마트 마감 할인을 공략해 2차 와규 & 사시미 파티를 엽니다.</p>
         </div>
         <div class="timeline">
           <div class="tl-item">
             <span class="tl-time">10:00 ~ 14:30 · 테마 선택 코스 (A 또는 B)</span>
             <h4 class="tl-title">🪄 [추천 A] 해리포터 스튜디오 투어 도쿄 / 🎢 [선택 B] 도쿄 디즈니씨</h4>
-            <p class="tl-desc">• <b>A코스(해리포터):</b> 세계 최대 실내 스튜디오에서 호그와트 대연회장·9와 3/4 승강장·버터맥주 체험 후 오후 이케부쿠로/신주쿠 이동<br>• <b>B코스(디즈니씨):</b> 중·고등학생에게 가장 인기 있는 바다 테마 디즈니 파크 전일 코스</p>
+            <p class="tl-desc">• <b>A코스(해리포터):</b> 호그와트 대연회장·9와 3/4 승강장·다이애건 앨리·버터맥주 체험 후 오후 이케부쿠로 이동<br>• <b>B코스(디즈니씨):</b> 중·고등학생에게 가장 인기 있는 바다 테마 디즈니 파크 전일 코스</p>
           </div>
           <div class="tl-item">
             <span class="tl-time">15:00 ~ 18:30</span>
-            <h4 class="tl-title">이케부쿠로 선샤인시티(세계 최대 가챠샵) & 신주쿠 면세 쇼핑</h4>
-            <p class="tl-desc">귀국 시 위탁수하물이 4개(총 60kg)이므로 돈키호테·드럭스토어 선물 쇼핑을 이날 미리 해두면 마지막 날이 훨씬 여유롭습니다.</p>
+            <h4 class="tl-title">이케부쿠로 선샤인시티(세계 최대 가챠샵) & 신주쿠 돈키호테/드럭스토어 쇼핑</h4>
+            <p class="tl-desc">요츠야산초메역까지 마루노우치선으로 한 번에 돌아올 수 있어 양손 무겁게 면세 쇼핑하기에 아주 편합니다.</p>
           </div>
           <div class="tl-item wagyu">
             <span class="tl-time">19:00 ~ 21:30 · 저녁 (숙소 와규 홈파티 2회차)</span>
-            <h4 class="tl-title">🥩 마트 저녁 마감 할인 공략! 2차 와규(꽃등심·부채살) + 마트 초밥/사시미 팩</h4>
-            <p class="tl-desc">19시 이후 마트 정육·해산물 코너의 할인 스티커를 공략해 첫날 가장 맛있었던 와규 부위와 참치 사시미, 딸기/샤인머스캣, 일본 푸딩까지 풀코스로 즐깁니다.</p>
+            <h4 class="tl-title">🥩 마루쇼 총본점 / 산토쿠 마트 저녁 할인 공략! 2차 와규(꽃등심·부채살) + 사시미 파티</h4>
+            <p class="tl-desc">19시 이후 마트 정육·수산 코너의 20%~반값(半額) 할인 스티커를 공략해 최상급 흑모와규와 참치 사시미, 딸기/샤인머스캣, 일본 푸딩까지 풀코스 만찬!</p>
           </div>
         </div>
       </div>
 
-      <!-- DAY 4 -->
+      <!-- DAY 4: Dec 4 (Fri) -->
       <div class="day-panel" id="panel-day4">
         <div class="day-banner">
-          <h3>4일차 · 12월 5일(토) : 메이지신궁·하라주쿠·오모테산도 → 팀랩 플래닛 → 도쿄역 야경</h3>
-          <p>도쿄의 트렌디한 거리 쇼핑과 몰입형 미디어 아트, 그리고 고풍스러운 도쿄역의 마지막 밤을 만끽합니다.</p>
+          <h3>4일차 · 12월 4일(금) : 메이지신궁·하라주쿠·오모테산도 → 팀랩 플래닛 → 도쿄역 야경</h3>
+          <p>도쿄의 트렌디한 패션 거리와 몰입형 미디어 아트, 그리고 도쿄역 마루노우치 일루미네이션을 만끽합니다.</p>
         </div>
         <div class="timeline">
           <div class="tl-item">
             <span class="tl-time">09:30 ~ 11:00</span>
-            <h4 class="tl-title">메이지신궁 울창한 숲길 아침 산책</h4>
+            <h4 class="tl-title">🌲 메이지신궁 울창한 숲길 아침 산책</h4>
             <p class="tl-desc">도심 한복판 거대한 도리이와 편백나무 숲길을 걸으며 상쾌하게 하루를 시작합니다.</p>
           </div>
-          <div class="tl-item">
-            <span class="tl-time">11:00 ~ 14:30 (점심 포함)</span>
-            <h4 class="tl-title">하라주쿠 다케시타 거리(크레페) & 오모테산도·캣스트리트 쇼핑</h4>
-            <p class="tl-desc">10대 자녀들이 좋아하는 스트릿 패션 브랜드 구경 후, 점심으로 <b>돈카츠 마이센 오모테산도 본점</b> 또는 <b>이치란 라멘</b> 식사.</p>
+          <div class="tl-item meal">
+            <span class="tl-time">11:00 ~ 14:30 · 쇼핑 & 점심</span>
+            <h4 class="tl-title">🐷 하라주쿠 다케시타 거리(크레페) & 오모테산도 쇼핑 + '돈카츠 마이센 본점' 점심</h4>
+            <p class="tl-desc">10대 자녀들이 좋아하는 스트릿 패션 브랜드(캣스트리트) 구경 후, 젓가락으로 잘리는 부드러운 돈카츠 명가 <b>마이센 오모테산도 본점</b>(또는 이치란 라멘) 식사.</p>
           </div>
           <div class="tl-item">
             <span class="tl-time">15:30 ~ 17:30</span>
             <h4 class="tl-title">✨ 팀랩 플래닛 도쿄 (teamLab Planets TOKYO · 토요스)</h4>
-            <p class="tl-desc">맨발로 물속과 빛·꽃의 정원을 걷는 환상적인 전시 관람 (반바지 대여 무료 또는 바지 걷기 편한 복장 추천).</p>
+            <p class="tl-desc">맨발로 물속과 빛·생화(꽃)의 정원을 걷는 몰입형 미디어 아트 뮤지엄 관람.</p>
           </div>
-          <div class="tl-item meal">
-            <span class="tl-time">18:00 ~ 20:30 · 저녁 (태블릿 초밥 3회차 또는 야키토리)</span>
-            <h4 class="tl-title">🏛️ 도쿄역 마루노우치 일루미네이션 & 도쿄 캐릭터 스트리트 & 저녁 식사</h4>
-            <p class="tl-desc">붉은 벽돌 도쿄역 야경 감상 및 지하 1층 캐릭터 스트리트 구경 후 마지막 밤 외식! 숙소 복귀 후 위탁수하물 캐리어 4개(각 15kg) 짐 정리.</p>
+          <div class="tl-item">
+            <span class="tl-time">18:00 ~ 20:30 · 저녁</span>
+            <h4 class="tl-title">🏛️ 도쿄역 마루노우치 크리스마스 일루미네이션 & 도쿄 캐릭터 스트리트 & 저녁 식사</h4>
+            <p class="tl-desc">붉은 벽돌 도쿄역 야경 감상 및 지하 1층 캐릭터 스트리트 굿즈 쇼핑 후 저녁 식사! (식사 후 도쿄역 M17에서 마루노우치선 타면 숙소 요츠야산초메역 M11까지 14분 직통!)</p>
           </div>
         </div>
       </div>
 
-      <!-- DAY 5 -->
+      <!-- DAY 5: Dec 5 (Sat) -->
       <div class="day-panel" id="panel-day5">
         <div class="day-banner">
-          <h3>5일차 · 12월 6일(일) : 아침 식사 후 스카이라이너 탑승 → 12:55 나리타 출발</h3>
-          <p>낮 12:55 비행기이므로 오전에는 무리한 관광 없이 여유롭게 공항으로 이동해 면세점 쇼핑을 즐깁니다.</p>
+          <h3>5일차 · 12월 5일(토) : 10:00 체크아웃 → 우에노 공원·아메요코·마지막 초밥 → 18:55 나리타 출발</h3>
+          <p>저녁 18:55 비행기(RF323) 덕분에 마지막 날도 오후 3시 반까지 우에노 관광·점심 초밥·기념품 쇼핑을 여유롭게 즐깁니다!</p>
         </div>
         <div class="timeline">
           <div class="tl-item">
-            <span class="tl-time">08:00 ~ 09:00</span>
-            <h4 class="tl-title">숙소 아침 식사(전날 마트에서 산 빵·푸딩·우유·컵스프) 및 체크아웃</h4>
-            <p class="tl-desc">빠뜨린 물건이나 여권, E-티켓을 확인하고 체크아웃합니다.</p>
+            <span class="tl-time">08:30 ~ 10:00</span>
+            <h4 class="tl-title">숙소 아침 식사 및 짐 정리 후 10:00 체크아웃</h4>
+            <p class="tl-desc">귀국편은 <b>4명 전원 위탁수하물 15kg(총 60kg) + 기내 10kg(총 40kg)</b>이 허용됩니다! 빠뜨린 물건 없이 체크아웃합니다.</p>
           </div>
           <div class="tl-item">
-            <span class="tl-time">09:15 ~ 10:30</span>
-            <h4 class="tl-title">🚅 우에노역(또는 닛포리역)에서 게이세이 스카이라이너 탑승 → 나리타 제2터미널역 하차</h4>
-            <p class="tl-desc">09:40 또는 10:00 스카이라이너를 타면 10:20~10:40경 나리타 공항에 안전하게 도착합니다.</p>
+            <span class="tl-time">10:30 ~ 12:00</span>
+            <h4 class="tl-title">🚅 게이세이 우에노역 코인락커(또는 수하물 보관소)에 캐리어 보관 후 우에노 공원 산책</h4>
+            <p class="tl-desc">공항 직통 스카이라이너 출발역인 게이세이 우에노역에 짐을 맡기면 공항 갈 때 동선이 가장 편합니다.</p>
+          </div>
+          <div class="tl-item meal">
+            <span class="tl-time">12:00 ~ 13:20 · 점심 (태블릿 초밥 3회차)</span>
+            <h4 class="tl-title">🍣 스시로 우에노점 또는 이타마에 스시 우에노점</h4>
+            <p class="tl-desc">한국 돌아가기 전 가족들이 가장 맛있었던 초밥 네타를 마음껏 다시 주문하는 피날레 초밥 오찬!</p>
           </div>
           <div class="tl-item">
-            <span class="tl-time">10:35 ~ 12:30</span>
-            <h4 class="tl-title">나리타 제3터미널(T3) 이동 → 에어로케이 수속(위탁 15kg × 4개) → 면세점 쇼핑</h4>
-            <p class="tl-desc">T3 푸드코트에서 간단한 우동/덮밥 브런치 식사 후 면세점에서 로이즈 생초콜릿·도쿄바나나·시로이코이비토 구매!</p>
+            <span class="tl-time">13:30 ~ 15:00</span>
+            <h4 class="tl-title">🛍️ 아메요코 시장 & 니키노카시(과자 도매점) & 드럭스토어 마지막 쇼핑</h4>
+            <p class="tl-desc">일본 과자·곤약젤리·초콜릿 등 지인 선물용 간식을 가장 저렴하게 구매하고 코인락커에서 캐리어에 쏙 넣습니다.</p>
           </div>
           <div class="tl-item">
-            <span class="tl-time">12:55 ~ 15:25</span>
-            <h4 class="tl-title">✈️ 나리타 출발(RF321 · 좌석 8C~8F) → 15:25 청주국제공항 도착</h4>
-            <p class="tl-desc">즐겁고 안전한 가족여행 마무리!</p>
+            <span class="tl-time">15:20 ~ 16:20</span>
+            <h4 class="tl-title">🚅 게이세이 우에노역에서 스카이라이너 탑승(15:20 또는 15:40 출발) → 나리타 T2역 하차</h4>
+            <p class="tl-desc">41분 만에 나리타 공항 도착 후 무료 셔틀버스/도보로 제3터미널(T3) 에어로케이 카운터로 이동합니다.</p>
+          </div>
+          <div class="tl-item">
+            <span class="tl-time">16:30 ~ 18:55</span>
+            <h4 class="tl-title">✈️ 나리타 T3 수속(위탁 15kg × 4개) & 면세점 쇼핑 → 18:55 출발(RF323) → 21:30 청주 도착!</h4>
+            <p class="tl-desc">면세점에서 로이즈 생초콜릿·도쿄바나나·치즈케이크 구매 및 푸드코트 저녁 간식 후 기분 좋게 청주로 귀국!</p>
           </div>
         </div>
       </div>
@@ -1858,12 +1642,12 @@
       <div class="cards-grid-3">
         <div class="info-card highlight-rose">
           <div>
-            <span class="card-tag">🔥 방문 4주 전 자정 오픈 (11/4 예매!)</span>
+            <span class="card-tag">🔥 방문 4주 전 자정 오픈 (11/3 밤 예매!)</span>
             <h3>1. 시부야 스카이 (SHIBUYA SKY)</h3>
             <p>시부야 스크램블 스퀘어 46층(229m) 야외 루프탑 전망대. 도쿄 최고의 가족 인생샷 명소!</p>
             <ul>
-              <li><b>추천 방문일:</b> 1일차(12/2 수) 16:00~17:00 입장 (일몰+야경 동시 감상)</li>
-              <li><b>예매 팁:</b> 일몰 시간대는 오픈 즉시 매진되므로 클룩·트립닷컴·공식웹에서 4주 전 미리 예매 필수</li>
+              <li><b>추천 방문일:</b> 1일차(12/1 화) 17:30~18:30 입장 (또는 4일차 일몰 시간대)</li>
+              <li><b>예매 팁:</b> 방문 정확히 4주 전 자정에 티켓이 열리므로 클룩·트립닷컴·공식웹에서 사전 예매 필수</li>
             </ul>
           </div>
           <div class="card-actions">
@@ -1873,11 +1657,11 @@
 
         <div class="info-card highlight-rose">
           <div>
-            <span class="card-tag">🪄 3일차 오전 추천 (최소 3~4주 전 예매)</span>
+            <span class="card-tag">🪄 3일차(12/3 목) 오전 추천</span>
             <h3>2. 해리포터 스튜디오 투어 도쿄</h3>
-            <p>이케부쿠로에서 15분 거리(토시마엔역). 세계 최대 규모의 실내 해리포터 테마 스튜디오!</p>
+            <p>세계 최대 규모의 실내 해리포터 테마 스튜디오! (토시마엔역 도보 2분)</p>
             <ul>
-              <li><b>추천 방문일:</b> 3일차(12/4 금) 10:00 또는 10:30 입장 (약 3시간 30분 소요)</li>
+              <li><b>추천 방문일:</b> 3일차(12/3 목) 10:00 또는 10:30 입장 (약 3시간 30분 소요)</li>
               <li><b>포인트:</b> 호그와트 기숙사 대연회장, 9와 3/4 승강장, 다이애건 앨리, 버터맥주 체험</li>
             </ul>
           </div>
@@ -1888,11 +1672,11 @@
 
         <div class="info-card highlight-rose">
           <div>
-            <span class="card-tag">✨ 4일차 오후 추천 (2~3주 전 예매)</span>
+            <span class="card-tag">✨ 4일차(12/4 금) 오후 추천</span>
             <h3>3. 팀랩 플래닛 도쿄 (토요스)</h3>
             <p>맨발로 물속을 걸으며 거대한 빛과 생화(꽃) 공간과 하나가 되는 몰입형 미디어 아트 뮤지엄.</p>
             <ul>
-              <li><b>추천 방문일:</b> 4일차(12/5 토) 15:30 입장</li>
+              <li><b>추천 방문일:</b> 4일차(12/4 금) 15:30 입장</li>
               <li><b>복장 팁:</b> 무릎까지 물이 차는 공간과 거울 바닥이 있어 걷어 올리기 편한 바지 착용 추천 (무료 반바지 대여도 가능)</li>
             </ul>
           </div>
@@ -1958,7 +1742,7 @@
             <ul>
               <li><b>메이지신궁:</b> 하라주쿠역 바로 옆 울창한 천년 숲길 산책</li>
               <li><b>하라주쿠 & 오모테산도:</b> 다케시타 거리 크레페, 캣스트리트 스트릿 패션 편집샵 투어</li>
-              <li><b>도쿄역 마루노우치:</b> 샴페인 골드빛 일루미네이션과 유럽풍 붉은 벽돌 도쿄역 야경 + 지하 1층 <b>도쿄 캐릭터 스트리트</b></li>
+              <li><b>도쿄역 마루노우치:</b> 샴페인 골드빛 일루미네이션과 유럽풍 붉은 벽돌 도쿄역 야경 + 지하 1층 <b>도쿄 캐릭터 스트리트</b> (숙소까지 마루노우치선 14분 직통!)</li>
             </ul>
           </div>
           <div class="card-actions">
@@ -1974,44 +1758,44 @@
          ========================================================= -->
     <section class="cat-section active" data-section="food" id="sec-food">
       <div class="section-header">
-        <h2 class="section-title">🍣 주요 맛집 (태블릿 초밥 BEST 4 & 와규 대형마트 & 필수 맛집)</h2>
+        <h2 class="section-title">🍣 주요 맛집 (태블릿 초밥 BEST 4 & 숙소 앞 와규 마트 & 필수 맛집)</h2>
         <span class="status-pill guide">구글맵 연동</span>
       </div>
 
-      <h3 class="sub-h3">🍣 1. 한국어 태블릿 주문 초밥집 BEST 4</h3>
+      <h3 class="sub-h3">🍣 1. 한국어 태블릿 주문 초밥집 BEST 4 (숙소에서 4분 거리 신주쿠 지점 완비!)</h3>
       <p style="margin:0 0 12px;font-size:13.5px;color:#475569;">
-        일본어를 몰라도 자리의 터치패드(한국어 메뉴 완비)로 사진과 가격을 보며 눈치 보지 않고 편하게 주문할 수 있는 곳들입니다.
+        숙소(요츠야산초메/아케보노바시)에서 4분 거리인 <b>신주쿠</b>에 아래 4대 태블릿 초밥집이 모두 모여 있어 언제든 편하게 방문하실 수 있습니다!
       </p>
       <div class="cards-grid">
         <div class="info-card rank-1">
           <div>
             <span class="card-tag">🚄 3단 신칸센 특급 레일 · 10대 자녀 만족도 1위</span>
             <h3>① 우오베이 (Uobei · 魚べい)</h3>
-            <div style="font-size:12.5px;color:var(--muted);">시부야 도겐자카점 / 신주쿠 가부키초점</div>
+            <div style="font-size:12.5px;color:var(--muted);">신주쿠 가부키초점 / 시부야 도겐자카점</div>
             <ul>
               <li>주문 즉시 갓 쥔 초밥이 3단 신칸센/F1 카 레일을 타고 자리 앞으로 슝 날아옵니다.</li>
               <li>대부분 한 접시 120~200엔대로 가성비가 압도적이며, 새우튀김·감자튀김·라멘·케이크·푸딩까지 있어 아이들이 가장 좋아합니다.</li>
             </ul>
           </div>
           <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Uobei+Shibuya+Dogenzaka" target="_blank" rel="noopener">📍 우오베이 시부야점</a>
             <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Uobei+Shinjuku+Kabukicho" target="_blank" rel="noopener">📍 우오베이 신주쿠점</a>
+            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Uobei+Shibuya+Dogenzaka" target="_blank" rel="noopener">📍 우오베이 시부야점</a>
           </div>
         </div>
 
         <div class="info-card rank-1">
           <div>
-            <span class="card-tag">🖥️ 초대형 터치스크린(디지로) · 일본 1위 체인</span>
+            <span class="card-tag">🖥️ 초대형 터치스크린(디지로) · 숙소에서 2정거장!</span>
             <h3>② 스시로 (Sushiro · スシロー)</h3>
-            <div style="font-size:12.5px;color:var(--muted);">우에노점 / 시부야점 / 신주쿠 산초메점 / 이케부쿠로점</div>
+            <div style="font-size:12.5px;color:var(--muted);">신주쿠 산초메점 (숙소에서 지하철 3분!) / 우에노점 / 시부야점</div>
             <ul>
-              <li>도심 지점들은 벽면 전체가 거대한 터치스크린(Digiro)으로 되어 있어 손가락으로 초밥을 골라 담는 재미가 쏠쏠합니다.</li>
-              <li>우에노점은 첫날 스카이라이너에서 내려 점심으로 바로 들르기에 동선이 완벽합니다.</li>
+              <li><b>스시로 신주쿠 산초메점</b>은 숙소 앞 요츠야산초메역(M11)에서 마루노우치선으로 단 2정거장(3분) 거리에 있습니다!</li>
+              <li>벽면 전체가 거대한 터치스크린(Digiro)으로 되어 있어 손가락으로 초밥을 골라 담는 재미가 쏠쏠합니다.</li>
             </ul>
           </div>
           <div class="card-actions">
+            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Sushiro+Shinjuku+Sanchome" target="_blank" rel="noopener">📍 스시로 신주쿠산초메점</a>
             <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Sushiro+Ueno+Tokyo" target="_blank" rel="noopener">📍 스시로 우에노점</a>
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Sushiro+Shinjuku+Sanchome" target="_blank" rel="noopener">📍 스시로 신주쿠산초메</a>
           </div>
         </div>
 
@@ -2019,15 +1803,15 @@
           <div>
             <span class="card-tag">🐟 생참치(혼마구로) 전문 · 부모님 대만족</span>
             <h3>③ 이타마에 스시 (Itamae Sushi · 板前寿司)</h3>
-            <div style="font-size:12.5px;color:var(--muted);">우에노점 / 신주쿠 토호시네마점 / 도쿄역점</div>
+            <div style="font-size:12.5px;color:var(--muted);">신주쿠 토호시네마점 / 신주쿠 히가시구치점 / 우에노점</div>
             <ul>
               <li>100엔대 회전초밥보다 한 단계 높은 본격 스시 레스토랑입니다.</li>
               <li>쾌적한 4인 테이블석에서 한국어 태블릿으로 참치 부위별 모둠 세트와 단품 초밥을 편하게 주문할 수 있습니다.</li>
             </ul>
           </div>
           <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Itamae+Sushi+Ueno" target="_blank" rel="noopener">📍 이타마에 스시 우에노점</a>
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Itamae+Sushi+Shinjuku+Toho" target="_blank" rel="noopener">📍 이타마에 신주쿠점</a>
+            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Itamae+Sushi+Shinjuku+Toho" target="_blank" rel="noopener">📍 이타마에 신주쿠 토호점</a>
+            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Itamae+Sushi+Ueno" target="_blank" rel="noopener">📍 이타마에 우에노점</a>
           </div>
         </div>
 
@@ -2047,7 +1831,7 @@
         </div>
       </div>
 
-      <h3 class="sub-h3">🥩 2. 숙소 와규 홈파티용 대형마트 3대장 & 부위별 일본어 표기</h3>
+      <h3 class="sub-h3">🥩 2. 마트에서 와규 고르는 부위별 일본어 라벨 치트키</h3>
       <div class="vocab-grid">
         <div class="vocab-box">
           <span class="vocab-jp">黒毛和牛</span>
@@ -2075,51 +1859,16 @@
         </div>
       </div>
 
-      <div class="cards-grid-3">
-        <div class="info-card">
-          <div>
-            <span class="card-tag">🥩 우에노·오카치마치 숙소 시 1순위</span>
-            <h3>요시이케 본점 (Yoshiike)</h3>
-            <p>JR 오카치마치역 바로 앞 9층 식자재 백화점. B1~1층 정육·수산 코너에 A5 흑모와규 등심·살치살·갈비살과 최상급 참치 사시미가 가득합니다.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Yoshiike+Okachimachi+Tokyo" target="_blank" rel="noopener">📍 구글맵</a>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div>
-            <span class="card-tag">🛒 오츠카·스가모 숙소 시 1순위</span>
-            <h3>라이프 (LIFE 신오츠카/스가모)</h3>
-            <p>도쿄 현지인이 가장 애용하는 대형 마트. 마블링이 뛰어난 흑모와규 팩이 1,500~2,500엔대로 저렴하며 즉석밥·샐러드·과일·주류 코너가 넓습니다.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=LIFE+Supermarket+Shin-Otsuka+Tokyo" target="_blank" rel="noopener">📍 구글맵</a>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div>
-            <span class="card-tag">✨ 오츠카역 도보 2분 프리미엄 마트</span>
-            <h3>사카가미 (Sakagami 오츠카점)</h3>
-            <p>오츠카역 남쪽 출구 바로 앞에 위치한 고급 슈퍼마켓. 엄선된 와규 정육과 수제 반찬, 고급 디저트류를 사기에 아주 편리합니다.</p>
-          </div>
-          <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Super+Sakagami+Otsuka" target="_blank" rel="noopener">📍 구글맵</a>
-          </div>
-        </div>
-      </div>
-
       <h3 class="sub-h3">🍱 3. 초밥·와규 외 점심에 가기 좋은 도쿄 대표 맛집 4선</h3>
       <div class="cards-grid">
         <div class="info-card">
           <div>
             <span class="card-tag">🔥 2일차 점심 추천 · 화로에 구워 먹는 소고기 카츠</span>
-            <h3>모토무라 규카츠 (우에노점 / 아사쿠사점 / 시부야점)</h3>
+            <h3>모토무라 규카츠 (신주쿠점 / 우에노점 / 아사쿠사점)</h3>
             <p>겉은 바삭하고 속은 레어로 튀겨낸 규카츠를 개인 미니 돌판 화로에 지글지글 구워 와사비·특제 간장소스에 찍어 먹는 인기 맛집.</p>
           </div>
           <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Gyukatsu+Motomura+Ueno" target="_blank" rel="noopener">📍 모토무라 규카츠 우에노</a>
+            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Gyukatsu+Motomura+Asakusa" target="_blank" rel="noopener">📍 모토무라 규카츠 아사쿠사</a>
           </div>
         </div>
 
@@ -2148,11 +1897,11 @@
         <div class="info-card">
           <div>
             <span class="card-tag">🍜 청소년 최애 · 한국어 주문서 완벽 지원</span>
-            <h3>이치란 라멘 (우에노 아메요코점 / 하라주쿠점 / 신주쿠점)</h3>
+            <h3>이치란 라멘 (신주쿠 중앙동쪽출구점 / 하라주쿠점 / 우에노점)</h3>
             <p>티켓 자판기(한국어 지원)로 결제 후 국물 농도·마늘·비밀소스를 취향대로 체크해 먹는 진한 돈코츠 라멘.</p>
           </div>
           <div class="card-actions">
-            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Ichiran+Ueno+Atre" target="_blank" rel="noopener">📍 이치란 우에노점</a>
+            <a class="btn-link primary" href="https://www.google.com/maps/search/?api=1&query=Ichiran+Shinjuku+Central+East+Exit" target="_blank" rel="noopener">📍 이치란 신주쿠점</a>
           </div>
         </div>
       </div>
@@ -2183,33 +1932,33 @@
   <nav class="bottom-nav" aria-label="모바일 하단 빠른 메뉴">
     <button class="b-btn active" data-cat="all"><span class="icon">📑</span><span>전체</span></button>
     <button class="b-btn" data-cat="flights"><span class="icon">✈️</span><span>항공편</span></button>
-    <button class="b-btn" data-cat="transport"><span class="icon">🚅</span><span>교통편</span></button>
-    <button class="b-btn" data-cat="hotels"><span class="icon">🏠</span><span>숙소</span></button>
+    <button class="b-btn" data-cat="hotels"><span class="icon">🏠</span><span>확정숙소</span></button>
+    <button class="b-btn" data-cat="transport"><span class="icon">🚅</span><span>노선도</span></button>
     <button class="b-btn" data-cat="itinerary"><span class="icon">🗓️</span><span>일정</span></button>
     <button class="b-btn" data-cat="spots"><span class="icon">🗼</span><span>관광지</span></button>
     <button class="b-btn" data-cat="food"><span class="icon">🍣</span><span>맛집</span></button>
   </nav>
 
   <footer>
-    2026 도쿄 4인 가족여행 마스터 플랜 · 최종 업데이트: 2026.10.24
+    2026 도쿄 4인 가족여행 마스터 플랜 (12.01~12.05) · 최종 업데이트: 2026.10.25
   </footer>
 
   <script>
-    // 1. D-Day Calculation
+    // 1. D-Day Calculation (Target: 2026-12-01)
     (function() {
-      const target = new Date('2026-12-02T00:00:00+09:00');
+      const target = new Date('2026-12-01T00:00:00+09:00');
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
       const badge = document.getElementById('dday-badge');
       if (diff > 0) {
-        badge.textContent = `✈️ 12.02(수) 출발 · D-${diff}`;
+        badge.textContent = `✈️ 12.01(화) 출발 · D-${diff}`;
       } else if (diff === 0) {
         badge.textContent = `🎉 오늘 출발! (D-Day)`;
       } else if (diff >= -4) {
         badge.textContent = `🇯🇵 도쿄 여행 중 (${Math.abs(diff) + 1}일차)`;
       } else {
-        badge.textContent = `✈️ 2026.12.02~12.06 도쿄 여행`;
+        badge.textContent = `✈️ 2026.12.01~12.05 도쿄 여행`;
       }
     })();
 
@@ -2276,33 +2025,33 @@
 
     const stationData = {
       narita: {
-        title: '✈️ 나리타 국제공항 (T3 에어로케이 ↔ T2 지하철역)',
-        desc: 'T3 입국 후 무료셔틀/도보(10분)로 T2역 이동 → 스카이라이너(우에노 41분) 또는 스카이액세스 특급(오시아게 50분 직통) 탑승!',
+        title: '✈️ 나리타 국제공항 (12/1 09:35 도착 · 12/5 18:55 출발)',
+        desc: 'T3 입국 후 무료셔틀/도보로 T2역 이동 → 갈 때는 나리타 익스프레스(도쿄역/신주쿠 직통), 올 때는 우에노에서 스카이라이너(41분 직통) 추천!',
         query: 'Narita+Airport+Terminal+2+Station'
       },
-      oshiage: {
-        title: '🏠 오시아게역 (A20 / Z14 · 스카이트리 앞역)',
-        desc: '후보 1호 숙소(아스틸레 오시아게 도보 6분) · B3 출구 앞 라이프 센트럴 스퀘어 대형마트(A5 와규) · 한조몬선(시부야/도쿄역 직통) · 아사쿠사선(센소지 3분)',
-        query: 'Oshiage+Station+Tokyo'
+      stay: {
+        title: '🏠 확정숙소: Stay Ari Arakicho A (패밀리 아파트 701호)',
+        desc: '요츠야산초메역(M11, 4번 출구 도보 5분) & 아케보노바시역(S03, A1/A4 출구 도보 4분) · 마루쇼 총본점·다이에·산토쿠 마트 도보 2~4분!',
+        query: '18-7+Arakicho+Shinjuku+Tokyo'
+      },
+      akasaka: {
+        title: '⚡ 아카사카미츠케역 (M13 / G05 · 3초 평면환승역)',
+        desc: '숙소(요츠야산초메역)에서 마루노우치선으로 2정거장 오면, 내린 승강장 바로 맞은편 열차가 오모테산도·시부야행 긴자선입니다!',
+        query: 'Akasaka-mitsuke+Station+Tokyo'
       },
       asakusa: {
-        title: '🏮 아사쿠사역 (A18 / G19)',
-        desc: '센소지 & 카미나리몬(1번/A4 출구 도보 2분) · 나카미세 간식 거리 · 다이고쿠야 텐동 · 스미다강 스카이트리 뷰',
+        title: '🏮 아사쿠사역 (G19 / A18)',
+        desc: '센소지 & 카미나리몬(1번 출구 도보 2분) · 나카미세 간식 거리 · 다이고쿠야 텐동 · 스미다강 스카이트리 뷰',
         query: 'Sensoji+Temple+Asakusa'
       },
       ueno: {
         title: '🚅 우에노 · 오카치마치역 (G16 / H18 / JY05)',
-        desc: '게이세이 스카이라이너 종점 · 요시이케 본점(A5 와규 마트) · 스시로 우에노점 · 이타마에 스시 · 우에노 공원 & 아메요코 시장',
-        query: 'Ueno+Station+Tokyo'
-      },
-      otsuka: {
-        title: '🛒 오츠카 · 닛포리역 (JY12 / JY07)',
-        desc: '닛포리역(스카이라이너↔야마노테선 초고속 환승) · 오츠카역(사카가미 마트, 라이프 신오츠카점, 독채 에어비앤비 밀집지)',
-        query: 'Otsuka+Station+Tokyo'
+        desc: '마지막 날(12/5 토) 캐리어 보관 후 우에노 공원·아메요코 시장·스시로 우에노점 점심 → 15:20/15:40 스카이라이너로 나리타공항 41분 직통!',
+        query: 'Keisei+Ueno+Station'
       },
       ikebukuro: {
-        title: '🎮 이케부쿠로역 (JY13)',
-        desc: '선샤인시티(세계 최대 가챠샵·메가 포켓몬센터) · 해리포터 스튜디오 가는 세이부 이케부쿠로선 출발역(17분 소요)',
+        title: '🎮 이케부쿠로역 (M25 / JY13)',
+        desc: '숙소(요츠야산초메역)에서 마루노우치선 직통 · 선샤인시티(세계 최대 가챠샵·포켓몬센터) · 해리포터 스튜디오 가는 세이부선 출발역',
         query: 'Sunshine+City+Ikebukuro'
       },
       toshimaen: {
@@ -2311,18 +2060,18 @@
         query: 'Warner+Bros.+Studio+Tour+Tokyo+The+Making+of+Harry+Potter'
       },
       shinjuku: {
-        title: '🍣 신주쿠역 (JY17)',
-        desc: '태블릿 초밥 맛집(우오베이 가부키초점, 이타마에 스시 토호시네마점, 히마와리 스시, 스시로) · 대형 백화점 및 드럭스토어 쇼핑',
+        title: '🍣 신주쿠역 · 신주쿠산초메역 (숙소에서 지하철 3~4분!)',
+        desc: '스시로 신주쿠산초메점 · 우오베이 가부키초점 · 이타마에 스시 토호시네마점 · 히마와리 스시 · 이세탄 백화점 & 돈키호테',
         query: 'Shinjuku+Station+Tokyo'
       },
       omotesando: {
-        title: '🌲 하라주쿠(JY19) · 오모테산도역(Z02 / G02)',
+        title: '🌲 하라주쿠(JY19) · 오모테산도역(G02)',
         desc: '메이지신궁 숲길 · 다케시타 거리 크레페 · 캣스트리트 쇼핑 · 돈카츠 마이센 오모테산도 본점(오모테산도역 A2 출구 도보 3분)',
         query: 'Tonkatsu+Maisen+Aoyama+Honten'
       },
       shibuya: {
-        title: '🌆 시부야역 (Z01 / G01 / JY20)',
-        desc: '시부야 스카이 전망대(B6 출구 직결) · 스크램블 교차로 · 시부야 파르코 6층(닌텐도·포켓몬센터) · 우오베이 시부야 도겐자카점(신칸센 레일 초밥)',
+        title: '🌆 시부야역 (G01 / JY20)',
+        desc: '시부야 스카이 전망대(B6 출구 직결) · 스크램블 교차로 · 시부야 파르코 6층(닌텐도·포켓몬센터) · 우오베이 시부야 도겐자카점',
         query: 'SHIBUYA+SKY+Tokyo'
       },
       akihabara: {
@@ -2331,34 +2080,24 @@
         query: 'Akihabara+Station+Tokyo'
       },
       tokyo: {
-        title: '🏛️ 도쿄역(JY01) · 오테마치역(Z08)',
+        title: '🏛️ 도쿄역 (M17 · 숙소에서 마루노우치선 14분 직통!)',
         desc: '마루노우치 중앙출구(붉은 벽돌 도쿄역 야경 & 일루미네이션) · 야에스 지하중앙구(도쿄 캐릭터 스트리트 굿즈 총집합)',
         query: 'Tokyo+Station+Marunouchi'
       },
       ginza: {
-        title: '🛍️ 긴자역(G09 / H09) · 히가시긴자역(A11)',
+        title: '🛍️ 긴자역 (M16 · 숙소에서 마루노우치선 11분 직통!)',
         desc: '긴자 중앙거리 보행자 천국 · 유니클로 글로벌 플래그십 스토어(12층 규모) · 긴자 백화점 쇼핑',
         query: 'Uniqlo+Ginza+Tokyo'
       },
       roppongi: {
-        title: '🎄 롯폰기역(H04 / E23) · 다이몬역(A09)',
+        title: '🎄 롯폰기역(H04) · 도쿄타워(카미야초 H05 / 다이몬 A09)',
         desc: '롯폰기역 1C 출구(케야키자카 거리 크리스마스 일루미네이션 & 도쿄타워 뷰) · 프린스 시바공원 도쿄타워 야경 포토존',
         query: 'Roppongi+Keyakizaka+Dori'
-      },
-      kinshicho: {
-        title: '🛒 긴시초역 (Z13 / JR 소부선)',
-        desc: '한조몬선 & JR 소부선 환승 요지 · 역 앞 라이프(LIFE) 마트 및 아카짱혼포/쇼핑몰 밀집',
-        query: 'Kinshicho+Station+Tokyo'
       },
       toyosu: {
         title: '✨ 신토요스역 (유리카모메 U15)',
         desc: '팀랩 플래닛 도쿄 (역 출구 바로 앞 도보 1분) · 맨발로 물과 빛·꽃의 공간을 걷는 몰입형 미디어 아트 뮤지엄',
         query: 'teamLab+Planets+TOKYO'
-      },
-      disney: {
-        title: '🎢 도쿄 디즈니 리조트 (마이하마역)',
-        desc: '3일차 선택 코스 B · 전 세계 유일 바다 테마의 도쿄 디즈니씨(DisneySea) & 판타지 스프링스',
-        query: 'Tokyo+DisneySea'
       }
     };
 
@@ -2377,32 +2116,32 @@
 
     // 4. Interactive Checklists with localStorage
     const prepItems = [
-      ['prep-flight', '✅ 에어로케이 왕복 항공권 발권 및 앞좌석(7열·8열) 지정 완료', true],
+      ['prep-flight', '✅ 에어로케이 왕복 항공권 발권 완료 (12/1 07:25 출국 ~ 12/5 18:55 귀국)', true],
+      ['prep-hotel', '✅ 신주쿠 숙소 예약 완료 (Stay Ari Arakicho A 701호 · HMJ8RS9T5M)', true],
       ['prep-passport', '4인 가족 여권 만료일 6개월 이상 남았는지 확인', false],
-      ['prep-hotel', '숙소 예약 확정 (우에노/오카치마치 또는 오츠카 · 주방/큰침대 2개+)', false],
-      ['prep-shibuya', '시부야 스카이 전망대 일몰 시간대 예매 (11월 4일 자정 오픈 주의!)', false],
-      ['prep-theme', '3일차 해리포터 스튜디오 (또는 도쿄 디즈니씨) 입장권 사전 예매', false],
-      ['prep-teamlab', '4일차 팀랩 플래닛 도쿄 (토요스) 입장권 사전 예매', false],
-      ['prep-skyliner', '게이세이 스카이라이너 왕복 할인권 + 도쿄 서브웨이 티켓(또는 Suica) 준비', false],
+      ['prep-shibuya', '시부야 스카이 전망대 티켓 예매 (방문 4주 전인 11월 3일 자정 오픈!)', false],
+      ['prep-theme', '3일차(12/3 목) 해리포터 스튜디오 (또는 도쿄 디즈니씨) 입장권 사전 예매', false],
+      ['prep-teamlab', '4일차(12/4 금) 팀랩 플래닛 도쿄 (토요스) 입장권 사전 예매', false],
+      ['prep-skyliner', '공항특급열차(N\'EX / 스카이라이너) 할인권 & Suica 교통카드 준비', false],
       ['prep-esim', '4인 각자 휴대폰 eSIM / 유심 / 가족 로밍 신청', false],
       ['prep-card', '트래블로그 / 트래블월렛 카드 발급 및 엔화 현금(약 3~4만 엔) 환전', false],
       ['prep-vjw', '출발 3일 전 Visit Japan Web 4인 등록 및 입국·세관 QR코드 캡처', false]
     ];
 
     const packItems = [
-      ['pack-eticket', '여권 4개 + 에어로케이 E-티켓 인쇄본(또는 휴대폰 PDF 저장)', false],
-      ['pack-luggage', '출국 시 위탁 캐리어 2개(최성우·유태현 명의 각 15kg) 무게 확인', false],
+      ['pack-eticket', '여권 4개 + 에어로케이 E-티켓 3건 & 에어비앤비 예약확인서(HMJ8RS9T5M) 저장', false],
+      ['pack-luggage', '출국 시 위탁 캐리어 3개(최성우·유태현·최수민 명의 각 15kg, 총 45kg) 확인', false],
       ['pack-adapter', '110V 돼지코 어댑터 + 한국형 3~4구 멀티탭 (4인 휴대폰 동시 충전용)', false],
       ['pack-battery', '보조배터리 (반드시 기내 휴대 수하물로 반입! 위탁 금지)', false],
-      ['pack-ecobag', '튼튼한 장바구니 / 에코백 2개 (대형마트 와규·음료 장보기용)', false],
-      ['pack-wagyu', '(선택) 한국 쌈장 소포장 / 김치캔 / 일회용 키친타월 조금 (와규 파티용)', false],
+      ['pack-ecobag', '튼튼한 장바구니 / 에코백 2개 (마루쇼 총본점·다이에 마트 와규 장보기용)', false],
+      ['pack-wagyu', '(선택) 한국 쌈장 소포장 / 김치캔 / 키친타월 조금 (와규 홈파티용)', false],
       ['pack-clothes', '얇은 여러 겹 옷(히트텍·니트·가디건) + 가벼운 패딩/코트 (실내 난방 대비)', false],
       ['pack-shoes', '하루 15,000보 이상 걸어도 발이 가장 편한 운동화', false],
       ['pack-meds', '소화제·진통제·밴드 등 가족 상비약 및 개인 복용약', false],
       ['pack-apps', '구글 맵(Google Maps) · 파파고(마트 라벨 이미지 번역용) 앱 설치', false]
     ];
 
-    const STORAGE_KEY = 'tokyo2026_checks_v1';
+    const STORAGE_KEY = 'tokyo2026_checks_v2';
     let savedChecks = {};
     try {
       savedChecks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
