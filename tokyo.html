@@ -425,6 +425,98 @@
     .vocab-jp { font-size: 17px; font-weight: 900; color: #be123c; display: block; }
     .vocab-kr { font-size: 12px; font-weight: 700; color: #4c0519; }
 
+    /* Subway Line Visual Cards */
+    .subway-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 12px 0 18px;
+    }
+    .subway-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      background: #ffffff;
+    }
+    .subway-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .line-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      height: 28px;
+      padding: 0 8px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 13.5px;
+      letter-spacing: 0.5px;
+    }
+    .subway-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+    }
+    .subway-sub {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .station-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 6px 2px 8px;
+      scrollbar-width: thin;
+    }
+    .st-node {
+      flex: 0 0 auto;
+      min-width: 125px;
+      border-radius: 9px;
+      padding: 8px 10px;
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .st-code {
+      font-size: 11px;
+      font-weight: 900;
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #fff;
+      margin-bottom: 4px;
+      width: fit-content;
+    }
+    .st-name {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 3px;
+    }
+    .st-spot {
+      font-size: 11.5px;
+      color: #475569;
+      line-height: 1.35;
+    }
+    .st-arrow {
+      display: flex;
+      align-items: center;
+      color: #94a3b8;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
     /* Day Tabs for Itinerary */
     .day-tabs {
       display: flex;
@@ -815,6 +907,273 @@
             </ul>
           </div>
         </div>
+      </div>
+
+      <h3 class="sub-h3">3️⃣ 주요 관광지 연결 도쿄 지하철·전철 핵심 노선도 (공식 색상·기호)</h3>
+      <p style="margin:0 0 10px;font-size:13.5px;color:#475569;">
+        도쿄 지하철은 <b>노선 색깔과 알파벳+숫자(역 번호)</b>만 보고 따라가면 절대 길을 잃지 않습니다! (모바일에서는 좌우로 밀어서 역 순서를 확인하세요)
+      </p>
+
+      <div class="subway-list">
+        <!-- Hanzomon Line (Z) -->
+        <div class="subway-card" style="border-left:5px solid #8F76D6;">
+          <div class="subway-head">
+            <span class="line-badge" style="background:#8F76D6;">Z</span>
+            <h4 class="subway-title">도쿄메트로 한조몬선 (보라색)</h4>
+            <span class="subway-sub">⭐ 오시아게(숙소 후보)에서 도쿄역·오모테산도·시부야까지 환승 없이 한 번에 직통!</span>
+          </div>
+          <div class="station-flow">
+            <div class="st-node" style="border-color:#8F76D6;background:#faf5ff;">
+              <span class="st-code" style="background:#8F76D6;">Z 14</span>
+              <div class="st-name">오시아게 (스카이트리)</div>
+              <div class="st-spot">🏠 숙소 후보 1호<br>🛒 라이프 대형마트</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#8F76D6;">Z 09</span>
+              <div class="st-name">미츠코시마에</div>
+              <div class="st-spot">🛍️ 니혼바시 백화점<br>(긴자선 환승)</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#8F76D6;">Z 08</span>
+              <div class="st-name">오테마치 (도쿄역)</div>
+              <div class="st-spot">🏛️ 도쿄역 마루노우치<br>🧸 캐릭터 스트리트</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#8F76D6;">Z 02</span>
+              <div class="st-name">오모테산도</div>
+              <div class="st-spot">🐷 돈카츠 마이센 본점<br>🛍️ 캣스트리트·하라주쿠</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node" style="border-color:#8F76D6;background:#faf5ff;">
+              <span class="st-code" style="background:#8F76D6;">Z 01</span>
+              <div class="st-name">시부야</div>
+              <div class="st-spot">🌆 시부야 스카이·파르코<br>🍣 우오베이 초밥</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Asakusa Line (A) -->
+        <div class="subway-card" style="border-left:5px solid #E85298;">
+          <div class="subway-head">
+            <span class="line-badge" style="background:#E85298;">A</span>
+            <h4 class="subway-title">도에이 아사쿠사선 (장미색 · 나리타 스카이액세스 직결)</h4>
+            <span class="subway-sub">⭐ 나리타공항 ↔ 오시아게 ↔ 아사쿠사(3분) ↔ 히가시긴자 ↔ 다이몬(도쿄타워) 직통!</span>
+          </div>
+          <div class="station-flow">
+            <div class="st-node">
+              <span class="st-code" style="background:#0284c7;">KS</span>
+              <div class="st-name">나리타공항 (T2역)</div>
+              <div class="st-spot">✈️ 스카이액세스 특급<br>(오시아게 50분 직통)</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node" style="border-color:#E85298;background:#fff1f2;">
+              <span class="st-code" style="background:#E85298;">A 20</span>
+              <div class="st-name">오시아게</div>
+              <div class="st-spot">🏠 숙소 후보 1호<br>🗼 도쿄 스카이트리</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#E85298;">A 18</span>
+              <div class="st-name">아사쿠사 (3분)</div>
+              <div class="st-spot">🏮 센소지·카미나리몬<br>🍡 나카미세 간식거리</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#E85298;">A 11</span>
+              <div class="st-name">히가시긴자</div>
+              <div class="st-spot">🛍️ 긴자 중앙거리<br>유니클로 12층 본점</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#E85298;">A 09</span>
+              <div class="st-name">다이몬 (시바공원)</div>
+              <div class="st-spot">🗼 도쿄타워 포토존<br>(오에도선 롯폰기 환승)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JR Yamanote Line (JY) -->
+        <div class="subway-card" style="border-left:5px solid #65a30d;">
+          <div class="subway-head">
+            <span class="line-badge" style="background:#65a30d;">JY</span>
+            <h4 class="subway-title">JR 야마노테선 (연두색 지상 순환선)</h4>
+            <span class="subway-sub">⭐ 도쿄의 2호선! 우에노·아키하바라·도쿄역·시부야·하라주쿠·신주쿠·이케부쿠로 연결</span>
+          </div>
+          <div class="station-flow">
+            <div class="st-node" style="border-color:#65a30d;background:#f7fee7;">
+              <span class="st-code" style="background:#65a30d;">JY 05</span>
+              <div class="st-name">우에노 / 오카치마치</div>
+              <div class="st-spot">🚅 스카이라이너 종점<br>🥩 요시이케·스시로</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#65a30d;">JY 03</span>
+              <div class="st-name">아키하바라</div>
+              <div class="st-spot">🎮 피규어·가챠샵<br>전자상가 거리</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#65a30d;">JY 01</span>
+              <div class="st-name">도쿄역</div>
+              <div class="st-spot">🏛️ 마루노우치 야경<br>🧸 캐릭터 스트리트</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#65a30d;">JY 20</span>
+              <div class="st-name">시부야</div>
+              <div class="st-spot">🌆 시부야 스카이<br>스크램블·파르코</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#65a30d;">JY 19</span>
+              <div class="st-name">하라주쿠</div>
+              <div class="st-spot">🌲 메이지신궁 숲길<br>다케시타 크레페</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#65a30d;">JY 17</span>
+              <div class="st-name">신주쿠</div>
+              <div class="st-spot">🍣 이타마에·히마와리<br>대형 백화점·쇼핑</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#65a30d;">JY 13</span>
+              <div class="st-name">이케부쿠로</div>
+              <div class="st-spot">🪄 해리포터선 환승<br>선샤인시티 가챠샵</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ginza Line (G) & Hibiya Line (H) -->
+        <div class="subway-card" style="border-left:5px solid #FF9500;">
+          <div class="subway-head">
+            <span class="line-badge" style="background:#FF9500;">G</span>
+            <h4 class="subway-title">도쿄메트로 긴자선 (주황색) & 히비야선 (은회색 H)</h4>
+            <span class="subway-sub">⭐ 아사쿠사 ↔ 우에노 ↔ 아키하바라 ↔ 긴자 ↔ 롯폰기(일루미네이션) ↔ 시부야 핵심 연결</span>
+          </div>
+          <div class="station-flow">
+            <div class="st-node">
+              <span class="st-code" style="background:#FF9500;">G 19</span>
+              <div class="st-name">아사쿠사</div>
+              <div class="st-spot">🏮 센소지·나카미세<br>우에노까지 5분</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#FF9500;">G 16 / H 18</span>
+              <div class="st-name">우에노</div>
+              <div class="st-spot">🍣 스시로·이타마에<br>우에노 공원·아메요코</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#FF9500;">G 09 / H 09</span>
+              <div class="st-name">긴자</div>
+              <div class="st-spot">🛍️ 긴자 보행자천국<br>유니클로 12층 본점</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#64748b;">H 05</span>
+              <div class="st-name">카미야초 (히비야선)</div>
+              <div class="st-spot">🗼 도쿄타워 도보 7분</div>
+            </div>
+            <div class="st-arrow">↔</div>
+            <div class="st-node">
+              <span class="st-code" style="background:#64748b;">H 04</span>
+              <div class="st-name">롯폰기 (히비야선)</div>
+              <div class="st-spot">🎄 케야키자카 거리<br>크리스마스 일루미네이션</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-h3">4️⃣ 주요 관광 스팟별 [하차역 · 출구 번호 · 이동 루트] 한눈에 보기</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>관광지 / 맛집 스팟</th>
+              <th>하차역 (노선 기호)</th>
+              <th>가장 가까운 출구</th>
+              <th>오시아게역(숙소후보) 출발 기준</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>🌆 시부야 스카이 / 스크램블</b></td>
+              <td><b>시부야역</b> (<b style="color:#8F76D6;">Z01</b> / <b style="color:#FF9500;">G01</b> / <b style="color:#65a30d;">JY20</b>)</td>
+              <td><b>B6 출구</b> (스크램블 스퀘어 직결)</td>
+              <td><b style="color:#8F76D6;">한조몬선(Z)</b> <b>환승 없이 34분 직통!</b></td>
+            </tr>
+            <tr>
+              <td><b>🎮 시부야 파르코(닌텐도·포켓몬) / 우오베이</b></td>
+              <td><b>시부야역</b> (<b style="color:#8F76D6;">Z01</b> / <b style="color:#65a30d;">JY20</b>)</td>
+              <td><b>하치코 출구(A6b)</b> 도보 5분</td>
+              <td><b style="color:#8F76D6;">한조몬선(Z)</b> <b>환승 없이 34분 직통!</b></td>
+            </tr>
+            <tr>
+              <td><b>🏮 아사쿠사 센소지 / 카미나리몬</b></td>
+              <td><b>아사쿠사역</b> (<b style="color:#E85298;">A18</b> / <b style="color:#FF9500;">G19</b>)</td>
+              <td><b>A4 출구</b> 또는 <b>1번 출구</b> (도보 2분)</td>
+              <td><b style="color:#E85298;">아사쿠사선(A)</b> <b>2정거장 · 3분 직통!</b></td>
+            </tr>
+            <tr>
+              <td><b>🛍️ 긴자 중앙거리 / 유니클로 12층</b></td>
+              <td><b>긴자역</b> (<b style="color:#FF9500;">G09</b>) / <b>히가시긴자역</b> (<b style="color:#E85298;">A11</b>)</td>
+              <td>긴자역 <b>A2 출구</b> / 히가시긴자 <b>A1 출구</b></td>
+              <td><b style="color:#E85298;">아사쿠사선(A)</b> 히가시긴자역 <b>16분 직통!</b></td>
+            </tr>
+            <tr>
+              <td><b>🎄 롯폰기 케야키자카 일루미네이션</b></td>
+              <td><b>롯폰기역</b> (<b style="color:#64748b;">H04</b> / <b style="color:#be185d;">E23</b>)</td>
+              <td><b>1C 출구</b> (롯폰기힐즈 연결)</td>
+              <td>아사쿠사선 다이몬역 → 오에도선(E) 롯폰기 (총 28분)</td>
+            </tr>
+            <tr>
+              <td><b>🗼 도쿄타워 / 프린스 시바공원</b></td>
+              <td><b>아카바네바시역</b> (<b style="color:#be185d;">E21</b>) / <b>다이몬역</b> (<b style="color:#E85298;">A09</b>)</td>
+              <td>아카바네바시 출구 도보 3분 / 다이몬 A6 도보 10분</td>
+              <td><b style="color:#E85298;">아사쿠사선(A)</b> 다이몬역 <b>20분 직통!</b></td>
+            </tr>
+            <tr>
+              <td><b>🪄 해리포터 스튜디오 투어</b></td>
+              <td><b>토시마엔역</b> (세이부선 <b>SI39</b>)</td>
+              <td><b>A2 출구</b> 도보 2분</td>
+              <td>이케부쿠로역에서 <b>세이부 이케부쿠로선</b> 탑승 (17분)</td>
+            </tr>
+            <tr>
+              <td><b>✨ 팀랩 플래닛 도쿄 (토요스)</b></td>
+              <td><b>신토요스역</b> (유리카모메 <b>U15</b>)</td>
+              <td>역 출구 바로 앞 도보 1분</td>
+              <td>신바시역(<b style="color:#E85298;">A10</b> 직통) → 유리카모메 환승</td>
+            </tr>
+            <tr>
+              <td><b>🌲 메이지신궁 / 하라주쿠 다케시타</b></td>
+              <td><b>하라주쿠역</b> (<b style="color:#65a30d;">JY19</b>) / <b>오모테산도역</b> (<b style="color:#8F76D6;">Z02</b>)</td>
+              <td>서쪽 출구(메이지신궁) / 동쪽 출구(다케시타)</td>
+              <td><b style="color:#8F76D6;">한조몬선(Z)</b> 오모테산도역 <b>31분 직통!</b></td>
+            </tr>
+            <tr>
+              <td><b>🐷 오모테산도 (마이센 돈카츠·캣스트리트)</b></td>
+              <td><b>오모테산도역</b> (<b style="color:#8F76D6;">Z02</b> / <b style="color:#FF9500;">G02</b>)</td>
+              <td><b>A2 출구</b> 도보 3분 (마이센 본점)</td>
+              <td><b style="color:#8F76D6;">한조몬선(Z)</b> <b>환승 없이 31분 직통!</b></td>
+            </tr>
+            <tr>
+              <td><b>🏛️ 도쿄역 야경 / 캐릭터 스트리트</b></td>
+              <td><b>도쿄역</b> (<b style="color:#65a30d;">JY01</b>) / <b>오테마치역</b> (<b style="color:#8F76D6;">Z08</b>)</td>
+              <td><b>마루노우치 중앙출구</b>(야경) / <b>야에스 지하중앙구</b>(캐릭터)</td>
+              <td><b style="color:#8F76D6;">한조몬선(Z)</b> 오테마치역 <b>16분 직통!</b> (지하 연결)</td>
+            </tr>
+            <tr>
+              <td><b>🍣 우에노 (스시로·이타마에·요시이케 마트)</b></td>
+              <td><b>우에노역</b> (<b style="color:#FF9500;">G16</b>/<b style="color:#65a30d;">JY05</b>) / <b>오카치마치역</b> (<b style="color:#65a30d;">JY04</b>)</td>
+              <td>우에노 시노바즈 출구 / 오카치마치 북쪽 출구</td>
+              <td>아사쿠사역 환승 후 긴자선 우에노 (약 12분)</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
