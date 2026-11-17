@@ -251,7 +251,93 @@
       font-weight: 800;
       text-decoration: none;
     }
-    .competition-source:hover { text-decoration: underline; }
+    .Competition-source:hover, .competition-source:hover { text-decoration: underline; }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .status-pill.registered {
+      color: #0d6b55;
+      background: #e8f7f1;
+      border-color: #9cd4c3;
+    }
+    .status-pill.interview {
+      color: #9a4708;
+      background: #fff2e6;
+      border-color: #f0be93;
+    }
+    .status-pill.withdrawn {
+      color: #68717d;
+      background: #f1f3f5;
+      border-color: #d0d7de;
+    }
+    .status-pill.waiting {
+      color: #1f568b;
+      background: #eff5fb;
+      border-color: #bfd6ee;
+    }
+    .school-identity .status-pill {
+      margin-top: 8px;
+      margin-left: 6px;
+    }
+    .school-alert.registered {
+      color: #0b5846;
+      background: #ecf9f4;
+      border-left-color: #188160;
+    }
+    .school-alert.interview {
+      color: #7c3704;
+      background: #fff4e8;
+      border-left-color: #d16a1d;
+    }
+    .school-alert.withdrawn {
+      color: #596675;
+      background: #f4f6f8;
+      border-left-color: #8c98a4;
+    }
+    .schedule-item.done .schedule-title {
+      color: #188160;
+    }
+    .schedule-item.highlight {
+      background: #fff8ef;
+      margin: 0 -8px;
+      padding: 6px 8px;
+      border-radius: 4px;
+    }
+    .schedule-item.inactive {
+      opacity: .48;
+    }
+    .schedule-item.inactive .schedule-title {
+      text-decoration: line-through;
+    }
+    .event-badge {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      vertical-align: baseline;
+    }
+    .event-badge.pass {
+      color: #0d6b55;
+      background: #e6f6f0;
+    }
+    .event-badge.attend {
+      color: #9a4708;
+      background: #fdebd9;
+    }
+    .event-badge.skip {
+      color: #596675;
+      background: #ebeff3;
+    }
     .competition-note {
       margin: 10px 0 0;
       color: var(--muted);
@@ -674,28 +760,30 @@
     <header class="masthead">
       <div>
         <p class="eyebrow">2027학년도 수시 최종 지원 현황</p>
-        <h1>최종 지원 열 장, 이제 남은 일정</h1>
-        <p class="subtitle">확정 전형의 경쟁률, 제출서류, 발표와 등록 일정을 한 화면에 정리</p>
+        <h1>최종 지원 열 장, 현재 진행 현황</h1>
+        <p class="subtitle">확정 전형의 경쟁률, 전형별 합격·면접 진행 상황, 남은 발표와 등록 일정을 한 화면에 정리</p>
       </div>
       <div class="mast-meta">
-        최종 지원안 기준
-        <strong>2026. 9. 11.</strong>
+        진행 현황 업데이트
+        <strong>2026. 11. 18.</strong>
       </div>
     </header>
 
     <section class="decision-band confirmed" aria-labelledby="decision-title">
-      <h2 id="decision-title">최종 지원 확정</h2>
+      <h2 id="decision-title">현재 전형 진행 현황 (2026. 11. 18. 기준)</h2>
       <ul>
-        <li><strong>성균관대</strong>: 학생부종합 융합인재전형, 지능형소프트웨어학과 5명 모집으로 확정했습니다.</li>
-        <li><strong>DGIST</strong>: 수시 학교장추천전형, 반도체공학과 12명 모집으로 확정했습니다.</li>
+        <li><strong>KAIST</strong>: Early Admission 학교장추천전형 <strong>최초합격(10.12) 및 등록 완료(11.6)</strong>했습니다. (2027.1.15까지 최종합격자 추가서류 제출 예정)</li>
+        <li><strong>연세대</strong>: 학생부종합 활동우수형(기계공학부) <strong>1차 합격(11.16)</strong>하여 <strong>11.22(일) 오후 자연계열 면접에 참석할 예정</strong>입니다.</li>
+        <li><strong>GIST</strong>: 수시 일반전형(반도체공학과) <strong>1차 합격(10.15)했으나 면접(10.22~23)에 불참</strong>하여 전형을 마무리했습니다.</li>
+        <li><strong>남은 주요 일정</strong>: <strong>서울대 1단계 발표(11.20)</strong> 및 면접(11.27), 그 외 대학 <strong>최종 합격자 발표(12.18)</strong>가 예정되어 있습니다.</li>
       </ul>
     </section>
 
     <section class="summary-strip" aria-label="지원 현황 요약">
       <div class="stat"><span class="stat-label">전체 지원</span><strong>10장</strong></div>
-      <div class="stat"><span class="stat-label">일반대학</span><strong class="general">6장</strong></div>
-      <div class="stat"><span class="stat-label">과학기술원</span><strong class="science">4장</strong></div>
-      <div class="stat"><span class="stat-label">최종 경쟁률 확인</span><strong class="result">10곳</strong></div>
+      <div class="stat"><span class="stat-label">최초합격·등록 완료</span><strong class="result">KAIST</strong></div>
+      <div class="stat"><span class="stat-label">1차 합격 현황</span><strong class="general">연세대(면접예정) · GIST(불참)</strong></div>
+      <div class="stat"><span class="stat-label">발표 대기</span><strong class="science">7곳 (서울대 11.20)</strong></div>
     </section>
 
     <div class="toolbar-wrap">
@@ -785,6 +873,7 @@
       {
         id: "snu", school: "서울대", group: "general", program: "일반전형 · 첨단융합학부",
         source: "https://admission.snu.ac.kr/",
+        status: { kind: "waiting", label: "1단계 발표 대기 (11.20)" },
         csat: { required: false, condition: "수능최저 미적용", detail: "학생부종합 일반전형 · 첨단융합학부 기준" },
         competition: { seats: "98", applicants: "580", ratio: "5.92 : 1", label: "서울대 공식 최종", url: "https://admission.snu.ac.kr/undergraduate/notice?bbsidx=175151&md=v" },
         events: [
@@ -799,8 +888,8 @@
           { kind: "extra", title: "해당자 원본서류 제출", start: "2027-02-19T10:00", end: "2027-02-26T18:00", date: "2027.2.19(금) 10:00 ~ 2.26(금) 18:00" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.9 18:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.9 18:00" },
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.9 18:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.9 18:00", defaultDone: true },
           { name: "지원자격·학생부 대체 서류", method: "해당자만 온라인 업로드", deadline: "9.10 18:00", optional: true },
           { name: "업로드 서류 원본", method: "해당 최종합격자만 제출", deadline: "2027.2.26 18:00", optional: true }
         ],
@@ -809,24 +898,26 @@
       {
         id: "yonsei", school: "연세대", group: "general", program: "학생부종합 활동우수형 · 기계공학부",
         source: "https://admission.yonsei.ac.kr/seoul/",
+        status: { kind: "interview", label: "1차 합격 · 면접 참석 예정" },
+        alert: "11.16(월) 1단계 합격 완료. 11.22(일) 오후 자연계열 면접에 참석할 예정입니다. 수험표와 신분증을 지참하세요.",
         csat: { required: true, condition: "수학 포함 2개 등급 합 5 이내", detail: "국어·수학·과탐 중 2개(수학 필수) · 영어 3등급 이내 · 한국사 4등급 이내 · 수학은 미적분/기하, 탐구는 과탐 개별 과목 등급 반영" },
         competition: { seats: "23", applicants: "272", ratio: "11.83 : 1", label: "진학 최종", url: "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11080811.html" },
         academic: { score: "97.2364", grade: "1.29" },
         events: [
           { kind: "apply", title: "입학지원서 접수", start: "2026-09-07T10:00", end: "2026-09-09T17:00", date: "9.7(월) 10:00 ~ 9.9(수) 17:00" },
           { kind: "apply", title: "해당자 서류 온라인 제출", start: "2026-09-07T10:00", end: "2026-09-10T17:00", date: "9.7(월) 10:00 ~ 9.10(목) 17:00" },
-          { kind: "result", title: "1단계 합격자 발표", start: "2026-11-16T17:00", end: "2026-11-16T17:00", date: "11.16(월) 17:00" },
-          { kind: "exam", title: "자연계열 면접", start: "2026-11-22T12:00", end: "2026-11-22T18:00", date: "11.22(일) 오후", note: "기계공학부 자연계열 기준" },
+          { kind: "result", title: "1단계 합격자 발표", start: "2026-11-16T17:00", end: "2026-11-16T17:00", date: "11.16(월) 17:00", done: true, badge: { text: "1차 합격", kind: "pass" } },
+          { kind: "exam", title: "자연계열 면접", start: "2026-11-22T12:00", end: "2026-11-22T18:00", date: "11.22(일) 오후", note: "기계공학부 자연계열 기준 · 참석 예정", highlight: true, badge: { text: "참석 예정", kind: "attend" } },
           { kind: "result", title: "최종 합격자 발표", start: "2026-12-18T18:00", end: "2026-12-18T18:00", date: "12.18(금) 18:00" },
           { kind: "register", title: "합격자 문서등록", start: "2026-12-21T10:00", end: "2026-12-23T16:00", date: "12.21(월) 10:00 ~ 12.23(수) 16:00" },
           { kind: "extra", title: "충원 발표 및 등록", start: "2026-12-24T00:00", end: "2026-12-30T16:00", date: "12.24(목) ~ 12.30(수) 16:00" },
           { kind: "register", title: "등록금 납부", start: "2027-02-10T00:00", end: "2027-02-12T16:00", date: "2027.2.10(수) ~ 2.12(금) 16:00" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.9 17:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.9 17:00" },
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.9 17:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.9 17:00", defaultDone: true },
           { name: "지원자격·학생부 대체 서류", method: "해당자만 온라인 업로드", deadline: "9.10 17:00", optional: true },
-          { name: "수험표와 신분증", method: "면접 당일 지참", deadline: "11.22 오후" },
+          { name: "수험표와 신분증", method: "면접 당일 지참 (참석 예정)", deadline: "11.22 오후" },
           { name: "업로드 서류 원본", method: "해당 최종합격자만 제출", deadline: "2027.2.5", optional: true }
         ],
         note: "활동우수형은 별도의 자기소개서나 활동증빙자료를 제출하지 않습니다."
@@ -834,6 +925,7 @@
       {
         id: "postech", school: "POSTECH", group: "general", program: "기회균형 지역인재전형 · 단일계열",
         source: "https://adm-u.postech.ac.kr/entrance-exam/guide/",
+        status: { kind: "waiting", label: "최종 발표 대기 (12.18)" },
         csat: { required: false, condition: "수능최저 미적용", detail: "기회균형 지역인재전형 기준 · POSTECH은 일반전형Ⅱ에만 수능최저 적용" },
         competition: { seats: "20", applicants: "126", ratio: "6.30 : 1", label: "유웨이 최종", url: "https://ratio.uwayapply.com/Sl5KfExgMCZhaUpmJSY6Jko3ZlRm" },
         events: [
@@ -844,16 +936,17 @@
           { kind: "extra", title: "충원 합격 통보·등록", start: "2026-12-24T00:00", end: "2026-12-30T16:00", date: "12.24(목) ~ 12.30(수) 16:00" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.10 18:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.10 18:00" },
-          { name: "기회균형 지역인재 지원자격 확인서", method: "요강 양식 작성 후 제출", deadline: "9.10" },
-          { name: "지역인재 지원자격 증빙 원본", method: "등기우편, 요강 지정 서류", deadline: "9.10 우편소인" }
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.10 18:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.10 18:00", defaultDone: true },
+          { name: "기회균형 지역인재 지원자격 확인서", method: "요강 양식 작성 후 제출", deadline: "9.10", defaultDone: true },
+          { name: "지역인재 지원자격 증빙 원본", method: "등기우편, 요강 지정 서류", deadline: "9.10 우편소인", defaultDone: true }
         ],
         note: "기회균형 지역인재전형은 서류평가 100%로 별도 면접 일정이 없습니다. 지원자격 원본의 종류는 원서접수 전 요강 표와 반드시 대조하세요."
       },
       {
         id: "korea", school: "고려대", group: "general", program: "학생부교과 학교추천전형 · 기계공학부",
         source: "https://oku.korea.ac.kr/",
+        status: { kind: "waiting", label: "최종 발표 대기 (12.18)" },
         csat: { required: true, condition: "국어·수학·영어·탐구 중 3개 합 7 이내", detail: "한국사 4등급 이내 · 탐구는 사회탐구/과학탐구 중 상위 1과목 반영" },
         competition: { seats: "21", applicants: "139", ratio: "6.62 : 1", label: "유웨이 최종", url: "https://ratio.uwayapply.com/Sl5KOGB9YTlKZiUmOiZKN2ZUZg==" },
         academic: { score: "88.8902", grade: "1.31" },
@@ -868,9 +961,9 @@
           { kind: "extra", title: "해당자 원본서류 제출", start: "2027-02-17T00:00", end: "2027-02-19T23:59", date: "2027.2.19(금)까지" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.9 17:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.9 17:00" },
-          { name: "학교 추천대상자 명단", method: "고교 담당교사가 입력·확인", deadline: "9.18 18:00" },
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.9 17:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.9 17:00", defaultDone: true },
+          { name: "학교 추천대상자 명단", method: "고교 담당교사가 입력·확인", deadline: "9.18 18:00", defaultDone: true },
           { name: "지원자격 관련 원본", method: "해당자만 우편 제출", deadline: "9.10 국내우편 소인", optional: true },
           { name: "업로드 서류 원본", method: "해당 최종합격자만 제출", deadline: "2027.2.19", optional: true }
         ],
@@ -879,6 +972,7 @@
       {
         id: "skku", school: "성균관대", group: "general", program: "학생부종합 융합인재 · 지능형소프트웨어학과 (5명)",
         source: "https://admission.skku.edu/",
+        status: { kind: "waiting", label: "최종 발표 대기 (12.18)" },
         csat: { required: true, condition: "국어·수학·영어·탐구 중 3개 합 6 이내", detail: "탐구 2과목 평균 · 과탐 1과목 이상 응시 시 탐구 평균과 과탐 상위 1과목 중 우수 등급 반영 · 제2외국어/한문으로 탐구 1과목 대체 가능 · 국어·수학·영어·탐구 2과목·한국사 필수 응시" },
         competition: { seats: "5", applicants: "125", ratio: "25.00 : 1", label: "진학 최종", url: "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio10920591.html" },
         academic: { score: "788.72", grade: "1.40" },
@@ -891,8 +985,8 @@
           { kind: "register", title: "등록금 납부", start: "2027-02-10T00:00", end: "2027-02-12T16:00", date: "2027.2.10(수) ~ 2.12(금) 16:00" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.11 18:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.11 18:00" },
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.11 18:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.11 18:00", defaultDone: true },
           { name: "학생부 대체·지원자격 서류", method: "해당자만 온라인 업로드", deadline: "9.12 14:00", optional: true }
         ],
         note: "국내 고교 재학생의 탐구인재·융합인재 지원은 별도 자기소개서가 없고, 통상 제출서류도 없습니다."
@@ -900,6 +994,7 @@
       {
         id: "hanyang", school: "한양대", group: "general", program: "학생부교과 추천형 · 기계공학부",
         source: "https://go.hanyang.ac.kr/",
+        status: { kind: "waiting", label: "최종 발표 대기 (12.18)" },
         csat: { required: true, condition: "국어·수학·영어·탐구 중 3개 합 7 이내", detail: "탐구는 상위 1과목 반영 · 국어·수학·영어·탐구 2과목·한국사 필수 응시" },
         competition: { seats: "17", applicants: "160", ratio: "9.41 : 1", label: "진학 최종", url: "https://addon.jinhakapply.com/RatioV1/RatioH/Ratio11640591.html" },
         academic: { score: "889.435", grade: "1.29" },
@@ -913,9 +1008,9 @@
           { kind: "register", title: "등록금 납부", start: "2027-02-10T00:00", end: "2027-02-12T23:59", date: "2027.2.10(수) ~ 2.12(금)" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.11 18:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.11 18:00" },
-          { name: "학교 추천대상자 명단", method: "고교 담당교사가 입력", deadline: "9.18" },
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.11 18:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.11 18:00", defaultDone: true },
+          { name: "학교 추천대상자 명단", method: "고교 담당교사가 입력", deadline: "9.18", defaultDone: true },
           { name: "학생부 대체·지원자격 서류", method: "해당자만 PDF 업로드", deadline: "9.14", optional: true }
         ],
         note: "학생부교과 추천형은 학생부 외 별도 자기소개서가 없습니다. 추천대상자 입력 완료 여부를 학교에 확인하세요."
@@ -923,33 +1018,37 @@
       {
         id: "kaist", school: "KAIST", group: "science", program: "Early Admission 학교장추천전형",
         source: "https://admission.kaist.ac.kr/",
+        status: { kind: "registered", label: "최초합격 · 등록 완료" },
+        alert: "10.12(월) 최초합격 발표 후 등록프로그램 참가 및 합격자 등록(11.6)까지 모두 완료했습니다. 2027.1.15까지 최종합격자 추가서류 제출 일정만 남아 있습니다.",
         csat: { required: false, condition: "수능최저 미적용", detail: "Early Admission 학교장추천전형 기준" },
         competition: { seats: "85", applicants: "1,514", ratio: "17.81 : 1", label: "KAIST 최종", url: "https://admission.kaist.ac.kr/undergraduate/admission/rsub/2027" },
         events: [
           { kind: "apply", title: "지원서·자소서·독서이력·서류", start: "2026-09-01T09:00", end: "2026-09-09T18:00", date: "9.1(화) ~ 9.9(수) 18:00" },
           { kind: "apply", title: "교사추천서 입력", start: "2026-09-10T09:00", end: "2026-09-18T18:00", date: "9.10(목) ~ 9.18(금) 18:00", note: "선택 최대 2건, 제출 시 담임교사 추천 필수" },
           { kind: "apply", title: "학교장추천 대상자 입력", start: "2026-09-14T09:00", end: "2026-09-18T18:00", date: "9.14(월) ~ 9.18(금) 18:00", note: "고교 담당교사 처리" },
-          { kind: "result", title: "최종 합격자 발표", start: "2026-10-12T10:00", end: "2026-10-12T10:00", date: "10.12(월) 10:00" },
-          { kind: "register", title: "등록프로그램", start: "2026-10-29T00:00", end: "2026-11-04T23:59", date: "10.29(목) ~ 11.4(수) 중 지정 1일" },
-          { kind: "register", title: "합격자 등록", start: "2026-10-29T00:00", end: "2026-11-06T18:00", date: "10.29(목) ~ 11.6(금) 18:00" },
+          { kind: "result", title: "최종 합격자 발표", start: "2026-10-12T10:00", end: "2026-10-12T10:00", date: "10.12(월) 10:00", done: true, badge: { text: "최초합격", kind: "pass" } },
+          { kind: "register", title: "등록프로그램", start: "2026-10-29T00:00", end: "2026-11-04T23:59", date: "10.29(목) ~ 11.4(수) 중 지정 1일", done: true, badge: { text: "참가 완료", kind: "pass" } },
+          { kind: "register", title: "합격자 등록", start: "2026-10-29T00:00", end: "2026-11-06T18:00", date: "10.29(목) ~ 11.6(금) 18:00", done: true, badge: { text: "등록 완료", kind: "pass" } },
           { kind: "extra", title: "최종합격자 추가서류", start: "2027-01-12T00:00", end: "2027-01-15T18:00", date: "2027.1.12(화) ~ 1.15(금) 18:00 도착" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 입력", deadline: "9.9 18:00" },
-          { name: "자기소개서 4문항", method: "온라인 입력", deadline: "9.9 18:00" },
-          { name: "독서이력", method: "온라인 입력", deadline: "9.9 18:00" },
-          { name: "학교생활기록부", method: "NEIS 활용 동의 필수", deadline: "9.9 18:00" },
-          { name: "학교장추천 대상자 명단", method: "고교 담당교사가 입력", deadline: "9.18 18:00" },
-          { name: "교사추천서", method: "선택, 최대 2건", deadline: "9.18 18:00", optional: true },
+          { name: "입학지원서", method: "온라인 입력", deadline: "9.9 18:00", defaultDone: true },
+          { name: "자기소개서 4문항", method: "온라인 입력", deadline: "9.9 18:00", defaultDone: true },
+          { name: "독서이력", method: "온라인 입력", deadline: "9.9 18:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 활용 동의 필수", deadline: "9.9 18:00", defaultDone: true },
+          { name: "학교장추천 대상자 명단", method: "고교 담당교사가 입력", deadline: "9.18 18:00", defaultDone: true },
+          { name: "교사추천서", method: "선택, 최대 2건", deadline: "9.18 18:00", optional: true, defaultDone: true },
           { name: "자소서 증빙자료", method: "선택, 총 3건·건당 3쪽", deadline: "9.9 18:00", optional: true },
           { name: "6월 모의평가 성적표", method: "선택, PDF 업로드", deadline: "9.9 18:00", optional: true },
+          { name: "등록프로그램 참가 및 합격자 등록", method: "온라인 등록 완료", deadline: "11.6 18:00", defaultDone: true },
           { name: "최종 학기 포함 학생부 등 원본", method: "최종합격자 제출", deadline: "2027.1.15 18:00 도착" }
         ],
-        note: "학교생활기록부 NEIS 활용 동의는 필수입니다. 등록프로그램 불참 시 합격이 취소될 수 있습니다."
+        note: "최초합격 및 등록을 완료했습니다. 2027년 1월 최종 학기 포함 학생부 등 추가서류 제출 기한을 챙기세요."
       },
       {
         id: "unist", school: "UNIST", group: "science", program: "수시 일반전형 · 이공계열(무학과)",
         source: "https://adm-u.unist.ac.kr/",
+        status: { kind: "waiting", label: "최종 발표 대기 (12.18)" },
         csat: { required: false, condition: "수능최저 미적용", detail: "수시 일반전형 · 이공계열(무학과) 기준" },
         competition: { seats: "355", applicants: "8,219", ratio: "23.15 : 1", label: "유웨이 최종", url: "https://ratio.uwayapply.com/Sl5KMCYlVzpKXiUmOiZKN2ZUZg==" },
         events: [
@@ -961,9 +1060,9 @@
           { kind: "extra", title: "충원 합격자 등록", start: "2026-12-24T00:00", end: "2026-12-30T16:00", date: "12.30(수) 16:00까지" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.10 18:00" },
-          { name: "자기소개서", method: "온라인 입력", deadline: "9.11 18:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.10 18:00" },
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.10 18:00", defaultDone: true },
+          { name: "자기소개서", method: "온라인 입력", deadline: "9.11 18:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.10 18:00", defaultDone: true },
           { name: "학생부 대체·지원자격 서류", method: "해당자만 온라인 제출", deadline: "9.11 18:00", optional: true }
         ],
         note: "이공계열 무학과 지원안입니다. 별도 면접 없이 서류평가로 선발합니다."
@@ -971,28 +1070,31 @@
       {
         id: "gist", school: "GIST", group: "science", program: "수시 일반전형 · 반도체공학과",
         source: "https://www.gist.ac.kr/uadm/",
+        status: { kind: "withdrawn", label: "1차 합격 · 면접 불참" },
+        alert: "10.15(목) 1단계 합격했으나 10.22~10.23 면접평가에 참석하지 않아 이후 전형이 종료되었습니다.",
         csat: { required: false, condition: "수능최저 미적용", detail: "수시 일반전형 · 반도체공학과 기준" },
         competition: { seats: "25", applicants: "289", ratio: "11.56 : 1", label: "유웨이 최종", url: "https://ratio.uwayapply.com/Sl5KbzBlbyZlbyVlb3JlSl4lJjomSjdmVGY=" },
         events: [
           { kind: "apply", title: "원서·자소서·추천서·서류", start: "2026-09-07T09:00", end: "2026-09-11T18:00", date: "9.7(월) 09:00 ~ 9.11(금) 18:00" },
-          { kind: "result", title: "1단계 합격자 발표", start: "2026-10-15T18:00", end: "2026-10-15T18:00", date: "10.15(목) 18:00" },
-          { kind: "exam", title: "면접평가", start: "2026-10-22T00:00", end: "2026-10-23T23:59", date: "10.22(목) ~ 10.23(금)", note: "개인별 면접일·시간 별도 안내" },
-          { kind: "result", title: "최종 합격자 발표", start: "2026-12-18T18:00", end: "2026-12-18T18:00", date: "12.18(금) 18:00" },
-          { kind: "register", title: "합격자 등록", start: "2026-12-21T00:00", end: "2026-12-23T23:59", date: "12.21(월) ~ 12.23(수)" },
-          { kind: "extra", title: "충원 발표 및 등록", start: "2026-12-24T00:00", end: "2026-12-30T22:00", date: "12.24(목) ~ 12.30(수) 22:00" }
+          { kind: "result", title: "1단계 합격자 발표", start: "2026-10-15T18:00", end: "2026-10-15T18:00", date: "10.15(목) 18:00", done: true, badge: { text: "1차 합격", kind: "pass" } },
+          { kind: "exam", title: "면접평가", start: "2026-10-22T00:00", end: "2026-10-23T23:59", date: "10.22(목) ~ 10.23(금)", note: "면접 미응시로 전형 종료", inactive: true, badge: { text: "불참", kind: "skip" } },
+          { kind: "result", title: "최종 합격자 발표", start: "2026-12-18T18:00", end: "2026-12-18T18:00", date: "12.18(금) 18:00", inactive: true },
+          { kind: "register", title: "합격자 등록", start: "2026-12-21T00:00", end: "2026-12-23T23:59", date: "12.21(월) ~ 12.23(수)", inactive: true },
+          { kind: "extra", title: "충원 발표 및 등록", start: "2026-12-24T00:00", end: "2026-12-30T22:00", date: "12.24(목) ~ 12.30(수) 22:00", inactive: true }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.11 18:00" },
-          { name: "자기소개서", method: "온라인 입력", deadline: "9.11 18:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.11 18:00" },
-          { name: "교사추천서", method: "추천인이 온라인 입력", deadline: "9.11 18:00" },
-          { name: "수험표와 신분증", method: "면접 당일 지참", deadline: "10.22~10.23" }
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.11 18:00", defaultDone: true },
+          { name: "자기소개서", method: "온라인 입력", deadline: "9.11 18:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.11 18:00", defaultDone: true },
+          { name: "교사추천서", method: "추천인이 온라인 입력", deadline: "9.11 18:00", defaultDone: true },
+          { name: "수험표와 신분증", method: "면접 불참 (전형 종료)", deadline: "10.22~10.23", optional: true }
         ],
-        note: "일반전형 반도체공학과 지원안입니다. 학교장추천이 아니라 교사추천서 제출 여부와 완료 상태를 확인해야 합니다."
+        note: "1단계(서류) 합격 후 면접에 불참하여 전형이 마무리되었습니다."
       },
       {
         id: "dgist", school: "DGIST", group: "science", program: "수시 학교장추천전형 · 반도체공학과 (12명)",
         source: "https://www.dgist.ac.kr/adm/",
+        status: { kind: "waiting", label: "최종 발표 대기 (12.18)" },
         csat: { required: false, condition: "수능최저 미적용", detail: "수시 학교장추천전형 · 반도체공학과 기준" },
         competition: { seats: "12", applicants: "107", ratio: "8.92 : 1", label: "유웨이 최종", url: "https://ratio.uwayapply.com/Sl5KMCYlclZKXiUmOiZKN2ZUZg==" },
         events: [
@@ -1003,11 +1105,11 @@
           { kind: "extra", title: "충원 발표 및 등록", start: "2026-12-24T00:00", end: "2026-12-30T16:00", date: "12.24(목) ~ 12.30(수) 16:00" }
         ],
         docs: [
-          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.10 18:00" },
-          { name: "자기소개서", method: "온라인 입력", deadline: "9.10 18:00" },
-          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.10 18:00" },
-          { name: "학교장추천 대상자 확인", method: "고교 담당교사 처리", deadline: "9.16 18:00" },
-          { name: "교사추천서", method: "추천인이 온라인 입력", deadline: "9.16 18:00" }
+          { name: "입학지원서", method: "온라인 원서접수", deadline: "9.10 18:00", defaultDone: true },
+          { name: "자기소개서", method: "온라인 입력", deadline: "9.10 18:00", defaultDone: true },
+          { name: "학교생활기록부", method: "NEIS 온라인 제공 동의", deadline: "9.10 18:00", defaultDone: true },
+          { name: "학교장추천 대상자 확인", method: "고교 담당교사 처리", deadline: "9.16 18:00", defaultDone: true },
+          { name: "교사추천서", method: "추천인이 온라인 입력", deadline: "9.16 18:00", defaultDone: true }
         ],
         note: "학교장추천전형 반도체공학과는 별도 면접 없이 서류평가 100%로 선발합니다. 학교추천과 교사추천 입력 완료 여부를 확인하세요."
       }
@@ -1034,9 +1136,10 @@
       </div>`;
       host.innerHTML = header + schools.map(s => {
         const c = s.competition;
+        const statusHtml = s.status ? ` <span class="status-pill ${s.status.kind}">${escapeHtml(s.status.label)}</span>` : "";
         return `<div class="competition-row">
           <div class="competition-cell competition-school">${escapeHtml(s.school)}</div>
-          <div class="competition-cell competition-program">${escapeHtml(s.program)}</div>
+          <div class="competition-cell competition-program">${escapeHtml(s.program)}${statusHtml}</div>
           <div class="competition-cell competition-number competition-seats">모집 ${escapeHtml(c.seats)}명</div>
           <div class="competition-cell competition-number competition-applicants">지원 ${escapeHtml(c.applicants)}명</div>
           <div class="competition-cell competition-number competition-ratio-cell"><span class="competition-ratio${c.pending ? " pending" : ""}">${escapeHtml(c.ratio)}</span></div>
@@ -1066,9 +1169,9 @@
       const host = document.getElementById("nextDeadlines");
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      document.getElementById("todayLabel").textContent = `${today.getFullYear()}.${today.getMonth() + 1}.${today.getDate()} 기준, 종료되지 않은 일정입니다.`;
+      document.getElementById("todayLabel").textContent = `${today.getFullYear()}.${today.getMonth() + 1}.${today.getDate()} 기준, 진행 중인 전형의 남은 일정입니다.`;
 
-      const events = schools.flatMap(s => s.events.filter(e => scheduleKinds.has(e.kind)).map(e => ({ ...e, school: s.school })))
+      const events = schools.flatMap(s => s.events.filter(e => scheduleKinds.has(e.kind) && !e.inactive).map(e => ({ ...e, school: s.school })))
         .filter(e => parseDate(e.end) >= today)
         .sort((a, b) => parseDate(a.end) - parseDate(b.end))
         .slice(0, 5);
@@ -1081,7 +1184,8 @@
         const end = parseDate(e.end);
         const diff = Math.ceil((end - today) / 86400000);
         const label = diff === 0 ? "오늘" : diff === 1 ? "내일" : `D-${diff}`;
-        return `<div class="deadline-item"><div class="deadline-date">${label} · ${end.getMonth() + 1}.${end.getDate()}</div><div class="deadline-school">${escapeHtml(e.school)}</div><div class="deadline-title" title="${escapeHtml(e.title)}">${escapeHtml(e.title)}</div></div>`;
+        const badgeText = e.badge ? ` (${e.badge.text})` : "";
+        return `<div class="deadline-item"><div class="deadline-date">${label} · ${end.getMonth() + 1}.${end.getDate()}</div><div class="deadline-school">${escapeHtml(e.school)}</div><div class="deadline-title" title="${escapeHtml(e.title + badgeText)}">${escapeHtml(e.title + badgeText)}</div></div>`;
       }).join("");
     }
 
@@ -1094,17 +1198,22 @@
       host.innerHTML = groups.map(group => {
         const items = schools.filter(s => s.group === group.key).map(s => {
           const events = s.events.filter(e => scheduleKinds.has(e.kind) && (activeFilter === "all" || e.kind === activeFilter));
-          const eventHtml = events.length ? events.map(e => `
-            <li class="schedule-item">
+          const eventHtml = events.length ? events.map(e => {
+            const itemClasses = ["schedule-item", e.done ? "done" : "", e.highlight ? "highlight" : "", e.inactive ? "inactive" : ""].filter(Boolean).join(" ");
+            const badgeHtml = e.badge ? `<span class="event-badge ${e.badge.kind}">${escapeHtml(e.badge.text)}</span>` : "";
+            return `
+            <li class="${itemClasses}">
               <span class="kind-pill ${e.kind}">${kindNames[e.kind]}</span>
-              <span class="schedule-title">${escapeHtml(e.title)}</span>
+              <span class="schedule-title">${escapeHtml(e.title)}${badgeHtml}</span>
               <span class="schedule-date">${escapeHtml(e.date)}</span>
               ${e.note ? `<span class="schedule-note">${escapeHtml(e.note)}</span>` : ""}
-            </li>`).join("") : '<li class="schedule-item"><span class="schedule-title">선택한 유형의 일정이 없습니다.</span></li>';
+            </li>`;
+          }).join("") : '<li class="schedule-item"><span class="schedule-title">선택한 유형의 일정이 없습니다.</span></li>';
 
           const docs = s.docs.map((d, index) => {
             const key = `apply2027:${s.id}:${index}`;
-            const checked = localStorage.getItem(key) === "1";
+            const saved = localStorage.getItem(key);
+            const checked = saved === null ? Boolean(d.defaultDone) : saved === "1";
             return `<li class="document-item${checked ? " done" : ""}">
               <input class="doc-check" type="checkbox" data-key="${key}" ${checked ? "checked" : ""} aria-label="${escapeHtml(d.name)} 완료">
               <div><div class="doc-name">${escapeHtml(d.name)}${d.optional ? " (해당자/선택)" : ""}</div><div class="doc-meta">${escapeHtml(d.method)}</div></div>
@@ -1112,11 +1221,14 @@
             </li>`;
           }).join("");
 
+          const statusHtml = s.status ? `<span class="status-pill ${s.status.kind}">${escapeHtml(s.status.label)}</span>` : "";
+          const alertClass = s.status ? `school-alert ${s.status.kind}` : "school-alert";
+
           return `<article class="school-block" id="school-${s.id}">
             <div class="school-identity">
               <h3 class="school-name">${escapeHtml(s.school)}</h3>
               <p class="school-program">${escapeHtml(s.program)}</p>
-              <span class="type-label ${group.key}">${group.key === "general" ? "일반대학" : "과학기술원"}</span><br>
+              <span class="type-label ${group.key}">${group.key === "general" ? "일반대학" : "과학기술원"}</span>${statusHtml}<br>
               <div class="school-competition">
                 <span class="school-meta-label">2027 최종 경쟁률</span>
                 <strong>${escapeHtml(s.competition.ratio)}</strong>
@@ -1137,7 +1249,7 @@
               <a class="source-link" href="${s.source}" target="_blank" rel="noopener">공식 입학처 확인</a>
             </div>
             <div class="school-content">
-              ${s.alert ? `<div class="school-alert">${escapeHtml(s.alert)}</div>` : ""}
+              ${s.alert ? `<div class="${alertClass}">${escapeHtml(s.alert)}</div>` : ""}
               <div>
                 <h4 class="content-title">일정</h4>
                 <ul class="schedule-list">${eventHtml}</ul>
@@ -1217,11 +1329,12 @@
         const x2 = xFor(e.end);
         const actualWidth = Math.max(7, x2 - x1);
         const color = kindColors[e.kind];
+        const opacity = e.inactive ? ".28" : ".92";
         const label = e.title.length > 11 ? `${e.title.slice(0, 11)}…` : e.title;
         markup += `<g tabindex="0" aria-label="${escapeHtml(schools[e.row].school)} ${escapeHtml(e.title)} ${escapeHtml(e.date)}">
           <title>${escapeHtml(schools[e.row].school)} · ${escapeHtml(e.title)} · ${escapeHtml(e.date)}</title>
-          <rect x="${x1}" y="${y}" width="${actualWidth}" height="26" rx="3" fill="${color}" opacity=".92"/>
-          ${actualWidth > 66 ? `<text x="${x1 + 6}" y="${y + 18}" fill="#fff" font-size="10" font-weight="750">${escapeHtml(label)}</text>` : ""}
+          <rect x="${x1}" y="${y}" width="${actualWidth}" height="26" rx="3" fill="${color}" opacity="${opacity}"/>
+          ${actualWidth > 66 ? `<text x="${x1 + 6}" y="${y + 18}" fill="#fff" font-size="10" font-weight="750" opacity="${e.inactive ? ".6" : "1"}">${escapeHtml(label)}</text>` : ""}
         </g>`;
       });
 
